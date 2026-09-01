@@ -17,6 +17,7 @@ import { Route as AuthenticatedEntradasRouteImport } from './routes/_authenticat
 import { Route as AuthenticatedEstoqueRouteImport } from './routes/_authenticated/estoque'
 import { Route as AuthenticatedExtratoRouteImport } from './routes/_authenticated/extrato'
 import { Route as AuthenticatedFechamentoRouteImport } from './routes/_authenticated/fechamento'
+import { Route as AuthenticatedImpactoRouteImport } from './routes/_authenticated/impacto'
 import { Route as AuthenticatedPdvRouteImport } from './routes/_authenticated/pdv'
 import { Route as AuthenticatedProdutosRouteImport } from './routes/_authenticated/produtos'
 import { Route as AuthenticatedRedeRouteImport } from './routes/_authenticated/rede'
@@ -66,6 +67,11 @@ const AuthenticatedExtratoRoute = AuthenticatedExtratoRouteImport.update({
 const AuthenticatedFechamentoRoute = AuthenticatedFechamentoRouteImport.update({
   id: '/fechamento',
   path: '/fechamento',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedImpactoRoute = AuthenticatedImpactoRouteImport.update({
+  id: '/impacto',
+  path: '/impacto',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedPdvRoute = AuthenticatedPdvRouteImport.update({
@@ -135,6 +141,7 @@ export interface FileRoutesByFullPath {
   '/estoque': typeof AuthenticatedEstoqueRoute
   '/extrato': typeof AuthenticatedExtratoRoute
   '/fechamento': typeof AuthenticatedFechamentoRoute
+  '/impacto': typeof AuthenticatedImpactoRoute
   '/pdv': typeof AuthenticatedPdvRoute
   '/produtos': typeof AuthenticatedProdutosRoute
   '/rede': typeof AuthenticatedRedeRoute
@@ -155,6 +162,7 @@ export interface FileRoutesByTo {
   '/estoque': typeof AuthenticatedEstoqueRoute
   '/extrato': typeof AuthenticatedExtratoRoute
   '/fechamento': typeof AuthenticatedFechamentoRoute
+  '/impacto': typeof AuthenticatedImpactoRoute
   '/pdv': typeof AuthenticatedPdvRoute
   '/produtos': typeof AuthenticatedProdutosRoute
   '/rede': typeof AuthenticatedRedeRoute
@@ -177,6 +185,7 @@ export interface FileRoutesById {
   '/_authenticated/estoque': typeof AuthenticatedEstoqueRoute
   '/_authenticated/extrato': typeof AuthenticatedExtratoRoute
   '/_authenticated/fechamento': typeof AuthenticatedFechamentoRoute
+  '/_authenticated/impacto': typeof AuthenticatedImpactoRoute
   '/_authenticated/pdv': typeof AuthenticatedPdvRoute
   '/_authenticated/produtos': typeof AuthenticatedProdutosRoute
   '/_authenticated/rede': typeof AuthenticatedRedeRoute
@@ -199,6 +208,7 @@ export interface FileRouteTypes {
     | '/estoque'
     | '/extrato'
     | '/fechamento'
+    | '/impacto'
     | '/pdv'
     | '/produtos'
     | '/rede'
@@ -219,6 +229,7 @@ export interface FileRouteTypes {
     | '/estoque'
     | '/extrato'
     | '/fechamento'
+    | '/impacto'
     | '/pdv'
     | '/produtos'
     | '/rede'
@@ -240,6 +251,7 @@ export interface FileRouteTypes {
     | '/_authenticated/estoque'
     | '/_authenticated/extrato'
     | '/_authenticated/fechamento'
+    | '/_authenticated/impacto'
     | '/_authenticated/pdv'
     | '/_authenticated/produtos'
     | '/_authenticated/rede'
@@ -315,6 +327,13 @@ declare module '@tanstack/react-router' {
       path: '/fechamento'
       fullPath: '/fechamento'
       preLoaderRoute: typeof AuthenticatedFechamentoRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/impacto': {
+      id: '/_authenticated/impacto'
+      path: '/impacto'
+      fullPath: '/impacto'
+      preLoaderRoute: typeof AuthenticatedImpactoRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/pdv': {
@@ -403,6 +422,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedEstoqueRoute: typeof AuthenticatedEstoqueRoute
   AuthenticatedExtratoRoute: typeof AuthenticatedExtratoRoute
   AuthenticatedFechamentoRoute: typeof AuthenticatedFechamentoRoute
+  AuthenticatedImpactoRoute: typeof AuthenticatedImpactoRoute
   AuthenticatedPdvRoute: typeof AuthenticatedPdvRoute
   AuthenticatedProdutosRoute: typeof AuthenticatedProdutosRoute
   AuthenticatedRedeRoute: typeof AuthenticatedRedeRoute
@@ -422,6 +442,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedEstoqueRoute: AuthenticatedEstoqueRoute,
   AuthenticatedExtratoRoute: AuthenticatedExtratoRoute,
   AuthenticatedFechamentoRoute: AuthenticatedFechamentoRoute,
+  AuthenticatedImpactoRoute: AuthenticatedImpactoRoute,
   AuthenticatedPdvRoute: AuthenticatedPdvRoute,
   AuthenticatedProdutosRoute: AuthenticatedProdutosRoute,
   AuthenticatedRedeRoute: AuthenticatedRedeRoute,
