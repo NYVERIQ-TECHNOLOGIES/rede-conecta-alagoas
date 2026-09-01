@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRedeRouteImport } from './routes/_authenticated/rede'
+import { Route as AuthenticatedCooperativasIndexRouteImport } from './routes/_authenticated/cooperativas.index'
 import { Route as AuthenticatedLojasIndexRouteImport } from './routes/_authenticated/lojas.index'
 import { Route as AuthenticatedLojasIdRouteImport } from './routes/_authenticated/lojas.$id'
 
@@ -35,6 +36,12 @@ const AuthenticatedRedeRoute = AuthenticatedRedeRouteImport.update({
   path: '/rede',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedCooperativasIndexRoute =
+  AuthenticatedCooperativasIndexRouteImport.update({
+    id: '/cooperativas/',
+    path: '/cooperativas/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedLojasIndexRoute = AuthenticatedLojasIndexRouteImport.update({
   id: '/lojas/',
   path: '/lojas/',
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/rede': typeof AuthenticatedRedeRoute
   '/lojas/$id': typeof AuthenticatedLojasIdRoute
+  '/cooperativas/': typeof AuthenticatedCooperativasIndexRoute
   '/lojas/': typeof AuthenticatedLojasIndexRoute
 }
 export interface FileRoutesByTo {
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/rede': typeof AuthenticatedRedeRoute
   '/lojas/$id': typeof AuthenticatedLojasIdRoute
+  '/cooperativas': typeof AuthenticatedCooperativasIndexRoute
   '/lojas': typeof AuthenticatedLojasIndexRoute
 }
 export interface FileRoutesById {
@@ -67,13 +76,15 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/_authenticated/rede': typeof AuthenticatedRedeRoute
   '/_authenticated/lojas/$id': typeof AuthenticatedLojasIdRoute
+  '/_authenticated/cooperativas/': typeof AuthenticatedCooperativasIndexRoute
   '/_authenticated/lojas/': typeof AuthenticatedLojasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/rede' | '/lojas/$id' | '/lojas/'
+  fullPaths:
+    '/' | '/auth' | '/rede' | '/lojas/$id' | '/cooperativas/' | '/lojas/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/rede' | '/lojas/$id' | '/lojas'
+  to: '/' | '/auth' | '/rede' | '/lojas/$id' | '/cooperativas' | '/lojas'
   id:
     | '__root__'
     | '/'
@@ -81,6 +92,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/_authenticated/rede'
     | '/_authenticated/lojas/$id'
+    | '/_authenticated/cooperativas/'
     | '/_authenticated/lojas/'
   fileRoutesById: FileRoutesById
 }
@@ -120,6 +132,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRedeRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/cooperativas/': {
+      id: '/_authenticated/cooperativas/'
+      path: '/cooperativas'
+      fullPath: '/cooperativas/'
+      preLoaderRoute: typeof AuthenticatedCooperativasIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/lojas/': {
       id: '/_authenticated/lojas/'
       path: '/lojas'
@@ -140,12 +159,14 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedRedeRoute: typeof AuthenticatedRedeRoute
   AuthenticatedLojasIdRoute: typeof AuthenticatedLojasIdRoute
+  AuthenticatedCooperativasIndexRoute: typeof AuthenticatedCooperativasIndexRoute
   AuthenticatedLojasIndexRoute: typeof AuthenticatedLojasIndexRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedRedeRoute: AuthenticatedRedeRoute,
   AuthenticatedLojasIdRoute: AuthenticatedLojasIdRoute,
+  AuthenticatedCooperativasIndexRoute: AuthenticatedCooperativasIndexRoute,
   AuthenticatedLojasIndexRoute: AuthenticatedLojasIndexRoute,
 }
 

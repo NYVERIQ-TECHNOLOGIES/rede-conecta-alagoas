@@ -74,7 +74,7 @@ function Cooperativas() {
                   </div>
                   <StatusDot status={c.status} />
                 </div>
-                <p className="mt-3 line-clamp-3 text-[12px] text-muted-foreground">{c.story}</p>
+                <p className="mt-3 line-clamp-3 text-[12px] text-muted-foreground">{c.history ?? c.description}</p>
                 <div className="mt-4 flex items-center justify-between border-t border-line pt-3 font-mono text-[11px]">
                   <span className="text-muted-foreground">{count} produtos</span>
                   <span className="text-leaf">{brl(value)} repassados</span>
