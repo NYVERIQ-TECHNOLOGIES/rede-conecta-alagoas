@@ -199,10 +199,11 @@ export function AppShell({ children }: { children: ReactNode }) {
               Sistema de Gestão da Rede de Comercialização Cooperativista
             </div>
             <div className="ml-auto flex items-center gap-2">
-              <span className="hidden items-center gap-1.5 rounded-full border border-clay/30 bg-clay/5 px-2.5 py-1 font-mono text-[11px] text-clay sm:flex">
-                <span className="size-1.5 rounded-full bg-clay" /> Dados de demonstração
+              <span className="hidden items-center gap-1.5 rounded-full border border-leaf/30 bg-leaf/5 px-2.5 py-1 font-mono text-[11px] text-leaf sm:flex">
+                <span className="size-1.5 rounded-full bg-leaf" /> Dados reais da rede
               </span>
             </div>
+
           </header>
           <div className="space-y-5 px-4 py-6 sm:px-6">{children}</div>
         </main>
