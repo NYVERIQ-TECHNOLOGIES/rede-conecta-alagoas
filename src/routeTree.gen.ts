@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedDesempenhoRouteImport } from './routes/_authenticated/desempenho'
 import { Route as AuthenticatedEntradasRouteImport } from './routes/_authenticated/entradas'
 import { Route as AuthenticatedEstoqueRouteImport } from './routes/_authenticated/estoque'
 import { Route as AuthenticatedExtratoRouteImport } from './routes/_authenticated/extrato'
@@ -41,6 +42,11 @@ const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedDesempenhoRoute = AuthenticatedDesempenhoRouteImport.update({
+  id: '/desempenho',
+  path: '/desempenho',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedEntradasRoute = AuthenticatedEntradasRouteImport.update({
   id: '/entradas',
@@ -124,6 +130,7 @@ const AuthenticatedLojasIdRoute = AuthenticatedLojasIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/desempenho': typeof AuthenticatedDesempenhoRoute
   '/entradas': typeof AuthenticatedEntradasRoute
   '/estoque': typeof AuthenticatedEstoqueRoute
   '/extrato': typeof AuthenticatedExtratoRoute
@@ -143,6 +150,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/desempenho': typeof AuthenticatedDesempenhoRoute
   '/entradas': typeof AuthenticatedEntradasRoute
   '/estoque': typeof AuthenticatedEstoqueRoute
   '/extrato': typeof AuthenticatedExtratoRoute
@@ -164,6 +172,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/_authenticated/desempenho': typeof AuthenticatedDesempenhoRoute
   '/_authenticated/entradas': typeof AuthenticatedEntradasRoute
   '/_authenticated/estoque': typeof AuthenticatedEstoqueRoute
   '/_authenticated/extrato': typeof AuthenticatedExtratoRoute
@@ -185,6 +194,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/desempenho'
     | '/entradas'
     | '/estoque'
     | '/extrato'
@@ -204,6 +214,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/desempenho'
     | '/entradas'
     | '/estoque'
     | '/extrato'
@@ -224,6 +235,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/_authenticated/desempenho'
     | '/_authenticated/entradas'
     | '/_authenticated/estoque'
     | '/_authenticated/extrato'
@@ -269,6 +281,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/desempenho': {
+      id: '/_authenticated/desempenho'
+      path: '/desempenho'
+      fullPath: '/desempenho'
+      preLoaderRoute: typeof AuthenticatedDesempenhoRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/entradas': {
       id: '/_authenticated/entradas'
@@ -379,6 +398,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedDesempenhoRoute: typeof AuthenticatedDesempenhoRoute
   AuthenticatedEntradasRoute: typeof AuthenticatedEntradasRoute
   AuthenticatedEstoqueRoute: typeof AuthenticatedEstoqueRoute
   AuthenticatedExtratoRoute: typeof AuthenticatedExtratoRoute
@@ -397,6 +417,7 @@ interface AuthenticatedRouteRouteChildren {
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedDesempenhoRoute: AuthenticatedDesempenhoRoute,
   AuthenticatedEntradasRoute: AuthenticatedEntradasRoute,
   AuthenticatedEstoqueRoute: AuthenticatedEstoqueRoute,
   AuthenticatedExtratoRoute: AuthenticatedExtratoRoute,
