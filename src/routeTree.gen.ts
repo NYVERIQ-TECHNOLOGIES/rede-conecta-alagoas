@@ -18,6 +18,7 @@ import { Route as AuthenticatedFechamentoRouteImport } from './routes/_authentic
 import { Route as AuthenticatedPdvRouteImport } from './routes/_authenticated/pdv'
 import { Route as AuthenticatedProdutosRouteImport } from './routes/_authenticated/produtos'
 import { Route as AuthenticatedRedeRouteImport } from './routes/_authenticated/rede'
+import { Route as AuthenticatedRepassesRouteImport } from './routes/_authenticated/repasses'
 import { Route as AuthenticatedTransferenciasRouteImport } from './routes/_authenticated/transferencias'
 import { Route as AuthenticatedValidadesRouteImport } from './routes/_authenticated/validades'
 import { Route as AuthenticatedVendasRouteImport } from './routes/_authenticated/vendas'
@@ -70,6 +71,11 @@ const AuthenticatedRedeRoute = AuthenticatedRedeRouteImport.update({
   path: '/rede',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedRepassesRoute = AuthenticatedRepassesRouteImport.update({
+  id: '/repasses',
+  path: '/repasses',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedTransferenciasRoute =
   AuthenticatedTransferenciasRouteImport.update({
     id: '/transferencias',
@@ -118,6 +124,7 @@ export interface FileRoutesByFullPath {
   '/pdv': typeof AuthenticatedPdvRoute
   '/produtos': typeof AuthenticatedProdutosRoute
   '/rede': typeof AuthenticatedRedeRoute
+  '/repasses': typeof AuthenticatedRepassesRoute
   '/transferencias': typeof AuthenticatedTransferenciasRoute
   '/validades': typeof AuthenticatedValidadesRoute
   '/vendas': typeof AuthenticatedVendasRoute
@@ -135,6 +142,7 @@ export interface FileRoutesByTo {
   '/pdv': typeof AuthenticatedPdvRoute
   '/produtos': typeof AuthenticatedProdutosRoute
   '/rede': typeof AuthenticatedRedeRoute
+  '/repasses': typeof AuthenticatedRepassesRoute
   '/transferencias': typeof AuthenticatedTransferenciasRoute
   '/validades': typeof AuthenticatedValidadesRoute
   '/vendas': typeof AuthenticatedVendasRoute
@@ -154,6 +162,7 @@ export interface FileRoutesById {
   '/_authenticated/pdv': typeof AuthenticatedPdvRoute
   '/_authenticated/produtos': typeof AuthenticatedProdutosRoute
   '/_authenticated/rede': typeof AuthenticatedRedeRoute
+  '/_authenticated/repasses': typeof AuthenticatedRepassesRoute
   '/_authenticated/transferencias': typeof AuthenticatedTransferenciasRoute
   '/_authenticated/validades': typeof AuthenticatedValidadesRoute
   '/_authenticated/vendas': typeof AuthenticatedVendasRoute
@@ -173,6 +182,7 @@ export interface FileRouteTypes {
     | '/pdv'
     | '/produtos'
     | '/rede'
+    | '/repasses'
     | '/transferencias'
     | '/validades'
     | '/vendas'
@@ -190,6 +200,7 @@ export interface FileRouteTypes {
     | '/pdv'
     | '/produtos'
     | '/rede'
+    | '/repasses'
     | '/transferencias'
     | '/validades'
     | '/vendas'
@@ -208,6 +219,7 @@ export interface FileRouteTypes {
     | '/_authenticated/pdv'
     | '/_authenticated/produtos'
     | '/_authenticated/rede'
+    | '/_authenticated/repasses'
     | '/_authenticated/transferencias'
     | '/_authenticated/validades'
     | '/_authenticated/vendas'
@@ -288,6 +300,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRedeRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/repasses': {
+      id: '/_authenticated/repasses'
+      path: '/repasses'
+      fullPath: '/repasses'
+      preLoaderRoute: typeof AuthenticatedRepassesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/transferencias': {
       id: '/_authenticated/transferencias'
       path: '/transferencias'
@@ -347,6 +366,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedPdvRoute: typeof AuthenticatedPdvRoute
   AuthenticatedProdutosRoute: typeof AuthenticatedProdutosRoute
   AuthenticatedRedeRoute: typeof AuthenticatedRedeRoute
+  AuthenticatedRepassesRoute: typeof AuthenticatedRepassesRoute
   AuthenticatedTransferenciasRoute: typeof AuthenticatedTransferenciasRoute
   AuthenticatedValidadesRoute: typeof AuthenticatedValidadesRoute
   AuthenticatedVendasRoute: typeof AuthenticatedVendasRoute
@@ -363,6 +383,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedPdvRoute: AuthenticatedPdvRoute,
   AuthenticatedProdutosRoute: AuthenticatedProdutosRoute,
   AuthenticatedRedeRoute: AuthenticatedRedeRoute,
+  AuthenticatedRepassesRoute: AuthenticatedRepassesRoute,
   AuthenticatedTransferenciasRoute: AuthenticatedTransferenciasRoute,
   AuthenticatedValidadesRoute: AuthenticatedValidadesRoute,
   AuthenticatedVendasRoute: AuthenticatedVendasRoute,
