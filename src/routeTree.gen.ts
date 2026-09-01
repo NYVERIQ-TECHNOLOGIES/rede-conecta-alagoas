@@ -12,11 +12,19 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedConfiguracoesRouteImport } from './routes/_authenticated/configuracoes'
+import { Route as AuthenticatedDesempenhoRouteImport } from './routes/_authenticated/desempenho'
 import { Route as AuthenticatedEntradasRouteImport } from './routes/_authenticated/entradas'
 import { Route as AuthenticatedEstoqueRouteImport } from './routes/_authenticated/estoque'
+import { Route as AuthenticatedExtratoRouteImport } from './routes/_authenticated/extrato'
+import { Route as AuthenticatedFechamentoRouteImport } from './routes/_authenticated/fechamento'
+import { Route as AuthenticatedImpactoRouteImport } from './routes/_authenticated/impacto'
+import { Route as AuthenticatedInteligenciaRouteImport } from './routes/_authenticated/inteligencia'
+import { Route as AuthenticatedMapaRouteImport } from './routes/_authenticated/mapa'
 import { Route as AuthenticatedPdvRouteImport } from './routes/_authenticated/pdv'
 import { Route as AuthenticatedProdutosRouteImport } from './routes/_authenticated/produtos'
 import { Route as AuthenticatedRedeRouteImport } from './routes/_authenticated/rede'
+import { Route as AuthenticatedRepassesRouteImport } from './routes/_authenticated/repasses'
 import { Route as AuthenticatedTransferenciasRouteImport } from './routes/_authenticated/transferencias'
 import { Route as AuthenticatedValidadesRouteImport } from './routes/_authenticated/validades'
 import { Route as AuthenticatedVendasRouteImport } from './routes/_authenticated/vendas'
@@ -39,6 +47,17 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedConfiguracoesRoute =
+  AuthenticatedConfiguracoesRouteImport.update({
+    id: '/configuracoes',
+    path: '/configuracoes',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedDesempenhoRoute = AuthenticatedDesempenhoRouteImport.update({
+  id: '/desempenho',
+  path: '/desempenho',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedEntradasRoute = AuthenticatedEntradasRouteImport.update({
   id: '/entradas',
   path: '/entradas',
@@ -47,6 +66,32 @@ const AuthenticatedEntradasRoute = AuthenticatedEntradasRouteImport.update({
 const AuthenticatedEstoqueRoute = AuthenticatedEstoqueRouteImport.update({
   id: '/estoque',
   path: '/estoque',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedExtratoRoute = AuthenticatedExtratoRouteImport.update({
+  id: '/extrato',
+  path: '/extrato',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedFechamentoRoute = AuthenticatedFechamentoRouteImport.update({
+  id: '/fechamento',
+  path: '/fechamento',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedImpactoRoute = AuthenticatedImpactoRouteImport.update({
+  id: '/impacto',
+  path: '/impacto',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedInteligenciaRoute =
+  AuthenticatedInteligenciaRouteImport.update({
+    id: '/inteligencia',
+    path: '/inteligencia',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedMapaRoute = AuthenticatedMapaRouteImport.update({
+  id: '/mapa',
+  path: '/mapa',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedPdvRoute = AuthenticatedPdvRouteImport.update({
@@ -62,6 +107,11 @@ const AuthenticatedProdutosRoute = AuthenticatedProdutosRouteImport.update({
 const AuthenticatedRedeRoute = AuthenticatedRedeRouteImport.update({
   id: '/rede',
   path: '/rede',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedRepassesRoute = AuthenticatedRepassesRouteImport.update({
+  id: '/repasses',
+  path: '/repasses',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedTransferenciasRoute =
@@ -106,11 +156,19 @@ const AuthenticatedLojasIdRoute = AuthenticatedLojasIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/configuracoes': typeof AuthenticatedConfiguracoesRoute
+  '/desempenho': typeof AuthenticatedDesempenhoRoute
   '/entradas': typeof AuthenticatedEntradasRoute
   '/estoque': typeof AuthenticatedEstoqueRoute
+  '/extrato': typeof AuthenticatedExtratoRoute
+  '/fechamento': typeof AuthenticatedFechamentoRoute
+  '/impacto': typeof AuthenticatedImpactoRoute
+  '/inteligencia': typeof AuthenticatedInteligenciaRoute
+  '/mapa': typeof AuthenticatedMapaRoute
   '/pdv': typeof AuthenticatedPdvRoute
   '/produtos': typeof AuthenticatedProdutosRoute
   '/rede': typeof AuthenticatedRedeRoute
+  '/repasses': typeof AuthenticatedRepassesRoute
   '/transferencias': typeof AuthenticatedTransferenciasRoute
   '/validades': typeof AuthenticatedValidadesRoute
   '/vendas': typeof AuthenticatedVendasRoute
@@ -122,11 +180,19 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/configuracoes': typeof AuthenticatedConfiguracoesRoute
+  '/desempenho': typeof AuthenticatedDesempenhoRoute
   '/entradas': typeof AuthenticatedEntradasRoute
   '/estoque': typeof AuthenticatedEstoqueRoute
+  '/extrato': typeof AuthenticatedExtratoRoute
+  '/fechamento': typeof AuthenticatedFechamentoRoute
+  '/impacto': typeof AuthenticatedImpactoRoute
+  '/inteligencia': typeof AuthenticatedInteligenciaRoute
+  '/mapa': typeof AuthenticatedMapaRoute
   '/pdv': typeof AuthenticatedPdvRoute
   '/produtos': typeof AuthenticatedProdutosRoute
   '/rede': typeof AuthenticatedRedeRoute
+  '/repasses': typeof AuthenticatedRepassesRoute
   '/transferencias': typeof AuthenticatedTransferenciasRoute
   '/validades': typeof AuthenticatedValidadesRoute
   '/vendas': typeof AuthenticatedVendasRoute
@@ -140,11 +206,19 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/_authenticated/configuracoes': typeof AuthenticatedConfiguracoesRoute
+  '/_authenticated/desempenho': typeof AuthenticatedDesempenhoRoute
   '/_authenticated/entradas': typeof AuthenticatedEntradasRoute
   '/_authenticated/estoque': typeof AuthenticatedEstoqueRoute
+  '/_authenticated/extrato': typeof AuthenticatedExtratoRoute
+  '/_authenticated/fechamento': typeof AuthenticatedFechamentoRoute
+  '/_authenticated/impacto': typeof AuthenticatedImpactoRoute
+  '/_authenticated/inteligencia': typeof AuthenticatedInteligenciaRoute
+  '/_authenticated/mapa': typeof AuthenticatedMapaRoute
   '/_authenticated/pdv': typeof AuthenticatedPdvRoute
   '/_authenticated/produtos': typeof AuthenticatedProdutosRoute
   '/_authenticated/rede': typeof AuthenticatedRedeRoute
+  '/_authenticated/repasses': typeof AuthenticatedRepassesRoute
   '/_authenticated/transferencias': typeof AuthenticatedTransferenciasRoute
   '/_authenticated/validades': typeof AuthenticatedValidadesRoute
   '/_authenticated/vendas': typeof AuthenticatedVendasRoute
@@ -158,11 +232,19 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/configuracoes'
+    | '/desempenho'
     | '/entradas'
     | '/estoque'
+    | '/extrato'
+    | '/fechamento'
+    | '/impacto'
+    | '/inteligencia'
+    | '/mapa'
     | '/pdv'
     | '/produtos'
     | '/rede'
+    | '/repasses'
     | '/transferencias'
     | '/validades'
     | '/vendas'
@@ -174,11 +256,19 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/configuracoes'
+    | '/desempenho'
     | '/entradas'
     | '/estoque'
+    | '/extrato'
+    | '/fechamento'
+    | '/impacto'
+    | '/inteligencia'
+    | '/mapa'
     | '/pdv'
     | '/produtos'
     | '/rede'
+    | '/repasses'
     | '/transferencias'
     | '/validades'
     | '/vendas'
@@ -191,11 +281,19 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/_authenticated/configuracoes'
+    | '/_authenticated/desempenho'
     | '/_authenticated/entradas'
     | '/_authenticated/estoque'
+    | '/_authenticated/extrato'
+    | '/_authenticated/fechamento'
+    | '/_authenticated/impacto'
+    | '/_authenticated/inteligencia'
+    | '/_authenticated/mapa'
     | '/_authenticated/pdv'
     | '/_authenticated/produtos'
     | '/_authenticated/rede'
+    | '/_authenticated/repasses'
     | '/_authenticated/transferencias'
     | '/_authenticated/validades'
     | '/_authenticated/vendas'
@@ -234,6 +332,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/configuracoes': {
+      id: '/_authenticated/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/configuracoes'
+      preLoaderRoute: typeof AuthenticatedConfiguracoesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/desempenho': {
+      id: '/_authenticated/desempenho'
+      path: '/desempenho'
+      fullPath: '/desempenho'
+      preLoaderRoute: typeof AuthenticatedDesempenhoRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/entradas': {
       id: '/_authenticated/entradas'
       path: '/entradas'
@@ -246,6 +358,41 @@ declare module '@tanstack/react-router' {
       path: '/estoque'
       fullPath: '/estoque'
       preLoaderRoute: typeof AuthenticatedEstoqueRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/extrato': {
+      id: '/_authenticated/extrato'
+      path: '/extrato'
+      fullPath: '/extrato'
+      preLoaderRoute: typeof AuthenticatedExtratoRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/fechamento': {
+      id: '/_authenticated/fechamento'
+      path: '/fechamento'
+      fullPath: '/fechamento'
+      preLoaderRoute: typeof AuthenticatedFechamentoRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/impacto': {
+      id: '/_authenticated/impacto'
+      path: '/impacto'
+      fullPath: '/impacto'
+      preLoaderRoute: typeof AuthenticatedImpactoRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/inteligencia': {
+      id: '/_authenticated/inteligencia'
+      path: '/inteligencia'
+      fullPath: '/inteligencia'
+      preLoaderRoute: typeof AuthenticatedInteligenciaRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/mapa': {
+      id: '/_authenticated/mapa'
+      path: '/mapa'
+      fullPath: '/mapa'
+      preLoaderRoute: typeof AuthenticatedMapaRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/pdv': {
@@ -267,6 +414,13 @@ declare module '@tanstack/react-router' {
       path: '/rede'
       fullPath: '/rede'
       preLoaderRoute: typeof AuthenticatedRedeRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/repasses': {
+      id: '/_authenticated/repasses'
+      path: '/repasses'
+      fullPath: '/repasses'
+      preLoaderRoute: typeof AuthenticatedRepassesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/transferencias': {
@@ -322,11 +476,19 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedConfiguracoesRoute: typeof AuthenticatedConfiguracoesRoute
+  AuthenticatedDesempenhoRoute: typeof AuthenticatedDesempenhoRoute
   AuthenticatedEntradasRoute: typeof AuthenticatedEntradasRoute
   AuthenticatedEstoqueRoute: typeof AuthenticatedEstoqueRoute
+  AuthenticatedExtratoRoute: typeof AuthenticatedExtratoRoute
+  AuthenticatedFechamentoRoute: typeof AuthenticatedFechamentoRoute
+  AuthenticatedImpactoRoute: typeof AuthenticatedImpactoRoute
+  AuthenticatedInteligenciaRoute: typeof AuthenticatedInteligenciaRoute
+  AuthenticatedMapaRoute: typeof AuthenticatedMapaRoute
   AuthenticatedPdvRoute: typeof AuthenticatedPdvRoute
   AuthenticatedProdutosRoute: typeof AuthenticatedProdutosRoute
   AuthenticatedRedeRoute: typeof AuthenticatedRedeRoute
+  AuthenticatedRepassesRoute: typeof AuthenticatedRepassesRoute
   AuthenticatedTransferenciasRoute: typeof AuthenticatedTransferenciasRoute
   AuthenticatedValidadesRoute: typeof AuthenticatedValidadesRoute
   AuthenticatedVendasRoute: typeof AuthenticatedVendasRoute
@@ -337,11 +499,19 @@ interface AuthenticatedRouteRouteChildren {
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedConfiguracoesRoute: AuthenticatedConfiguracoesRoute,
+  AuthenticatedDesempenhoRoute: AuthenticatedDesempenhoRoute,
   AuthenticatedEntradasRoute: AuthenticatedEntradasRoute,
   AuthenticatedEstoqueRoute: AuthenticatedEstoqueRoute,
+  AuthenticatedExtratoRoute: AuthenticatedExtratoRoute,
+  AuthenticatedFechamentoRoute: AuthenticatedFechamentoRoute,
+  AuthenticatedImpactoRoute: AuthenticatedImpactoRoute,
+  AuthenticatedInteligenciaRoute: AuthenticatedInteligenciaRoute,
+  AuthenticatedMapaRoute: AuthenticatedMapaRoute,
   AuthenticatedPdvRoute: AuthenticatedPdvRoute,
   AuthenticatedProdutosRoute: AuthenticatedProdutosRoute,
   AuthenticatedRedeRoute: AuthenticatedRedeRoute,
+  AuthenticatedRepassesRoute: AuthenticatedRepassesRoute,
   AuthenticatedTransferenciasRoute: AuthenticatedTransferenciasRoute,
   AuthenticatedValidadesRoute: AuthenticatedValidadesRoute,
   AuthenticatedVendasRoute: AuthenticatedVendasRoute,
