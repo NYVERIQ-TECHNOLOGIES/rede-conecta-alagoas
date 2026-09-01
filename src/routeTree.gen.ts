@@ -18,6 +18,7 @@ import { Route as AuthenticatedPdvRouteImport } from './routes/_authenticated/pd
 import { Route as AuthenticatedProdutosRouteImport } from './routes/_authenticated/produtos'
 import { Route as AuthenticatedRedeRouteImport } from './routes/_authenticated/rede'
 import { Route as AuthenticatedTransferenciasRouteImport } from './routes/_authenticated/transferencias'
+import { Route as AuthenticatedValidadesRouteImport } from './routes/_authenticated/validades'
 import { Route as AuthenticatedVendasRouteImport } from './routes/_authenticated/vendas'
 import { Route as AuthenticatedCooperativasIndexRouteImport } from './routes/_authenticated/cooperativas.index'
 import { Route as AuthenticatedCooperativasIdRouteImport } from './routes/_authenticated/cooperativas.$id'
@@ -69,6 +70,11 @@ const AuthenticatedTransferenciasRoute =
     path: '/transferencias',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedValidadesRoute = AuthenticatedValidadesRouteImport.update({
+  id: '/validades',
+  path: '/validades',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedVendasRoute = AuthenticatedVendasRouteImport.update({
   id: '/vendas',
   path: '/vendas',
@@ -106,6 +112,7 @@ export interface FileRoutesByFullPath {
   '/produtos': typeof AuthenticatedProdutosRoute
   '/rede': typeof AuthenticatedRedeRoute
   '/transferencias': typeof AuthenticatedTransferenciasRoute
+  '/validades': typeof AuthenticatedValidadesRoute
   '/vendas': typeof AuthenticatedVendasRoute
   '/cooperativas/$id': typeof AuthenticatedCooperativasIdRoute
   '/lojas/$id': typeof AuthenticatedLojasIdRoute
@@ -121,6 +128,7 @@ export interface FileRoutesByTo {
   '/produtos': typeof AuthenticatedProdutosRoute
   '/rede': typeof AuthenticatedRedeRoute
   '/transferencias': typeof AuthenticatedTransferenciasRoute
+  '/validades': typeof AuthenticatedValidadesRoute
   '/vendas': typeof AuthenticatedVendasRoute
   '/cooperativas/$id': typeof AuthenticatedCooperativasIdRoute
   '/lojas/$id': typeof AuthenticatedLojasIdRoute
@@ -138,6 +146,7 @@ export interface FileRoutesById {
   '/_authenticated/produtos': typeof AuthenticatedProdutosRoute
   '/_authenticated/rede': typeof AuthenticatedRedeRoute
   '/_authenticated/transferencias': typeof AuthenticatedTransferenciasRoute
+  '/_authenticated/validades': typeof AuthenticatedValidadesRoute
   '/_authenticated/vendas': typeof AuthenticatedVendasRoute
   '/_authenticated/cooperativas/$id': typeof AuthenticatedCooperativasIdRoute
   '/_authenticated/lojas/$id': typeof AuthenticatedLojasIdRoute
@@ -155,6 +164,7 @@ export interface FileRouteTypes {
     | '/produtos'
     | '/rede'
     | '/transferencias'
+    | '/validades'
     | '/vendas'
     | '/cooperativas/$id'
     | '/lojas/$id'
@@ -170,6 +180,7 @@ export interface FileRouteTypes {
     | '/produtos'
     | '/rede'
     | '/transferencias'
+    | '/validades'
     | '/vendas'
     | '/cooperativas/$id'
     | '/lojas/$id'
@@ -186,6 +197,7 @@ export interface FileRouteTypes {
     | '/_authenticated/produtos'
     | '/_authenticated/rede'
     | '/_authenticated/transferencias'
+    | '/_authenticated/validades'
     | '/_authenticated/vendas'
     | '/_authenticated/cooperativas/$id'
     | '/_authenticated/lojas/$id'
@@ -264,6 +276,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedTransferenciasRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/validades': {
+      id: '/_authenticated/validades'
+      path: '/validades'
+      fullPath: '/validades'
+      preLoaderRoute: typeof AuthenticatedValidadesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/vendas': {
       id: '/_authenticated/vendas'
       path: '/vendas'
@@ -309,6 +328,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedProdutosRoute: typeof AuthenticatedProdutosRoute
   AuthenticatedRedeRoute: typeof AuthenticatedRedeRoute
   AuthenticatedTransferenciasRoute: typeof AuthenticatedTransferenciasRoute
+  AuthenticatedValidadesRoute: typeof AuthenticatedValidadesRoute
   AuthenticatedVendasRoute: typeof AuthenticatedVendasRoute
   AuthenticatedCooperativasIdRoute: typeof AuthenticatedCooperativasIdRoute
   AuthenticatedLojasIdRoute: typeof AuthenticatedLojasIdRoute
@@ -323,6 +343,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedProdutosRoute: AuthenticatedProdutosRoute,
   AuthenticatedRedeRoute: AuthenticatedRedeRoute,
   AuthenticatedTransferenciasRoute: AuthenticatedTransferenciasRoute,
+  AuthenticatedValidadesRoute: AuthenticatedValidadesRoute,
   AuthenticatedVendasRoute: AuthenticatedVendasRoute,
   AuthenticatedCooperativasIdRoute: AuthenticatedCooperativasIdRoute,
   AuthenticatedLojasIdRoute: AuthenticatedLojasIdRoute,
