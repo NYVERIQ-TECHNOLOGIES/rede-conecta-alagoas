@@ -18,6 +18,7 @@ import { Route as AuthenticatedEstoqueRouteImport } from './routes/_authenticate
 import { Route as AuthenticatedExtratoRouteImport } from './routes/_authenticated/extrato'
 import { Route as AuthenticatedFechamentoRouteImport } from './routes/_authenticated/fechamento'
 import { Route as AuthenticatedImpactoRouteImport } from './routes/_authenticated/impacto'
+import { Route as AuthenticatedMapaRouteImport } from './routes/_authenticated/mapa'
 import { Route as AuthenticatedPdvRouteImport } from './routes/_authenticated/pdv'
 import { Route as AuthenticatedProdutosRouteImport } from './routes/_authenticated/produtos'
 import { Route as AuthenticatedRedeRouteImport } from './routes/_authenticated/rede'
@@ -72,6 +73,11 @@ const AuthenticatedFechamentoRoute = AuthenticatedFechamentoRouteImport.update({
 const AuthenticatedImpactoRoute = AuthenticatedImpactoRouteImport.update({
   id: '/impacto',
   path: '/impacto',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedMapaRoute = AuthenticatedMapaRouteImport.update({
+  id: '/mapa',
+  path: '/mapa',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedPdvRoute = AuthenticatedPdvRouteImport.update({
@@ -142,6 +148,7 @@ export interface FileRoutesByFullPath {
   '/extrato': typeof AuthenticatedExtratoRoute
   '/fechamento': typeof AuthenticatedFechamentoRoute
   '/impacto': typeof AuthenticatedImpactoRoute
+  '/mapa': typeof AuthenticatedMapaRoute
   '/pdv': typeof AuthenticatedPdvRoute
   '/produtos': typeof AuthenticatedProdutosRoute
   '/rede': typeof AuthenticatedRedeRoute
@@ -163,6 +170,7 @@ export interface FileRoutesByTo {
   '/extrato': typeof AuthenticatedExtratoRoute
   '/fechamento': typeof AuthenticatedFechamentoRoute
   '/impacto': typeof AuthenticatedImpactoRoute
+  '/mapa': typeof AuthenticatedMapaRoute
   '/pdv': typeof AuthenticatedPdvRoute
   '/produtos': typeof AuthenticatedProdutosRoute
   '/rede': typeof AuthenticatedRedeRoute
@@ -186,6 +194,7 @@ export interface FileRoutesById {
   '/_authenticated/extrato': typeof AuthenticatedExtratoRoute
   '/_authenticated/fechamento': typeof AuthenticatedFechamentoRoute
   '/_authenticated/impacto': typeof AuthenticatedImpactoRoute
+  '/_authenticated/mapa': typeof AuthenticatedMapaRoute
   '/_authenticated/pdv': typeof AuthenticatedPdvRoute
   '/_authenticated/produtos': typeof AuthenticatedProdutosRoute
   '/_authenticated/rede': typeof AuthenticatedRedeRoute
@@ -209,6 +218,7 @@ export interface FileRouteTypes {
     | '/extrato'
     | '/fechamento'
     | '/impacto'
+    | '/mapa'
     | '/pdv'
     | '/produtos'
     | '/rede'
@@ -230,6 +240,7 @@ export interface FileRouteTypes {
     | '/extrato'
     | '/fechamento'
     | '/impacto'
+    | '/mapa'
     | '/pdv'
     | '/produtos'
     | '/rede'
@@ -252,6 +263,7 @@ export interface FileRouteTypes {
     | '/_authenticated/extrato'
     | '/_authenticated/fechamento'
     | '/_authenticated/impacto'
+    | '/_authenticated/mapa'
     | '/_authenticated/pdv'
     | '/_authenticated/produtos'
     | '/_authenticated/rede'
@@ -334,6 +346,13 @@ declare module '@tanstack/react-router' {
       path: '/impacto'
       fullPath: '/impacto'
       preLoaderRoute: typeof AuthenticatedImpactoRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/mapa': {
+      id: '/_authenticated/mapa'
+      path: '/mapa'
+      fullPath: '/mapa'
+      preLoaderRoute: typeof AuthenticatedMapaRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/pdv': {
@@ -423,6 +442,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedExtratoRoute: typeof AuthenticatedExtratoRoute
   AuthenticatedFechamentoRoute: typeof AuthenticatedFechamentoRoute
   AuthenticatedImpactoRoute: typeof AuthenticatedImpactoRoute
+  AuthenticatedMapaRoute: typeof AuthenticatedMapaRoute
   AuthenticatedPdvRoute: typeof AuthenticatedPdvRoute
   AuthenticatedProdutosRoute: typeof AuthenticatedProdutosRoute
   AuthenticatedRedeRoute: typeof AuthenticatedRedeRoute
@@ -443,6 +463,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedExtratoRoute: AuthenticatedExtratoRoute,
   AuthenticatedFechamentoRoute: AuthenticatedFechamentoRoute,
   AuthenticatedImpactoRoute: AuthenticatedImpactoRoute,
+  AuthenticatedMapaRoute: AuthenticatedMapaRoute,
   AuthenticatedPdvRoute: AuthenticatedPdvRoute,
   AuthenticatedProdutosRoute: AuthenticatedProdutosRoute,
   AuthenticatedRedeRoute: AuthenticatedRedeRoute,
