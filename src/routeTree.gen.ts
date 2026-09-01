@@ -18,6 +18,7 @@ import { Route as AuthenticatedEstoqueRouteImport } from './routes/_authenticate
 import { Route as AuthenticatedExtratoRouteImport } from './routes/_authenticated/extrato'
 import { Route as AuthenticatedFechamentoRouteImport } from './routes/_authenticated/fechamento'
 import { Route as AuthenticatedImpactoRouteImport } from './routes/_authenticated/impacto'
+import { Route as AuthenticatedInteligenciaRouteImport } from './routes/_authenticated/inteligencia'
 import { Route as AuthenticatedMapaRouteImport } from './routes/_authenticated/mapa'
 import { Route as AuthenticatedPdvRouteImport } from './routes/_authenticated/pdv'
 import { Route as AuthenticatedProdutosRouteImport } from './routes/_authenticated/produtos'
@@ -75,6 +76,12 @@ const AuthenticatedImpactoRoute = AuthenticatedImpactoRouteImport.update({
   path: '/impacto',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedInteligenciaRoute =
+  AuthenticatedInteligenciaRouteImport.update({
+    id: '/inteligencia',
+    path: '/inteligencia',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedMapaRoute = AuthenticatedMapaRouteImport.update({
   id: '/mapa',
   path: '/mapa',
@@ -148,6 +155,7 @@ export interface FileRoutesByFullPath {
   '/extrato': typeof AuthenticatedExtratoRoute
   '/fechamento': typeof AuthenticatedFechamentoRoute
   '/impacto': typeof AuthenticatedImpactoRoute
+  '/inteligencia': typeof AuthenticatedInteligenciaRoute
   '/mapa': typeof AuthenticatedMapaRoute
   '/pdv': typeof AuthenticatedPdvRoute
   '/produtos': typeof AuthenticatedProdutosRoute
@@ -170,6 +178,7 @@ export interface FileRoutesByTo {
   '/extrato': typeof AuthenticatedExtratoRoute
   '/fechamento': typeof AuthenticatedFechamentoRoute
   '/impacto': typeof AuthenticatedImpactoRoute
+  '/inteligencia': typeof AuthenticatedInteligenciaRoute
   '/mapa': typeof AuthenticatedMapaRoute
   '/pdv': typeof AuthenticatedPdvRoute
   '/produtos': typeof AuthenticatedProdutosRoute
@@ -194,6 +203,7 @@ export interface FileRoutesById {
   '/_authenticated/extrato': typeof AuthenticatedExtratoRoute
   '/_authenticated/fechamento': typeof AuthenticatedFechamentoRoute
   '/_authenticated/impacto': typeof AuthenticatedImpactoRoute
+  '/_authenticated/inteligencia': typeof AuthenticatedInteligenciaRoute
   '/_authenticated/mapa': typeof AuthenticatedMapaRoute
   '/_authenticated/pdv': typeof AuthenticatedPdvRoute
   '/_authenticated/produtos': typeof AuthenticatedProdutosRoute
@@ -218,6 +228,7 @@ export interface FileRouteTypes {
     | '/extrato'
     | '/fechamento'
     | '/impacto'
+    | '/inteligencia'
     | '/mapa'
     | '/pdv'
     | '/produtos'
@@ -240,6 +251,7 @@ export interface FileRouteTypes {
     | '/extrato'
     | '/fechamento'
     | '/impacto'
+    | '/inteligencia'
     | '/mapa'
     | '/pdv'
     | '/produtos'
@@ -263,6 +275,7 @@ export interface FileRouteTypes {
     | '/_authenticated/extrato'
     | '/_authenticated/fechamento'
     | '/_authenticated/impacto'
+    | '/_authenticated/inteligencia'
     | '/_authenticated/mapa'
     | '/_authenticated/pdv'
     | '/_authenticated/produtos'
@@ -346,6 +359,13 @@ declare module '@tanstack/react-router' {
       path: '/impacto'
       fullPath: '/impacto'
       preLoaderRoute: typeof AuthenticatedImpactoRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/inteligencia': {
+      id: '/_authenticated/inteligencia'
+      path: '/inteligencia'
+      fullPath: '/inteligencia'
+      preLoaderRoute: typeof AuthenticatedInteligenciaRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/mapa': {
@@ -442,6 +462,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedExtratoRoute: typeof AuthenticatedExtratoRoute
   AuthenticatedFechamentoRoute: typeof AuthenticatedFechamentoRoute
   AuthenticatedImpactoRoute: typeof AuthenticatedImpactoRoute
+  AuthenticatedInteligenciaRoute: typeof AuthenticatedInteligenciaRoute
   AuthenticatedMapaRoute: typeof AuthenticatedMapaRoute
   AuthenticatedPdvRoute: typeof AuthenticatedPdvRoute
   AuthenticatedProdutosRoute: typeof AuthenticatedProdutosRoute
@@ -463,6 +484,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedExtratoRoute: AuthenticatedExtratoRoute,
   AuthenticatedFechamentoRoute: AuthenticatedFechamentoRoute,
   AuthenticatedImpactoRoute: AuthenticatedImpactoRoute,
+  AuthenticatedInteligenciaRoute: AuthenticatedInteligenciaRoute,
   AuthenticatedMapaRoute: AuthenticatedMapaRoute,
   AuthenticatedPdvRoute: AuthenticatedPdvRoute,
   AuthenticatedProdutosRoute: AuthenticatedProdutosRoute,
