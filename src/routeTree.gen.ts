@@ -14,6 +14,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedEntradasRouteImport } from './routes/_authenticated/entradas'
 import { Route as AuthenticatedEstoqueRouteImport } from './routes/_authenticated/estoque'
+import { Route as AuthenticatedFechamentoRouteImport } from './routes/_authenticated/fechamento'
 import { Route as AuthenticatedPdvRouteImport } from './routes/_authenticated/pdv'
 import { Route as AuthenticatedProdutosRouteImport } from './routes/_authenticated/produtos'
 import { Route as AuthenticatedRedeRouteImport } from './routes/_authenticated/rede'
@@ -47,6 +48,11 @@ const AuthenticatedEntradasRoute = AuthenticatedEntradasRouteImport.update({
 const AuthenticatedEstoqueRoute = AuthenticatedEstoqueRouteImport.update({
   id: '/estoque',
   path: '/estoque',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedFechamentoRoute = AuthenticatedFechamentoRouteImport.update({
+  id: '/fechamento',
+  path: '/fechamento',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedPdvRoute = AuthenticatedPdvRouteImport.update({
@@ -108,6 +114,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/entradas': typeof AuthenticatedEntradasRoute
   '/estoque': typeof AuthenticatedEstoqueRoute
+  '/fechamento': typeof AuthenticatedFechamentoRoute
   '/pdv': typeof AuthenticatedPdvRoute
   '/produtos': typeof AuthenticatedProdutosRoute
   '/rede': typeof AuthenticatedRedeRoute
@@ -124,6 +131,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/entradas': typeof AuthenticatedEntradasRoute
   '/estoque': typeof AuthenticatedEstoqueRoute
+  '/fechamento': typeof AuthenticatedFechamentoRoute
   '/pdv': typeof AuthenticatedPdvRoute
   '/produtos': typeof AuthenticatedProdutosRoute
   '/rede': typeof AuthenticatedRedeRoute
@@ -142,6 +150,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/_authenticated/entradas': typeof AuthenticatedEntradasRoute
   '/_authenticated/estoque': typeof AuthenticatedEstoqueRoute
+  '/_authenticated/fechamento': typeof AuthenticatedFechamentoRoute
   '/_authenticated/pdv': typeof AuthenticatedPdvRoute
   '/_authenticated/produtos': typeof AuthenticatedProdutosRoute
   '/_authenticated/rede': typeof AuthenticatedRedeRoute
@@ -160,6 +169,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/entradas'
     | '/estoque'
+    | '/fechamento'
     | '/pdv'
     | '/produtos'
     | '/rede'
@@ -176,6 +186,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/entradas'
     | '/estoque'
+    | '/fechamento'
     | '/pdv'
     | '/produtos'
     | '/rede'
@@ -193,6 +204,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/_authenticated/entradas'
     | '/_authenticated/estoque'
+    | '/_authenticated/fechamento'
     | '/_authenticated/pdv'
     | '/_authenticated/produtos'
     | '/_authenticated/rede'
@@ -246,6 +258,13 @@ declare module '@tanstack/react-router' {
       path: '/estoque'
       fullPath: '/estoque'
       preLoaderRoute: typeof AuthenticatedEstoqueRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/fechamento': {
+      id: '/_authenticated/fechamento'
+      path: '/fechamento'
+      fullPath: '/fechamento'
+      preLoaderRoute: typeof AuthenticatedFechamentoRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/pdv': {
@@ -324,6 +343,7 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedEntradasRoute: typeof AuthenticatedEntradasRoute
   AuthenticatedEstoqueRoute: typeof AuthenticatedEstoqueRoute
+  AuthenticatedFechamentoRoute: typeof AuthenticatedFechamentoRoute
   AuthenticatedPdvRoute: typeof AuthenticatedPdvRoute
   AuthenticatedProdutosRoute: typeof AuthenticatedProdutosRoute
   AuthenticatedRedeRoute: typeof AuthenticatedRedeRoute
@@ -339,6 +359,7 @@ interface AuthenticatedRouteRouteChildren {
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedEntradasRoute: AuthenticatedEntradasRoute,
   AuthenticatedEstoqueRoute: AuthenticatedEstoqueRoute,
+  AuthenticatedFechamentoRoute: AuthenticatedFechamentoRoute,
   AuthenticatedPdvRoute: AuthenticatedPdvRoute,
   AuthenticatedProdutosRoute: AuthenticatedProdutosRoute,
   AuthenticatedRedeRoute: AuthenticatedRedeRoute,
