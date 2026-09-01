@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { Plus, Trash2, X } from "lucide-react";
 import {
@@ -42,7 +42,6 @@ function Lojas() {
   const { data: sales } = useSales();
   const createStore = useCreateStore();
   const deleteStore = useDeleteStore();
-  const router = useRouter();
 
   const isAdmin = (user?.roles ?? []).includes("admin");
 
