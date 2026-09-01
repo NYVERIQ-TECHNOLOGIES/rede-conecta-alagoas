@@ -3,7 +3,7 @@ import { useStores, useInventory, useSales } from "@/lib/queries";
 import { brl, num } from "@/lib/format";
 import { LoadingRows, PageHeader, Panel, StatusDot } from "@/components/kit";
 
-export const Route = createFileRoute("/_authenticated/lojas")({
+export const Route = createFileRoute("/_authenticated/lojas/")({
   head: () => ({
     meta: [
       { title: "Nossas Lojas — ALAGOAS+COOPERATIVA" },
