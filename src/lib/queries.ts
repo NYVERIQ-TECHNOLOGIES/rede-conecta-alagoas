@@ -4,6 +4,30 @@ import type { Database } from "@/integrations/supabase/types";
 
 type CooperativeInsert = Database["public"]["Tables"]["cooperatives"]["Insert"];
 type ProductInsert = Database["public"]["Tables"]["products"]["Insert"];
+type StoreInsert = Database["public"]["Tables"]["stores"]["Insert"];
+
+export function useCreateStore() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (values: StoreInsert) => {
+      const { data, error } = await supabase.from("stores").insert(values).select().single();
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["stores"] }),
+  });
+}
+
+export function useDeleteStore() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase.from("stores").delete().eq("id", id);
+      if (error) throw error;
+    },
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["stores"] }),
+  });
+}
 
 export function useCreateCooperative() {
   const qc = useQueryClient();
