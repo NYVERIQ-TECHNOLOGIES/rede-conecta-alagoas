@@ -1,5 +1,59 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import type { Database } from "@/integrations/supabase/types";
+
+type CooperativeInsert = Database["public"]["Tables"]["cooperatives"]["Insert"];
+type ProductInsert = Database["public"]["Tables"]["products"]["Insert"];
+
+export function useCreateCooperative() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (values: CooperativeInsert) => {
+      const { data, error } = await supabase.from("cooperatives").insert(values).select().single();
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["cooperatives"] }),
+  });
+}
+
+export function useDeleteCooperative() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase.from("cooperatives").delete().eq("id", id);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["cooperatives"] });
+      qc.invalidateQueries({ queryKey: ["products"] });
+    },
+  });
+}
+
+export function useCreateProduct() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (values: ProductInsert) => {
+      const { data, error } = await supabase.from("products").insert(values).select().single();
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["products"] }),
+  });
+}
+
+export function useDeleteProduct() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase.from("products").delete().eq("id", id);
+      if (error) throw error;
+    },
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["products"] }),
+  });
+}
+
 
 export function useStores() {
   return useQuery({
