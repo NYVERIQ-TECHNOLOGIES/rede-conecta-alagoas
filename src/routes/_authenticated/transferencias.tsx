@@ -33,7 +33,7 @@ function Transferencias() {
   const field = "w-full rounded-md border border-line bg-panel-2 px-3 py-2 text-[13px] outline-none focus:border-leaf";
   const set = (k: keyof typeof form, v: string) => setForm((f) => ({ ...f, [k]: v }));
 
-  async function create(e: React.FormEvent) {
+  async function create(e: React.FormEvent): Promise<void> {
     e.preventDefault();
     if (form.from_store_id === form.to_store_id) {
       toast.error("Escolha lojas diferentes.");
@@ -48,15 +48,15 @@ function Transferencias() {
       status: "solicitada",
     });
     setSaving(false);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Transferência solicitada.");
     setForm({ ...form, quantity: "" });
     qc.invalidateQueries({ queryKey: ["transfers"] });
   }
 
-  async function receive(id: string) {
+  async function receive(id: string): Promise<void> {
     const { error } = await supabase.rpc("complete_transfer", { _transfer_id: id });
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Transferência recebida.");
     qc.invalidateQueries({ queryKey: ["transfers"] });
     qc.invalidateQueries({ queryKey: ["inventory"] });
