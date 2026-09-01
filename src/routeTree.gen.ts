@@ -10,33 +10,205 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedEntradasRouteImport } from './routes/_authenticated/entradas'
+import { Route as AuthenticatedEstoqueRouteImport } from './routes/_authenticated/estoque'
+import { Route as AuthenticatedPdvRouteImport } from './routes/_authenticated/pdv'
+import { Route as AuthenticatedProdutosRouteImport } from './routes/_authenticated/produtos'
+import { Route as AuthenticatedRedeRouteImport } from './routes/_authenticated/rede'
+import { Route as AuthenticatedTransferenciasRouteImport } from './routes/_authenticated/transferencias'
+import { Route as AuthenticatedValidadesRouteImport } from './routes/_authenticated/validades'
+import { Route as AuthenticatedVendasRouteImport } from './routes/_authenticated/vendas'
+import { Route as AuthenticatedCooperativasIndexRouteImport } from './routes/_authenticated/cooperativas.index'
+import { Route as AuthenticatedCooperativasIdRouteImport } from './routes/_authenticated/cooperativas.$id'
+import { Route as AuthenticatedLojasIndexRouteImport } from './routes/_authenticated/lojas.index'
+import { Route as AuthenticatedLojasIdRouteImport } from './routes/_authenticated/lojas.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedEntradasRoute = AuthenticatedEntradasRouteImport.update({
+  id: '/entradas',
+  path: '/entradas',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedEstoqueRoute = AuthenticatedEstoqueRouteImport.update({
+  id: '/estoque',
+  path: '/estoque',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedPdvRoute = AuthenticatedPdvRouteImport.update({
+  id: '/pdv',
+  path: '/pdv',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedProdutosRoute = AuthenticatedProdutosRouteImport.update({
+  id: '/produtos',
+  path: '/produtos',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedRedeRoute = AuthenticatedRedeRouteImport.update({
+  id: '/rede',
+  path: '/rede',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedTransferenciasRoute =
+  AuthenticatedTransferenciasRouteImport.update({
+    id: '/transferencias',
+    path: '/transferencias',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedValidadesRoute = AuthenticatedValidadesRouteImport.update({
+  id: '/validades',
+  path: '/validades',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedVendasRoute = AuthenticatedVendasRouteImport.update({
+  id: '/vendas',
+  path: '/vendas',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCooperativasIndexRoute =
+  AuthenticatedCooperativasIndexRouteImport.update({
+    id: '/cooperativas/',
+    path: '/cooperativas/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedCooperativasIdRoute =
+  AuthenticatedCooperativasIdRouteImport.update({
+    id: '/cooperativas/$id',
+    path: '/cooperativas/$id',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedLojasIndexRoute = AuthenticatedLojasIndexRouteImport.update({
+  id: '/lojas/',
+  path: '/lojas/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedLojasIdRoute = AuthenticatedLojasIdRouteImport.update({
+  id: '/lojas/$id',
+  path: '/lojas/$id',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/entradas': typeof AuthenticatedEntradasRoute
+  '/estoque': typeof AuthenticatedEstoqueRoute
+  '/pdv': typeof AuthenticatedPdvRoute
+  '/produtos': typeof AuthenticatedProdutosRoute
+  '/rede': typeof AuthenticatedRedeRoute
+  '/transferencias': typeof AuthenticatedTransferenciasRoute
+  '/validades': typeof AuthenticatedValidadesRoute
+  '/vendas': typeof AuthenticatedVendasRoute
+  '/cooperativas/$id': typeof AuthenticatedCooperativasIdRoute
+  '/lojas/$id': typeof AuthenticatedLojasIdRoute
+  '/cooperativas/': typeof AuthenticatedCooperativasIndexRoute
+  '/lojas/': typeof AuthenticatedLojasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/entradas': typeof AuthenticatedEntradasRoute
+  '/estoque': typeof AuthenticatedEstoqueRoute
+  '/pdv': typeof AuthenticatedPdvRoute
+  '/produtos': typeof AuthenticatedProdutosRoute
+  '/rede': typeof AuthenticatedRedeRoute
+  '/transferencias': typeof AuthenticatedTransferenciasRoute
+  '/validades': typeof AuthenticatedValidadesRoute
+  '/vendas': typeof AuthenticatedVendasRoute
+  '/cooperativas/$id': typeof AuthenticatedCooperativasIdRoute
+  '/lojas/$id': typeof AuthenticatedLojasIdRoute
+  '/cooperativas': typeof AuthenticatedCooperativasIndexRoute
+  '/lojas': typeof AuthenticatedLojasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/_authenticated/entradas': typeof AuthenticatedEntradasRoute
+  '/_authenticated/estoque': typeof AuthenticatedEstoqueRoute
+  '/_authenticated/pdv': typeof AuthenticatedPdvRoute
+  '/_authenticated/produtos': typeof AuthenticatedProdutosRoute
+  '/_authenticated/rede': typeof AuthenticatedRedeRoute
+  '/_authenticated/transferencias': typeof AuthenticatedTransferenciasRoute
+  '/_authenticated/validades': typeof AuthenticatedValidadesRoute
+  '/_authenticated/vendas': typeof AuthenticatedVendasRoute
+  '/_authenticated/cooperativas/$id': typeof AuthenticatedCooperativasIdRoute
+  '/_authenticated/lojas/$id': typeof AuthenticatedLojasIdRoute
+  '/_authenticated/cooperativas/': typeof AuthenticatedCooperativasIndexRoute
+  '/_authenticated/lojas/': typeof AuthenticatedLojasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/entradas'
+    | '/estoque'
+    | '/pdv'
+    | '/produtos'
+    | '/rede'
+    | '/transferencias'
+    | '/validades'
+    | '/vendas'
+    | '/cooperativas/$id'
+    | '/lojas/$id'
+    | '/cooperativas/'
+    | '/lojas/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/entradas'
+    | '/estoque'
+    | '/pdv'
+    | '/produtos'
+    | '/rede'
+    | '/transferencias'
+    | '/validades'
+    | '/vendas'
+    | '/cooperativas/$id'
+    | '/lojas/$id'
+    | '/cooperativas'
+    | '/lojas'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/_authenticated/entradas'
+    | '/_authenticated/estoque'
+    | '/_authenticated/pdv'
+    | '/_authenticated/produtos'
+    | '/_authenticated/rede'
+    | '/_authenticated/transferencias'
+    | '/_authenticated/validades'
+    | '/_authenticated/vendas'
+    | '/_authenticated/cooperativas/$id'
+    | '/_authenticated/lojas/$id'
+    | '/_authenticated/cooperativas/'
+    | '/_authenticated/lojas/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +220,144 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/entradas': {
+      id: '/_authenticated/entradas'
+      path: '/entradas'
+      fullPath: '/entradas'
+      preLoaderRoute: typeof AuthenticatedEntradasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/estoque': {
+      id: '/_authenticated/estoque'
+      path: '/estoque'
+      fullPath: '/estoque'
+      preLoaderRoute: typeof AuthenticatedEstoqueRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/pdv': {
+      id: '/_authenticated/pdv'
+      path: '/pdv'
+      fullPath: '/pdv'
+      preLoaderRoute: typeof AuthenticatedPdvRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/produtos': {
+      id: '/_authenticated/produtos'
+      path: '/produtos'
+      fullPath: '/produtos'
+      preLoaderRoute: typeof AuthenticatedProdutosRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/rede': {
+      id: '/_authenticated/rede'
+      path: '/rede'
+      fullPath: '/rede'
+      preLoaderRoute: typeof AuthenticatedRedeRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/transferencias': {
+      id: '/_authenticated/transferencias'
+      path: '/transferencias'
+      fullPath: '/transferencias'
+      preLoaderRoute: typeof AuthenticatedTransferenciasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/validades': {
+      id: '/_authenticated/validades'
+      path: '/validades'
+      fullPath: '/validades'
+      preLoaderRoute: typeof AuthenticatedValidadesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/vendas': {
+      id: '/_authenticated/vendas'
+      path: '/vendas'
+      fullPath: '/vendas'
+      preLoaderRoute: typeof AuthenticatedVendasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/cooperativas/': {
+      id: '/_authenticated/cooperativas/'
+      path: '/cooperativas'
+      fullPath: '/cooperativas/'
+      preLoaderRoute: typeof AuthenticatedCooperativasIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/cooperativas/$id': {
+      id: '/_authenticated/cooperativas/$id'
+      path: '/cooperativas/$id'
+      fullPath: '/cooperativas/$id'
+      preLoaderRoute: typeof AuthenticatedCooperativasIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/lojas/': {
+      id: '/_authenticated/lojas/'
+      path: '/lojas'
+      fullPath: '/lojas/'
+      preLoaderRoute: typeof AuthenticatedLojasIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/lojas/$id': {
+      id: '/_authenticated/lojas/$id'
+      path: '/lojas/$id'
+      fullPath: '/lojas/$id'
+      preLoaderRoute: typeof AuthenticatedLojasIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedEntradasRoute: typeof AuthenticatedEntradasRoute
+  AuthenticatedEstoqueRoute: typeof AuthenticatedEstoqueRoute
+  AuthenticatedPdvRoute: typeof AuthenticatedPdvRoute
+  AuthenticatedProdutosRoute: typeof AuthenticatedProdutosRoute
+  AuthenticatedRedeRoute: typeof AuthenticatedRedeRoute
+  AuthenticatedTransferenciasRoute: typeof AuthenticatedTransferenciasRoute
+  AuthenticatedValidadesRoute: typeof AuthenticatedValidadesRoute
+  AuthenticatedVendasRoute: typeof AuthenticatedVendasRoute
+  AuthenticatedCooperativasIdRoute: typeof AuthenticatedCooperativasIdRoute
+  AuthenticatedLojasIdRoute: typeof AuthenticatedLojasIdRoute
+  AuthenticatedCooperativasIndexRoute: typeof AuthenticatedCooperativasIndexRoute
+  AuthenticatedLojasIndexRoute: typeof AuthenticatedLojasIndexRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedEntradasRoute: AuthenticatedEntradasRoute,
+  AuthenticatedEstoqueRoute: AuthenticatedEstoqueRoute,
+  AuthenticatedPdvRoute: AuthenticatedPdvRoute,
+  AuthenticatedProdutosRoute: AuthenticatedProdutosRoute,
+  AuthenticatedRedeRoute: AuthenticatedRedeRoute,
+  AuthenticatedTransferenciasRoute: AuthenticatedTransferenciasRoute,
+  AuthenticatedValidadesRoute: AuthenticatedValidadesRoute,
+  AuthenticatedVendasRoute: AuthenticatedVendasRoute,
+  AuthenticatedCooperativasIdRoute: AuthenticatedCooperativasIdRoute,
+  AuthenticatedLojasIdRoute: AuthenticatedLojasIdRoute,
+  AuthenticatedCooperativasIndexRoute: AuthenticatedCooperativasIndexRoute,
+  AuthenticatedLojasIndexRoute: AuthenticatedLojasIndexRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
