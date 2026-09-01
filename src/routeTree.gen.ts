@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedProdutosRouteImport } from './routes/_authenticated/produtos'
 import { Route as AuthenticatedRedeRouteImport } from './routes/_authenticated/rede'
 import { Route as AuthenticatedCooperativasIndexRouteImport } from './routes/_authenticated/cooperativas.index'
 import { Route as AuthenticatedCooperativasIdRouteImport } from './routes/_authenticated/cooperativas.$id'
@@ -31,6 +32,11 @@ const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedProdutosRoute = AuthenticatedProdutosRouteImport.update({
+  id: '/produtos',
+  path: '/produtos',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedRedeRoute = AuthenticatedRedeRouteImport.update({
   id: '/rede',
@@ -63,6 +69,7 @@ const AuthenticatedLojasIdRoute = AuthenticatedLojasIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/produtos': typeof AuthenticatedProdutosRoute
   '/rede': typeof AuthenticatedRedeRoute
   '/cooperativas/$id': typeof AuthenticatedCooperativasIdRoute
   '/lojas/$id': typeof AuthenticatedLojasIdRoute
@@ -72,6 +79,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/produtos': typeof AuthenticatedProdutosRoute
   '/rede': typeof AuthenticatedRedeRoute
   '/cooperativas/$id': typeof AuthenticatedCooperativasIdRoute
   '/lojas/$id': typeof AuthenticatedLojasIdRoute
@@ -83,6 +91,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/_authenticated/produtos': typeof AuthenticatedProdutosRoute
   '/_authenticated/rede': typeof AuthenticatedRedeRoute
   '/_authenticated/cooperativas/$id': typeof AuthenticatedCooperativasIdRoute
   '/_authenticated/lojas/$id': typeof AuthenticatedLojasIdRoute
@@ -94,6 +103,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/produtos'
     | '/rede'
     | '/cooperativas/$id'
     | '/lojas/$id'
@@ -103,6 +113,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/produtos'
     | '/rede'
     | '/cooperativas/$id'
     | '/lojas/$id'
@@ -113,6 +124,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/_authenticated/produtos'
     | '/_authenticated/rede'
     | '/_authenticated/cooperativas/$id'
     | '/_authenticated/lojas/$id'
@@ -148,6 +160,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/produtos': {
+      id: '/_authenticated/produtos'
+      path: '/produtos'
+      fullPath: '/produtos'
+      preLoaderRoute: typeof AuthenticatedProdutosRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/rede': {
       id: '/_authenticated/rede'
@@ -188,6 +207,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedProdutosRoute: typeof AuthenticatedProdutosRoute
   AuthenticatedRedeRoute: typeof AuthenticatedRedeRoute
   AuthenticatedCooperativasIdRoute: typeof AuthenticatedCooperativasIdRoute
   AuthenticatedLojasIdRoute: typeof AuthenticatedLojasIdRoute
@@ -196,6 +216,7 @@ interface AuthenticatedRouteRouteChildren {
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedProdutosRoute: AuthenticatedProdutosRoute,
   AuthenticatedRedeRoute: AuthenticatedRedeRoute,
   AuthenticatedCooperativasIdRoute: AuthenticatedCooperativasIdRoute,
   AuthenticatedLojasIdRoute: AuthenticatedLojasIdRoute,
