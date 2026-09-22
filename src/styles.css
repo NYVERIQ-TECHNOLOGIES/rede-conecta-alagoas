@@ -106,6 +106,8 @@
   --color-good: var(--good);
   --color-warn: var(--warn);
   --color-crit: var(--crit);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
 
   --color-chart-1: var(--primary);
   --color-chart-2: var(--clay);
