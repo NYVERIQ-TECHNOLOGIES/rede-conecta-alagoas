@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Building2, CheckCircle2, MapPin, Store, UsersRound } from "lucide-react";
+import { ArrowRight, CheckCircle2, MapPin, Store, UsersRound } from "lucide-react";
 import artisanImage from "@/assets/artesa-alagoas.jpg";
+import logoBlue from "@/assets/logo-azul.png.asset.json";
+import logoWhite from "@/assets/logo-branco.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -45,15 +47,8 @@ function Landing() {
       <header className="border-b border-line bg-card">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
           <div className="flex items-center gap-2.5">
-            <div className="grid size-10 place-items-center rounded-md bg-warn text-primary shadow-sm">
-              <Building2 className="size-5" />
-            </div>
-            <div className="leading-tight">
-              <div className="font-display text-[15px] font-bold text-primary">
-                Alagoas <span className="text-clay">+</span> Cooperativa
-              </div>
-              <div className="label-mono text-[10px]">Rede Cooperativista</div>
-            </div>
+            <img src={logoBlue.url} alt="Alagoas+Cooperativa" className="h-10 w-auto" />
+            <div className="label-mono text-[10px] leading-tight">Rede<br />Cooperativista</div>
           </div>
           <Link
             to="/auth"
@@ -68,6 +63,7 @@ function Landing() {
         <section className="craft-pattern bg-warn">
           <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.05fr_.95fr] md:py-16">
             <div>
+              <img src={logoWhite.url} alt="Alagoas+Cooperativa" className="mb-5 h-14 w-auto drop-shadow-sm" />
               <p className="inline-flex rounded-full bg-primary px-3 py-1 text-[11px] font-bold uppercase text-primary-foreground">Sistema de gestão da rede</p>
               <h1 className="mt-5 max-w-3xl text-[38px] leading-[1.08] font-extrabold text-foreground sm:text-[52px]">
                 Onde a produção cooperativista encontra o mercado.

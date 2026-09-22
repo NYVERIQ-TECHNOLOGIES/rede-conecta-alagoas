@@ -5,7 +5,6 @@ import {
   BarChart3,
   Bot,
   Boxes,
-  Building2,
   CalendarClock,
   ChartNoAxesCombined,
   ClipboardList,

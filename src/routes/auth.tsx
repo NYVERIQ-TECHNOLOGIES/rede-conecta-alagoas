@@ -6,7 +6,8 @@ import { lovable } from "@/integrations/lovable/index";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Building2, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
+import logoWhite from "@/assets/logo-branco.png.asset.json";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -85,16 +86,8 @@ function AuthPage() {
   return (
     <div className="craft-pattern flex min-h-screen items-center justify-center bg-warn px-4 py-12">
       <div className="w-full max-w-md">
-        <div className="mb-6 flex items-center justify-center gap-2.5">
-          <div className="grid size-10 place-items-center rounded-md bg-primary text-primary-foreground shadow-sm">
-            <Building2 className="size-5" />
-          </div>
-          <div className="leading-tight">
-            <div className="font-display text-[15px] font-bold text-primary">
-              Alagoas <span className="text-clay">+</span> Cooperativa
-            </div>
-            <div className="label-mono text-[10px]">Rede Cooperativista</div>
-          </div>
+        <div className="mb-6 flex items-center justify-center">
+          <img src={logoWhite.url} alt="Alagoas+Cooperativa" className="h-14 w-auto drop-shadow-sm" />
         </div>
 
         <div className="panel border-card p-7 shadow-xl">
