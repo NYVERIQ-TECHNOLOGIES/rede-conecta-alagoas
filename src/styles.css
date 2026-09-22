@@ -3,7 +3,7 @@
 @import "tw-animate-css";
 
 /*
- * ALAGOAS+COOPERATIVA — Design System "Ledger Botânico"
+ * ALAGOAS+COOPERATIVA — Design System "Editorial Cooperativo"
  * Todas as cores são tokens semânticos. Nunca use cores literais em componentes.
  */
 
@@ -49,26 +49,31 @@
   --color-chart-4: var(--leaf-2);
   --color-chart-5: var(--good);
 
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-display: "Epilogue", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
   --radius: 0.5rem;
-  --background: oklch(0.164 0.011 145);
-  --card: oklch(0.196 0.012 145);
-  --panel-2: oklch(0.226 0.015 145);
-  --line: oklch(0.275 0.014 145);
-  --foreground: oklch(0.923 0.019 85);
-  --muted-foreground: oklch(0.64 0.019 145);
-  --primary: oklch(0.673 0.087 128);
-  --primary-foreground: oklch(0.164 0.011 145);
-  --leaf-2: oklch(0.79 0.09 122);
-  --clay: oklch(0.62 0.115 47);
-  --good: oklch(0.7 0.086 138);
-  --warn: oklch(0.727 0.107 85);
-  --crit: oklch(0.594 0.121 27);
+  --background: oklch(0.982 0.009 90);
+  --card: oklch(1 0 0);
+  --panel-2: oklch(0.962 0.012 88);
+  --line: oklch(0.865 0.025 83);
+  --foreground: oklch(0.22 0.025 263);
+  --muted-foreground: oklch(0.48 0.028 72);
+  --primary: oklch(0.34 0.128 258);
+  --primary-foreground: oklch(0.99 0.004 90);
+  --leaf-2: oklch(0.47 0.145 258);
+  --clay: oklch(0.49 0.14 35);
+  --good: oklch(0.48 0.115 150);
+  --warn: oklch(0.73 0.145 78);
+  --crit: oklch(0.49 0.18 28);
+  --gold: oklch(0.75 0.14 78);
+  --gold-foreground: oklch(0.28 0.055 75);
+  --blue-soft: oklch(0.94 0.035 260);
+  --shadow-card: 0 2px 8px -2px color-mix(in oklab, var(--primary) 8%, transparent), 0 1px 3px color-mix(in oklab, var(--foreground) 5%, transparent);
+  --shadow-hover: 0 12px 24px -6px color-mix(in oklab, var(--primary) 14%, transparent), 0 4px 8px -2px color-mix(in oklab, var(--gold) 12%, transparent);
 }
 
 @layer base {
@@ -81,13 +86,28 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    letter-spacing: 0;
   }
 
   h1,
   h2,
   h3 {
     font-family: var(--font-display);
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
+    color: var(--color-primary);
+  }
+
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    letter-spacing: 0;
+  }
+
+  ::selection {
+    background: var(--gold);
+    color: var(--gold-foreground);
   }
 }
 
@@ -110,12 +130,22 @@
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
   background-color: var(--color-card);
+  box-shadow: var(--shadow-card);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 @utility label-mono {
   font-family: var(--font-mono);
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
+  font-weight: 700;
   color: var(--color-muted-foreground);
+}
+
+@utility craft-pattern {
+  background-image:
+    linear-gradient(135deg, transparent 42%, color-mix(in oklab, var(--primary) 10%, transparent) 42% 58%, transparent 58%),
+    linear-gradient(45deg, transparent 42%, color-mix(in oklab, var(--clay) 8%, transparent) 42% 58%, transparent 58%);
+  background-size: 76px 76px;
 }

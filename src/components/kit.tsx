@@ -17,11 +17,11 @@ export function Panel({
   padded?: boolean;
 }) {
   return (
-    <section className={cn("panel rise", className)}>
+    <section className={cn("panel rise overflow-hidden", className)}>
       {(title || action) && (
         <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line px-5 pt-4 pb-3">
           <div>
-            <h2 className="text-[17px] font-semibold">{title}</h2>
+            <h2 className="text-[17px] font-bold text-primary">{title}</h2>
             {subtitle && <p className="mt-0.5 text-[11px] text-muted-foreground">{subtitle}</p>}
           </div>
           {action}
@@ -44,13 +44,13 @@ export function StatCard({
   tone?: "default" | "leaf" | "clay";
 }) {
   return (
-    <div className="panel rise p-4">
+    <div className="panel rise relative overflow-hidden p-4 before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-warn">
       <div className="flex items-center justify-between">
         <span className="label-mono">{label}</span>
       </div>
       <div
         className={cn(
-          "mt-2 font-mono text-[26px] leading-none font-semibold",
+          "mt-3 font-display text-[26px] leading-none font-bold text-primary",
           tone === "leaf" && "text-leaf",
           tone === "clay" && "text-clay",
         )}
@@ -124,9 +124,9 @@ export function PageHeader({
 }) {
   return (
     <div className="flex flex-wrap items-end justify-between gap-4 rise">
-      <div>
+      <div className="max-w-3xl">
         {eyebrow && <p className="label-mono">{eyebrow}</p>}
-        <h1 className="mt-1 text-[30px] leading-none font-semibold">{title}</h1>
+        <h1 className="mt-1 text-[30px] leading-tight font-bold text-primary">{title}</h1>
         {description && (
           <p className="mt-2 max-w-xl text-[13px] text-muted-foreground">{description}</p>
         )}
