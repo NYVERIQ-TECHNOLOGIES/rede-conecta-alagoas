@@ -2,6 +2,70 @@
 @source "../src";
 @import "tw-animate-css";
 
+@font-face {
+  font-family: "Zabal";
+  src: url("/__l5e/assets-v1/4df1c0d8-6803-456c-91c9-60396dc0ca5d/ZabalDEMO-ExtraLight.otf") format("opentype");
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zabal";
+  src: url("/__l5e/assets-v1/72a687a0-4eaf-495f-8add-5b91100ae9c7/ZabalDEMO-ExtraLightItalic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zabal";
+  src: url("/__l5e/assets-v1/79d5c53a-f9a3-4a23-bbf1-1bb223306146/ZabalDEMO-Light.otf") format("opentype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zabal";
+  src: url("/__l5e/assets-v1/b313cb82-f2f1-446d-af7d-ca6a6e0d1eca/ZabalDEMO-Italic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zabal";
+  src: url("/__l5e/assets-v1/17112765-a9f1-4d80-87ac-865cef735dda/ZabalDEMO-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zabal";
+  src: url("/__l5e/assets-v1/c5531ce7-7f7c-497c-bead-2e376554d8dd/ZabalDEMO-BoldItalic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zabal";
+  src: url("/__l5e/assets-v1/3ee30485-e5da-4180-a1b5-9775eb664282/ZabalDEMO-ExtraBold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zabal";
+  src: url("/__l5e/assets-v1/f8b2f5fa-878a-41ce-88a4-919e0d1d989d/ZabalDEMO-ExtraBoldItalic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 800;
+  font-display: swap;
+}
+
 /*
  * ALAGOAS+COOPERATIVA — Design System "Editorial Cooperativo"
  * Todas as cores são tokens semânticos. Nunca use cores literais em componentes.
@@ -49,9 +113,9 @@
   --color-chart-4: var(--leaf-2);
   --color-chart-5: var(--good);
 
-  --font-display: "Epilogue", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Zabal", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Zabal", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Zabal", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
