@@ -15,6 +15,8 @@ export const Route = createFileRoute("/_authenticated/vendas")({
       },
       { property: "og:title", content: "Vendas — ALAGOAS+COOPERATIVA" },
       { property: "og:description", content: "Registro completo das vendas da rede cooperativista." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Vendas,

@@ -13,6 +13,8 @@ export const Route = createFileRoute("/_authenticated/lojas/$id")({
       },
       { property: "og:title", content: "Detalhe da Loja — ALAGOAS+COOPERATIVA" },
       { property: "og:description", content: "Painel operacional da loja na rede cooperativista." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: LojaDetalhe,

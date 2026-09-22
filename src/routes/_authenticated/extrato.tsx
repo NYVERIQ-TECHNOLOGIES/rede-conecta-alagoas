@@ -14,6 +14,8 @@ export const Route = createFileRoute("/_authenticated/extrato")({
       },
       { property: "og:title", content: "Meu Extrato — ALAGOAS+COOPERATIVA" },
       { property: "og:description", content: "Transparência total para quem produz." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Extrato,

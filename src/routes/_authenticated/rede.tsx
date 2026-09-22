@@ -20,6 +20,8 @@ export const Route = createFileRoute("/_authenticated/rede")({
         property: "og:description",
         content: "Indicadores e alertas da rede de comercialização cooperativista de Alagoas.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: VisaoDaRede,

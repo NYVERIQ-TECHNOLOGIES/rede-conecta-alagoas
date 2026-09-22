@@ -18,6 +18,8 @@ export const Route = createFileRoute("/_authenticated/pdv")({
       },
       { property: "og:title", content: "PDV — ALAGOAS+COOPERATIVA" },
       { property: "og:description", content: "Venda com origem cooperativista registrada." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: PDV,

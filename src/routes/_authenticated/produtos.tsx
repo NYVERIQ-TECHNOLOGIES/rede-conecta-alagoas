@@ -26,6 +26,8 @@ export const Route = createFileRoute("/_authenticated/produtos")({
       },
       { property: "og:title", content: "Produtos da Rede — ALAGOAS+COOPERATIVA" },
       { property: "og:description", content: "Cada produto carrega o nome de quem o produziu." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Produtos,

@@ -28,6 +28,8 @@ export const Route = createFileRoute("/_authenticated/cooperativas/")({
         property: "og:description",
         content: "Quem produz na rede de comercialização cooperativista de Alagoas.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Cooperativas,

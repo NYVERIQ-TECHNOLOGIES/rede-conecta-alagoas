@@ -21,6 +21,8 @@ export const Route = createFileRoute("/auth")({
         property: "og:description",
         content: "Acesso da rede cooperativista: lojas, cooperativas, estoque, vendas e repasses.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: AuthPage,

@@ -15,6 +15,8 @@ export const Route = createFileRoute("/_authenticated/fechamento")({
       },
       { property: "og:title", content: "Fechamento de Caixa — ALAGOAS+COOPERATIVA" },
       { property: "og:description", content: "Conferência simples do movimento do dia." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Fechamento,

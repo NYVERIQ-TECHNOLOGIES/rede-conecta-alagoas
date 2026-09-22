@@ -14,6 +14,8 @@ export const Route = createFileRoute("/_authenticated/inteligencia")({
       },
       { property: "og:title", content: "Assistente da Rede — ALAGOAS+COOPERATIVA" },
       { property: "og:description", content: "Inteligência cooperativa, sem competição." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Inteligencia,

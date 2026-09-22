@@ -17,6 +17,8 @@ export const Route = createFileRoute("/_authenticated/transferencias")({
       },
       { property: "og:title", content: "Transferências — ALAGOAS+COOPERATIVA" },
       { property: "og:description", content: "Movimentação de produtos entre lojas da rede." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Transferencias,

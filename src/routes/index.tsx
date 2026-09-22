@@ -20,6 +20,8 @@ export const Route = createFileRoute("/")({
         content:
           "Sistema de gestão da rede cooperativista de Alagoas: cooperativas, produtos, lojas, estoque, vendas, repasses e impacto.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Landing,

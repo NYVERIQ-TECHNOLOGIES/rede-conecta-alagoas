@@ -17,6 +17,8 @@ export const Route = createFileRoute("/_authenticated/impacto")({
         property: "og:description",
         content: "Números que contam a história do cooperativismo alagoano.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Impacto,
