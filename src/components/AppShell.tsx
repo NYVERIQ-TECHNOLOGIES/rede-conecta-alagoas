@@ -25,6 +25,7 @@ import {
   X,
   type LucideIcon,
 } from "lucide-react";
+import logoBlue from "@/assets/logo-azul.png.asset.json";
 import { supabase } from "@/integrations/supabase/client";
 import { useCurrentUser, ROLE_LABELS, type AppRole } from "@/lib/session";
 import { cn } from "@/lib/utils";
@@ -125,15 +126,8 @@ export function AppShell({ children }: { children: ReactNode }) {
     <div className="flex h-full flex-col">
       <div className="border-b border-line px-5 pt-5 pb-5">
         <Link to="/rede" className="flex items-center gap-2.5">
-          <div className="grid size-10 place-items-center rounded-md bg-warn text-primary shadow-sm">
-            <Building2 className="size-5" />
-          </div>
-          <div className="leading-tight">
-            <div className="font-display text-[15px] font-bold text-primary">
-              Alagoas <span className="text-clay">+</span> Cooperativa
-            </div>
-            <div className="label-mono text-[10px]">Rede Cooperativista</div>
-          </div>
+          <img src={logoBlue.url} alt="Alagoas+Cooperativa" className="h-11 w-auto" />
+          <div className="label-mono text-[10px] leading-tight">Rede<br />Cooperativista</div>
         </Link>
       </div>
 
