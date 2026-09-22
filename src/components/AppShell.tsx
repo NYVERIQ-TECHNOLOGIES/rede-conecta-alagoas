@@ -204,22 +204,22 @@ export function AppShell({ children }: { children: ReactNode }) {
         )}
 
         <main className="min-w-0 flex-1">
-          <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-gold-foreground/15 bg-gold px-4 shadow-xs sm:px-6">
+          <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-white/20 bg-gold px-4 shadow-xs sm:px-6">
             <button
               onClick={() => setOpen((v) => !v)}
               aria-label="Abrir menu"
-              className="grid size-9 place-items-center rounded-md border border-gold-foreground/30 text-gold-foreground lg:hidden"
+              className="grid size-9 place-items-center rounded-md border border-white/40 text-white lg:hidden"
             >
               {open ? <X className="size-4" /> : <Menu className="size-4" />}
             </button>
             <div
               className="label-mono hidden sm:block"
-              style={{ color: "var(--gold-foreground)" }}
+              style={{ color: "#ffffff" }}
             >
               Sistema de Gestão da Rede de Comercialização Cooperativista
             </div>
             <div className="ml-auto flex items-center gap-2">
-              <span className="hidden items-center gap-1.5 rounded-full border border-gold-foreground/20 bg-gold-foreground/10 px-3 py-1 font-semibold text-[11px] text-gold-foreground sm:flex">
+              <span className="hidden items-center gap-1.5 rounded-full border border-white/30 bg-white/15 px-3 py-1 font-semibold text-[11px] text-white sm:flex">
                 <span className="size-1.5 rounded-full bg-good" /> Dados reais da rede
               </span>
             </div>
