@@ -6,6 +6,7 @@ import { lovable } from "@/integrations/lovable/index";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Building2, CheckCircle2 } from "lucide-react";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -20,6 +21,8 @@ export const Route = createFileRoute("/auth")({
         property: "og:description",
         content: "Acesso da rede cooperativista: lojas, cooperativas, estoque, vendas e repasses.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: AuthPage,
@@ -80,22 +83,23 @@ function AuthPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12">
-      <div className="w-full max-w-sm">
-        <div className="mb-8 flex items-center gap-2.5">
-          <div className="grid size-9 place-items-center rounded-full border border-leaf/40 bg-leaf/15 font-mono text-xs font-semibold text-leaf">
-            +
+    <div className="craft-pattern flex min-h-screen items-center justify-center bg-warn px-4 py-12">
+      <div className="w-full max-w-md">
+        <div className="mb-6 flex items-center justify-center gap-2.5">
+          <div className="grid size-10 place-items-center rounded-md bg-primary text-primary-foreground shadow-sm">
+            <Building2 className="size-5" />
           </div>
           <div className="leading-tight">
-            <div className="font-display text-[15px] font-semibold">
-              Alagoas<span className="text-leaf">+</span>Cooperativa
+            <div className="font-display text-[15px] font-bold text-primary">
+              Alagoas <span className="text-clay">+</span> Cooperativa
             </div>
             <div className="label-mono text-[10px]">Rede Cooperativista</div>
           </div>
         </div>
 
-        <div className="panel p-6">
-          <h1 className="text-[22px] font-semibold">
+        <div className="panel border-card p-7 shadow-xl">
+          <div className="mb-5 flex size-11 items-center justify-center rounded-full bg-blue-soft text-primary"><CheckCircle2 className="size-5" /></div>
+          <h1 className="text-[24px] font-bold text-primary">
             {mode === "entrar" ? "Entrar na rede" : "Criar acesso"}
           </h1>
           <p className="mt-1 text-[13px] text-muted-foreground">
@@ -135,7 +139,7 @@ function AuthPage() {
                 required
               />
             </div>
-            <Button type="submit" className="w-full" disabled={loading}>
+            <Button type="submit" variant="secondary" className="w-full" disabled={loading}>
               {loading ? "Aguarde…" : mode === "entrar" ? "Entrar" : "Criar conta"}
             </Button>
           </form>

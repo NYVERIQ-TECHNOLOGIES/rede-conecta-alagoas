@@ -15,6 +15,8 @@ export const Route = createFileRoute("/_authenticated/estoque")({
       },
       { property: "og:title", content: "Estoque — ALAGOAS+COOPERATIVA" },
       { property: "og:description", content: "Controle de estoque da rede cooperativista." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Estoque,

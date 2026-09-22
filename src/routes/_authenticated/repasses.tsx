@@ -17,6 +17,8 @@ export const Route = createFileRoute("/_authenticated/repasses")({
       },
       { property: "og:title", content: "Repasses — ALAGOAS+COOPERATIVA" },
       { property: "og:description", content: "Transparência financeira com quem produz." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Repasses,

@@ -13,6 +13,8 @@ export const Route = createFileRoute("/_authenticated/validades")({
       },
       { property: "og:title", content: "Validades — ALAGOAS+COOPERATIVA" },
       { property: "og:description", content: "Alertas de vencimento por lote e loja." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Validades,

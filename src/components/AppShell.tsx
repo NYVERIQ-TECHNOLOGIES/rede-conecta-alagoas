@@ -1,7 +1,30 @@
 import { useState, type ReactNode } from "react";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
-import { Menu, X, LogOut } from "lucide-react";
+import {
+  BarChart3,
+  Bot,
+  Boxes,
+  Building2,
+  CalendarClock,
+  ChartNoAxesCombined,
+  ClipboardList,
+  HandCoins,
+  Landmark,
+  Leaf,
+  LogOut,
+  MapPinned,
+  Menu,
+  PackagePlus,
+  RefreshCw,
+  Settings,
+  ShoppingBasket,
+  Store,
+  UsersRound,
+  WalletCards,
+  X,
+  type LucideIcon,
+} from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useCurrentUser, ROLE_LABELS, type AppRole } from "@/lib/session";
 import { cn } from "@/lib/utils";
@@ -9,7 +32,7 @@ import { cn } from "@/lib/utils";
 interface NavItem {
   to: string;
   label: string;
-  emoji: string;
+  icon: LucideIcon;
   roles?: AppRole[];
 }
 
@@ -22,35 +45,35 @@ const GROUPS: NavGroup[] = [
   {
     title: "Operação",
     items: [
-      { to: "/rede", label: "Visão da Rede", emoji: "📊" },
-      { to: "/lojas", label: "Nossas Lojas", emoji: "🏪", roles: ["admin", "gerente", "consulta"] },
-      { to: "/cooperativas", label: "Cooperativas", emoji: "🤝" },
-      { to: "/produtos", label: "Produtos da Rede", emoji: "🛍️" },
-      { to: "/estoque", label: "Estoque", emoji: "📦" },
+      { to: "/rede", label: "Visão da Rede", icon: BarChart3 },
+      { to: "/lojas", label: "Nossas Lojas", icon: Store, roles: ["admin", "gerente", "consulta"] },
+      { to: "/cooperativas", label: "Cooperativas", icon: UsersRound },
+      { to: "/produtos", label: "Produtos da Rede", icon: ShoppingBasket },
+      { to: "/estoque", label: "Estoque", icon: Boxes },
       {
         to: "/entradas",
         label: "Entradas",
-        emoji: "📥",
+        icon: PackagePlus,
         roles: ["admin", "gerente", "operador"],
       },
       {
         to: "/transferencias",
         label: "Transferências",
-        emoji: "🔄",
+        icon: RefreshCw,
         roles: ["admin", "gerente"],
       },
-      { to: "/validades", label: "Validades", emoji: "⚠️" },
+      { to: "/validades", label: "Validades", icon: CalendarClock },
     ],
   },
   {
     title: "Comercialização",
     items: [
-      { to: "/pdv", label: "PDV", emoji: "🛒", roles: ["admin", "gerente", "operador"] },
-      { to: "/vendas", label: "Vendas", emoji: "🧾" },
+      { to: "/pdv", label: "PDV", icon: ShoppingBasket, roles: ["admin", "gerente", "operador"] },
+      { to: "/vendas", label: "Vendas", icon: ClipboardList },
       {
         to: "/fechamento",
         label: "Fechamento de caixa",
-        emoji: "🧮",
+        icon: WalletCards,
         roles: ["admin", "gerente", "operador"],
       },
     ],
@@ -58,18 +81,18 @@ const GROUPS: NavGroup[] = [
   {
     title: "Financeiro",
     items: [
-      { to: "/repasses", label: "Repasses", emoji: "💰", roles: ["admin", "consulta"] },
-      { to: "/extrato", label: "Meu Extrato", emoji: "🧾", roles: ["cooperativa", "admin"] },
+      { to: "/repasses", label: "Repasses", icon: HandCoins, roles: ["admin", "consulta"] },
+      { to: "/extrato", label: "Meu Extrato", icon: Landmark, roles: ["cooperativa", "admin"] },
     ],
   },
   {
     title: "Inteligência",
     items: [
-      { to: "/desempenho", label: "Desempenho", emoji: "📈" },
-      { to: "/impacto", label: "Impacto da Rede", emoji: "🌱" },
-      { to: "/mapa", label: "Mapa do Cooperativismo", emoji: "🗺️" },
-      { to: "/inteligencia", label: "Assistente da Rede", emoji: "🤖" },
-      { to: "/configuracoes", label: "Configurações", emoji: "⚙️", roles: ["admin"] },
+      { to: "/desempenho", label: "Desempenho", icon: ChartNoAxesCombined },
+      { to: "/impacto", label: "Impacto da Rede", icon: Leaf },
+      { to: "/mapa", label: "Mapa do Cooperativismo", icon: MapPinned },
+      { to: "/inteligencia", label: "Assistente da Rede", icon: Bot },
+      { to: "/configuracoes", label: "Configurações", icon: Settings, roles: ["admin"] },
     ],
   },
 ];
@@ -100,14 +123,14 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   const sidebar = (
     <div className="flex h-full flex-col">
-      <div className="border-b border-line px-5 pt-6 pb-5">
+      <div className="border-b border-line px-5 pt-5 pb-5">
         <Link to="/rede" className="flex items-center gap-2.5">
-          <div className="grid size-9 place-items-center rounded-full border border-leaf/40 bg-leaf/15 font-mono text-xs font-semibold text-leaf">
-            +
+          <div className="grid size-10 place-items-center rounded-md bg-warn text-primary shadow-sm">
+            <Building2 className="size-5" />
           </div>
           <div className="leading-tight">
-            <div className="font-display text-[15px] font-semibold tracking-tight">
-              Alagoas<span className="text-leaf">+</span>Cooperativa
+            <div className="font-display text-[15px] font-bold text-primary">
+              Alagoas <span className="text-clay">+</span> Cooperativa
             </div>
             <div className="label-mono text-[10px]">Rede Cooperativista</div>
           </div>
@@ -123,19 +146,20 @@ export function AppShell({ children }: { children: ReactNode }) {
               <div className="label-mono px-3 pt-2 pb-2 text-[10px]">{group.title}</div>
               {items.map((item) => {
                 const active = pathname === item.to;
+                const Icon = item.icon;
                 return (
                   <Link
                     key={item.to}
                     to={item.to}
                     onClick={() => setOpen(false)}
                     className={cn(
-                      "flex items-center gap-3 rounded-md px-3 py-2 transition-colors",
+                      "flex items-center gap-3 rounded-md px-3 py-2.5 font-medium transition-colors",
                       active
-                        ? "border border-leaf/25 bg-leaf/10 text-foreground"
-                        : "border border-transparent hover:bg-panel-2",
+                        ? "border border-primary/10 bg-primary text-primary-foreground shadow-sm"
+                        : "border border-transparent hover:bg-panel-2 hover:text-primary",
                     )}
                   >
-                    <span className="w-4 text-center">{item.emoji}</span>
+                    <Icon className="size-4 shrink-0" />
                     {item.label}
                   </Link>
                 );
@@ -147,7 +171,7 @@ export function AppShell({ children }: { children: ReactNode }) {
 
       <div className="border-t border-line p-3">
         <div className="flex items-center gap-2.5 px-2 py-1.5">
-          <div className="grid size-8 place-items-center rounded-full border border-line bg-panel-2 font-mono text-[11px] text-leaf">
+          <div className="grid size-9 place-items-center rounded-full bg-primary font-bold text-[11px] text-primary-foreground">
             {initials}
           </div>
           <div className="min-w-0 flex-1 leading-tight">
@@ -173,21 +197,21 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto flex min-h-screen max-w-[1600px]">
-        <aside className="hidden w-[248px] shrink-0 border-r border-line bg-card/60 lg:block">
+        <aside className="hidden w-[260px] shrink-0 border-r border-line bg-card lg:block">
           {sidebar}
         </aside>
 
         {open && (
           <div className="fixed inset-0 z-40 lg:hidden">
             <div className="absolute inset-0 bg-background/80" onClick={() => setOpen(false)} />
-            <aside className="absolute top-0 left-0 h-full w-[272px] border-r border-line bg-card">
+            <aside className="absolute top-0 left-0 h-full w-[280px] border-r border-line bg-card shadow-xl">
               {sidebar}
             </aside>
           </div>
         )}
 
         <main className="min-w-0 flex-1">
-          <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-line bg-card/80 px-4 backdrop-blur sm:px-6">
+          <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-line bg-card/90 px-4 shadow-xs backdrop-blur sm:px-6">
             <button
               onClick={() => setOpen((v) => !v)}
               aria-label="Abrir menu"
@@ -199,13 +223,13 @@ export function AppShell({ children }: { children: ReactNode }) {
               Sistema de Gestão da Rede de Comercialização Cooperativista
             </div>
             <div className="ml-auto flex items-center gap-2">
-              <span className="hidden items-center gap-1.5 rounded-full border border-leaf/30 bg-leaf/5 px-2.5 py-1 font-mono text-[11px] text-leaf sm:flex">
-                <span className="size-1.5 rounded-full bg-leaf" /> Dados reais da rede
+              <span className="hidden items-center gap-1.5 rounded-full border border-primary/15 bg-blue-soft px-3 py-1 font-semibold text-[11px] text-primary sm:flex">
+                <span className="size-1.5 rounded-full bg-good" /> Dados reais da rede
               </span>
             </div>
 
           </header>
-          <div className="space-y-5 px-4 py-6 sm:px-6">{children}</div>
+          <div className="space-y-5 px-4 py-6 sm:px-6 lg:px-8">{children}</div>
         </main>
       </div>
     </div>

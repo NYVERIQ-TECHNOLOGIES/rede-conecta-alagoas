@@ -14,6 +14,8 @@ export const Route = createFileRoute("/_authenticated/configuracoes")({
       },
       { property: "og:title", content: "Configurações — ALAGOAS+COOPERATIVA" },
       { property: "og:description", content: "Administração da rede em um só lugar." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Configuracoes,

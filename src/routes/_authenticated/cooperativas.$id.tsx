@@ -13,6 +13,8 @@ export const Route = createFileRoute("/_authenticated/cooperativas/$id")({
       },
       { property: "og:title", content: "Perfil da Cooperativa — ALAGOAS+COOPERATIVA" },
       { property: "og:description", content: "Quem produz, onde produz e quanto recebe." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: CooperativaDetalhe,

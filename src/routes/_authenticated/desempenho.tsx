@@ -15,6 +15,8 @@ export const Route = createFileRoute("/_authenticated/desempenho")({
       },
       { property: "og:title", content: "Desempenho — ALAGOAS+COOPERATIVA" },
       { property: "og:description", content: "Análises simples e diretas sobre a rede." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Desempenho,

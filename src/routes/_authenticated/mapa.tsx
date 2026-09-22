@@ -13,6 +13,8 @@ export const Route = createFileRoute("/_authenticated/mapa")({
       },
       { property: "og:title", content: "Mapa do Cooperativismo — ALAGOAS+COOPERATIVA" },
       { property: "og:description", content: "Onde o cooperativismo alagoano produz." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Mapa,

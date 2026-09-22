@@ -16,6 +16,8 @@ export const Route = createFileRoute("/_authenticated/entradas")({
       },
       { property: "og:title", content: "Entrada de Produtos — ALAGOAS+COOPERATIVA" },
       { property: "og:description", content: "Recebimento de produtos das cooperativas nas lojas." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Entradas,

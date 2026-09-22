@@ -26,6 +26,8 @@ export const Route = createFileRoute("/_authenticated/lojas/")({
         property: "og:description",
         content: "Pontos de comercialização da rede cooperativista alagoana.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Lojas,
