@@ -11,7 +11,10 @@ import type { AppRole, Profile } from "@/lib/session";
 const rpc = (fn: string, args: Record<string, unknown>) =>
   (
     supabase as unknown as {
-      rpc: (f: string, a: Record<string, unknown>) => Promise<{ data: unknown; error: Error | null }>;
+      rpc: (
+        f: string,
+        a: Record<string, unknown>,
+      ) => Promise<{ data: unknown; error: Error | null }>;
     }
   ).rpc(fn, args);
 
@@ -321,7 +324,9 @@ export function useCustomerAddresses() {
 export function useSaveAddress() {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: async (values: Omit<CustomerAddress, "id" | "created_at"> & { id?: string | undefined }) => {
+    mutationFn: async (
+      values: Omit<CustomerAddress, "id" | "created_at"> & { id?: string | undefined },
+    ) => {
       const { data, error } = values.id
         ? await db
             .from("customer_addresses")

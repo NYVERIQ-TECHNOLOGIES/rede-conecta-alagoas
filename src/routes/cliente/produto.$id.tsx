@@ -62,7 +62,7 @@ function ProdutoDetalhe() {
       image_url: product.image_url,
     });
     toast.success(`${product.name} adicionado ao carrinho`);
-  }
+  };
 
   return (
     <>
