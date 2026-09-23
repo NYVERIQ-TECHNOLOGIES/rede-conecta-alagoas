@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/cliente/produtos")({
   ssr: false,
-  validateSearch: (s: Record<string, unknown>): { q?: string } => ({
-    q: typeof s.q === "string" ? s.q : undefined,
+  validateSearch: (s: Record<string, unknown>): { q?: string | undefined } => ({
+    q: typeof s["q"] === "string" ? s["q"] : undefined,
   }),
   head: () => ({
     meta: [

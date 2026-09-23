@@ -25,7 +25,7 @@ function Atuacao() {
   const { data: products, isLoading } = useProducts();
 
   const byCity = useMemo(() => {
-    const map = new Map<string, typeof products>();
+    const map = new Map<string, NonNullable<typeof products>>();
     (products ?? [])
       .filter((p) => p.cooperative_id === coopId)
       .forEach((p) => {

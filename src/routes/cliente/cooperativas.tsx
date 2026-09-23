@@ -16,7 +16,7 @@ export const Route = createFileRoute("/cliente/cooperativas")({
 });
 
 function Cooperativas() {
-  const { data: coops, isLoading } = useCooperativas();
+  const { data: coops, isLoading } = useCooperatives();
   const { data: products } = useProducts();
 
   const productCount = (cooperativeId: string) =>

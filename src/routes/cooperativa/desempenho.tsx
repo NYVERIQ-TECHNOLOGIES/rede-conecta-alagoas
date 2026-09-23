@@ -173,7 +173,7 @@ function Desempenho() {
             <EmptyState title="Sem vendas no período A" />
           ) : (
             <Bars
-              items={topProducts}
+              items={topProducts.map((t) => ({ label: t.label, value: t.qty }))}
               format={(v) => (v === 1 ? "1 unidade" : `${num(v)} unidades`)}
             />
           )}

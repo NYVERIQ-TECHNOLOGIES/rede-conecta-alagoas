@@ -41,7 +41,7 @@ function Categorias() {
       }
     });
     const list = (categories ?? []).map((c) => ({
-      category: c,
+      category: c as typeof c | null,
       items: byCategory.get(c.id) ?? [],
     }));
     if (uncategorized.length > 0) {
