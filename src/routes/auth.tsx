@@ -3,6 +3,8 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
+import { fetchCurrentUser } from "@/lib/session";
+import { resolveHomePath } from "@/lib/experience";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -37,11 +39,16 @@ function AuthPage() {
   const [fullName, setFullName] = useState("");
   const [loading, setLoading] = useState(false);
 
+  async function goToHome() {
+    const current = await fetchCurrentUser();
+    navigate({ to: resolveHomePath(current?.roles ?? []), replace: true });
+  }
+
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
-      if (data.session) navigate({ to: "/rede", replace: true });
+      if (data.session) goToHome();
     });
-  }, [navigate]);
+  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -50,7 +57,7 @@ function AuthPage() {
       if (mode === "entrar") {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
-        navigate({ to: "/rede", replace: true });
+        await goToHome();
       } else {
         const { data, error } = await supabase.auth.signUp({
           email,
@@ -61,8 +68,10 @@ function AuthPage() {
           },
         });
         if (error) throw error;
-        if (data.session) navigate({ to: "/rede", replace: true });
-        else toast.success("Conta criada. Confirme seu e-mail para acessar.");
+        if (data.session) {
+          const current = await fetchCurrentUser();
+          navigate({ to: resolveHomePath(current?.roles ?? []), replace: true });
+        } else toast.success("Conta criada. Confirme seu e-mail para acessar.");
       }
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Não foi possível continuar");
@@ -80,18 +89,24 @@ function AuthPage() {
       return;
     }
     if (result.redirected) return;
-    navigate({ to: "/rede", replace: true });
+    await goToHome();
   }
 
   return (
     <div className="craft-pattern flex min-h-screen items-center justify-center bg-warn px-4 py-12">
       <div className="w-full max-w-md">
         <div className="mb-6 flex items-center justify-center">
-          <img src={logoWhite.url} alt="Alagoas+Cooperativa" className="h-14 w-auto drop-shadow-sm" />
+          <img
+            src={logoWhite.url}
+            alt="Alagoas+Cooperativa"
+            className="h-14 w-auto drop-shadow-sm"
+          />
         </div>
 
         <div className="panel border-card p-7 shadow-xl">
-          <div className="mb-5 flex size-11 items-center justify-center rounded-full bg-blue-soft text-primary"><CheckCircle2 className="size-5" /></div>
+          <div className="mb-5 flex size-11 items-center justify-center rounded-full bg-blue-soft text-primary">
+            <CheckCircle2 className="size-5" />
+          </div>
           <h1 className="text-[24px] font-bold text-primary">
             {mode === "entrar" ? "Entrar na rede" : "Criar acesso"}
           </h1>

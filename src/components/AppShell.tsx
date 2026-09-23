@@ -1,103 +1,55 @@
 import { useState, type ReactNode } from "react";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
-import {
-  BarChart3,
-  Bot,
-  Boxes,
-  CalendarClock,
-  ChartNoAxesCombined,
-  ClipboardList,
-  HandCoins,
-  Landmark,
-  Leaf,
-  LogOut,
-  MapPinned,
-  Menu,
-  PackagePlus,
-  RefreshCw,
-  Settings,
-  ShoppingBasket,
-  Store,
-  UsersRound,
-  WalletCards,
-  X,
-  type LucideIcon,
-} from "lucide-react";
+import { LogOut, Menu, X } from "lucide-react";
 import logoBlue from "@/assets/logo-azul.png.asset.json";
 import { supabase } from "@/integrations/supabase/client";
-import { useCurrentUser, ROLE_LABELS, type AppRole } from "@/lib/session";
+import { useCurrentUser, ROLE_LABELS } from "@/lib/session";
+import {
+  EXPERIENCE_HOME,
+  EXPERIENCE_LABEL,
+  EXPERIENCE_TAGLINE,
+  type Experience,
+} from "@/lib/experience";
+import type { NavGroup } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
-interface NavItem {
-  to: string;
-  label: string;
-  icon: LucideIcon;
-  roles?: AppRole[];
+function ExperienceSwitcher({ current }: { current: Experience }) {
+  const experiences: Experience[] = ["admin", "pdv", "cooperativa", "cliente"];
+  const item = (exp: Experience) => (
+    <Link
+      key={exp}
+      to={EXPERIENCE_HOME[exp]}
+      className={cn(
+        "rounded-md px-3 py-1.5 text-[12px] font-medium transition-colors",
+        exp === current
+          ? "bg-primary text-primary-foreground"
+          : "border border-line text-muted-foreground hover:text-foreground",
+      )}
+    >
+      {EXPERIENCE_LABEL[exp]}
+    </Link>
+  );
+  return (
+    <div className="flex flex-wrap items-center gap-1.5 rounded-lg border border-line bg-card p-1.5">
+      {experiences.map(item)}
+    </div>
+  );
 }
 
-interface NavGroup {
-  title: string;
-  items: NavItem[];
-}
-
-const GROUPS: NavGroup[] = [
-  {
-    title: "Operação",
-    items: [
-      { to: "/rede", label: "Visão da Rede", icon: BarChart3 },
-      { to: "/lojas", label: "Nossas Lojas", icon: Store, roles: ["admin", "gerente", "consulta"] },
-      { to: "/cooperativas", label: "Cooperativas", icon: UsersRound },
-      { to: "/produtos", label: "Produtos da Rede", icon: ShoppingBasket },
-      { to: "/estoque", label: "Estoque", icon: Boxes },
-      {
-        to: "/entradas",
-        label: "Entradas",
-        icon: PackagePlus,
-        roles: ["admin", "gerente", "operador"],
-      },
-      {
-        to: "/transferencias",
-        label: "Transferências",
-        icon: RefreshCw,
-        roles: ["admin", "gerente"],
-      },
-      { to: "/validades", label: "Validades", icon: CalendarClock },
-    ],
-  },
-  {
-    title: "Comercialização",
-    items: [
-      { to: "/pdv", label: "PDV", icon: ShoppingBasket, roles: ["admin", "gerente", "operador"] },
-      { to: "/vendas", label: "Vendas", icon: ClipboardList },
-      {
-        to: "/fechamento",
-        label: "Fechamento de caixa",
-        icon: WalletCards,
-        roles: ["admin", "gerente", "operador"],
-      },
-    ],
-  },
-  {
-    title: "Financeiro",
-    items: [
-      { to: "/repasses", label: "Repasses", icon: HandCoins, roles: ["admin", "consulta"] },
-      { to: "/extrato", label: "Meu Extrato", icon: Landmark, roles: ["cooperativa", "admin"] },
-    ],
-  },
-  {
-    title: "Inteligência",
-    items: [
-      { to: "/desempenho", label: "Desempenho", icon: ChartNoAxesCombined },
-      { to: "/impacto", label: "Impacto da Rede", icon: Leaf },
-      { to: "/mapa", label: "Mapa do Cooperativismo", icon: MapPinned },
-      { to: "/inteligencia", label: "Assistente da Rede", icon: Bot },
-      { to: "/configuracoes", label: "Configurações", icon: Settings, roles: ["admin"] },
-    ],
-  },
-];
-
-export function AppShell({ children }: { children: ReactNode }) {
+export function AppShell({
+  children,
+  groups,
+  tagline = "Sistema de Gestão da Rede de Comercialização Cooperativista",
+  homeTo = "/admin",
+  experience = "admin",
+}: {
+  children: ReactNode;
+  groups: NavGroup[];
+  tagline?: string;
+  homeTo?: string;
+  experience?: Experience;
+}) {
   const { data: user } = useCurrentUser();
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
@@ -105,7 +57,8 @@ export function AppShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   const roles = user?.roles ?? [];
-  const visible = (item: NavItem) => !item.roles || item.roles.some((r) => roles.includes(r));
+  const visible = (item: NavGroup["items"][number]) =>
+    !item.roles || item.roles.some((r) => roles.includes(r));
 
   const initials = (user?.profile?.full_name || user?.email || "?")
     .split(" ")
@@ -124,14 +77,18 @@ export function AppShell({ children }: { children: ReactNode }) {
   const sidebar = (
     <div className="flex h-full flex-col">
       <div className="border-b border-line px-5 pt-5 pb-5">
-        <Link to="/rede" className="flex items-center gap-2.5">
+        <Link to={homeTo} className="flex items-center gap-2.5">
           <img src={logoBlue.url} alt="Alagoas+Cooperativa" className="h-11 w-auto" />
-          <div className="label-mono text-[10px] leading-tight">Rede<br />Cooperativista</div>
+          <div className="label-mono text-[10px] leading-tight">
+            Rede
+            <br />
+            Cooperativista
+          </div>
         </Link>
       </div>
 
       <nav className="flex-1 space-y-0.5 overflow-y-auto px-3 py-4 text-[13px] text-muted-foreground">
-        {GROUPS.map((group) => {
+        {groups.map((group) => {
           const items = group.items.filter(visible);
           if (!items.length) return null;
           return (
@@ -215,15 +172,20 @@ export function AppShell({ children }: { children: ReactNode }) {
             <div
               className="label-mono hidden sm:block"
               style={{ color: "#ffffff" }}
+              title={EXPERIENCE_TAGLINE[experience]}
             >
-              Sistema de Gestão da Rede de Comercialização Cooperativista
+              {tagline}
             </div>
             <div className="ml-auto flex items-center gap-2">
-              <span className="hidden items-center gap-1.5 rounded-full border border-white/30 bg-white/15 px-3 py-1 font-semibold text-[11px] text-white sm:flex">
+              {roles.includes("admin") && (
+                <div className="hidden md:block">
+                  <ExperienceSwitcher current={experience} />
+                </div>
+              )}
+              <span className="hidden items-center gap-1.5 rounded-full border border-white/30 bg-white/15 px-3 py-1 font-semibold text-[11px] text-white lg:flex">
                 <span className="size-1.5 rounded-full bg-good" /> Dados reais da rede
               </span>
             </div>
-
           </header>
           <div className="space-y-5 px-4 py-6 sm:px-6 lg:px-8">{children}</div>
         </main>

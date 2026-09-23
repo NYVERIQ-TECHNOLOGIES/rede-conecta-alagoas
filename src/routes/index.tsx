@@ -41,6 +41,37 @@ const CHAIN = [
   "Impacto",
 ];
 
+const EXPERIENCES = [
+  {
+    emoji: "🛍️",
+    title: "CLIENTE",
+    verb: "COMPRAR",
+    description: "Descubra produtos com origem cooperativista, compre e acompanhe seus pedidos.",
+    to: "/cliente",
+  },
+  {
+    emoji: "🛒",
+    title: "PDV",
+    verb: "VENDER",
+    description: "Registre vendas, controle estoque e processe pedidos da sua loja.",
+    to: "/pdv",
+  },
+  {
+    emoji: "🌱",
+    title: "COOPERATIVA",
+    verb: "FORNECER",
+    description: "Cadastre produtos, acompanhe comercialização, repasses e desempenho.",
+    to: "/cooperativa",
+  },
+  {
+    emoji: "👑",
+    title: "ADM",
+    verb: "ADMINISTRAR",
+    description: "Visão consolidada da rede: indicadores, financeiro, usuários e inteligência.",
+    to: "/admin",
+  },
+];
+
 function Landing() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -48,7 +79,11 @@ function Landing() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
           <div className="flex items-center gap-2.5">
             <img src={logoBlue.url} alt="Alagoas+Cooperativa" className="h-10 w-auto" />
-            <div className="label-mono text-[10px] leading-tight">Rede<br />Cooperativista</div>
+            <div className="label-mono text-[10px] leading-tight">
+              Rede
+              <br />
+              Cooperativista
+            </div>
           </div>
           <Link
             to="/auth"
@@ -63,31 +98,71 @@ function Landing() {
         <section className="craft-pattern bg-warn">
           <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.05fr_.95fr] md:py-16">
             <div>
-              <img src={logoWhite.url} alt="Alagoas+Cooperativa" className="mb-5 h-14 w-auto drop-shadow-sm" />
-              <p className="inline-flex rounded-full bg-primary px-3 py-1 text-[11px] font-bold uppercase text-primary-foreground">Sistema de gestão da rede</p>
+              <img
+                src={logoWhite.url}
+                alt="Alagoas+Cooperativa"
+                className="mb-5 h-14 w-auto drop-shadow-sm"
+              />
+              <p className="inline-flex rounded-full bg-primary px-3 py-1 text-[11px] font-bold uppercase text-primary-foreground">
+                Sistema de gestão da rede
+              </p>
               <h1 className="mt-5 max-w-3xl text-[38px] leading-[1.08] font-extrabold text-foreground sm:text-[52px]">
                 Onde a produção cooperativista encontra o mercado.
               </h1>
               <p className="mt-5 max-w-2xl text-[15px] leading-7 text-foreground/75">
-                Conectamos quem produz, o que produz, onde vende, quanto recebe e o impacto que gera em Alagoas.
+                Conectamos quem produz, o que produz, onde vende, quanto recebe e o impacto que gera
+                em Alagoas.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
-                <Link to="/auth" className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-bold text-primary-foreground shadow-sm">
+                <Link
+                  to="/auth"
+                  className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-bold text-primary-foreground shadow-sm"
+                >
                   Acessar o sistema <ArrowRight className="size-4" />
                 </Link>
-                <a href="#rede" className="inline-flex items-center rounded-md border border-primary bg-card/80 px-5 py-3 text-sm font-bold text-primary">Conhecer a rede</a>
+                <a
+                  href="#rede"
+                  className="inline-flex items-center rounded-md border border-primary bg-card/80 px-5 py-3 text-sm font-bold text-primary"
+                >
+                  Conhecer a rede
+                </a>
               </div>
               <div className="mt-8 grid max-w-xl grid-cols-3 gap-2">
-                {[[Store, "3 lojas", "Rede integrada"], [UsersRound, "Cooperativas", "Origem direta"], [MapPin, "Alagoas", "Impacto local"]].map(([Icon, value, label]) => {
+                {[
+                  [Store, "3 lojas", "Rede integrada"],
+                  [UsersRound, "Cooperativas", "Origem direta"],
+                  [MapPin, "Alagoas", "Impacto local"],
+                ].map(([Icon, value, label]) => {
                   const StatIcon = Icon as typeof Store;
-                  return <div key={String(value)} className="rounded-md border border-foreground/10 bg-card/90 p-3 shadow-sm"><StatIcon className="mb-2 size-4 text-primary"/><strong className="block text-sm text-primary">{String(value)}</strong><span className="text-[10px] text-muted-foreground">{String(label)}</span></div>;
+                  return (
+                    <div
+                      key={String(value)}
+                      className="rounded-md border border-foreground/10 bg-card/90 p-3 shadow-sm"
+                    >
+                      <StatIcon className="mb-2 size-4 text-primary" />
+                      <strong className="block text-sm text-primary">{String(value)}</strong>
+                      <span className="text-[10px] text-muted-foreground">{String(label)}</span>
+                    </div>
+                  );
                 })}
               </div>
             </div>
             <div className="relative overflow-hidden rounded-lg border-4 border-card shadow-xl">
-              <img src={artisanImage} alt="Artesã alagoana produzindo renda filé às margens do rio" width={1280} height={960} className="aspect-[4/3] w-full object-cover" />
+              <img
+                src={artisanImage}
+                alt="Artesã alagoana produzindo renda filé às margens do rio"
+                width={1280}
+                height={960}
+                className="aspect-[4/3] w-full object-cover"
+              />
               <div className="absolute inset-x-3 bottom-3 flex items-center gap-2 rounded-md bg-card/95 p-3 shadow-lg backdrop-blur">
-                <CheckCircle2 className="size-5 shrink-0 text-primary"/><div><strong className="block text-xs text-primary">Produção com origem</strong><span className="text-[10px] text-muted-foreground">Comércio justo e cooperativismo alagoano</span></div>
+                <CheckCircle2 className="size-5 shrink-0 text-primary" />
+                <div>
+                  <strong className="block text-xs text-primary">Produção com origem</strong>
+                  <span className="text-[10px] text-muted-foreground">
+                    Comércio justo e cooperativismo alagoano
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -97,7 +172,38 @@ function Landing() {
           <p className="label-mono text-primary">Uma rede, do campo ao impacto</p>
           <h2 className="mt-2 text-2xl font-bold text-primary">Gestão integrada e transparente</h2>
           <div className="mt-7 grid gap-3 sm:grid-cols-3 lg:grid-cols-5">
-            {CHAIN.map((step, i) => <div key={step} className="panel p-4"><span className="text-[11px] font-bold text-clay">{String(i + 1).padStart(2, "0")}</span><strong className="mt-3 block text-sm text-primary">{step}</strong></div>)}
+            {CHAIN.map((step, i) => (
+              <div key={step} className="panel p-4">
+                <span className="text-[11px] font-bold text-clay">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <strong className="mt-3 block text-sm text-primary">{step}</strong>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="border-t border-line bg-card/60">
+          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+            <p className="label-mono text-primary">Um ecossistema, quatro experiências</p>
+            <h2 className="mt-2 text-2xl font-bold text-primary">Onde você está na rede?</h2>
+            <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {EXPERIENCES.map((exp) => (
+                <Link
+                  key={exp.to}
+                  to={exp.to}
+                  className="panel p-5 transition-all hover:-translate-y-1 hover:border-leaf/40"
+                >
+                  <span className="text-xl">{exp.emoji}</span>
+                  <strong className="mt-3 block text-sm text-primary">
+                    {exp.title} · {exp.verb}
+                  </strong>
+                  <p className="mt-1.5 text-[12px] leading-5 text-muted-foreground">
+                    {exp.description}
+                  </p>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
       </main>

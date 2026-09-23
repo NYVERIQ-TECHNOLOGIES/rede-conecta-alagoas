@@ -10,36 +10,95 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as AuthRouteImport } from './routes/auth'
-import { Route as AuthenticatedConfiguracoesRouteImport } from './routes/_authenticated/configuracoes'
-import { Route as AuthenticatedDesempenhoRouteImport } from './routes/_authenticated/desempenho'
-import { Route as AuthenticatedEntradasRouteImport } from './routes/_authenticated/entradas'
-import { Route as AuthenticatedEstoqueRouteImport } from './routes/_authenticated/estoque'
-import { Route as AuthenticatedExtratoRouteImport } from './routes/_authenticated/extrato'
-import { Route as AuthenticatedFechamentoRouteImport } from './routes/_authenticated/fechamento'
-import { Route as AuthenticatedImpactoRouteImport } from './routes/_authenticated/impacto'
-import { Route as AuthenticatedInteligenciaRouteImport } from './routes/_authenticated/inteligencia'
-import { Route as AuthenticatedMapaRouteImport } from './routes/_authenticated/mapa'
-import { Route as AuthenticatedPdvRouteImport } from './routes/_authenticated/pdv'
-import { Route as AuthenticatedProdutosRouteImport } from './routes/_authenticated/produtos'
-import { Route as AuthenticatedRedeRouteImport } from './routes/_authenticated/rede'
-import { Route as AuthenticatedRepassesRouteImport } from './routes/_authenticated/repasses'
-import { Route as AuthenticatedTransferenciasRouteImport } from './routes/_authenticated/transferencias'
-import { Route as AuthenticatedValidadesRouteImport } from './routes/_authenticated/validades'
-import { Route as AuthenticatedVendasRouteImport } from './routes/_authenticated/vendas'
-import { Route as AuthenticatedCooperativasIndexRouteImport } from './routes/_authenticated/cooperativas.index'
-import { Route as AuthenticatedCooperativasIdRouteImport } from './routes/_authenticated/cooperativas.$id'
-import { Route as AuthenticatedLojasIndexRouteImport } from './routes/_authenticated/lojas.index'
-import { Route as AuthenticatedLojasIdRouteImport } from './routes/_authenticated/lojas.$id'
+import { Route as ClienteRouteRouteImport } from './routes/cliente/route'
+import { Route as CooperativaRouteRouteImport } from './routes/cooperativa/route'
+import { Route as PdvRouteRouteImport } from './routes/pdv/route'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminClientesRouteImport } from './routes/admin/clientes'
+import { Route as AdminConfiguracoesRouteImport } from './routes/admin/configuracoes'
+import { Route as AdminDesempenhoRouteImport } from './routes/admin/desempenho'
+import { Route as AdminEntradasRouteImport } from './routes/admin/entradas'
+import { Route as AdminEstoqueRouteImport } from './routes/admin/estoque'
+import { Route as AdminExtratoRouteImport } from './routes/admin/extrato'
+import { Route as AdminFechamentoRouteImport } from './routes/admin/fechamento'
+import { Route as AdminImpactoRouteImport } from './routes/admin/impacto'
+import { Route as AdminInteligenciaRouteImport } from './routes/admin/inteligencia'
+import { Route as AdminLogsRouteImport } from './routes/admin/logs'
+import { Route as AdminMapaRouteImport } from './routes/admin/mapa'
+import { Route as AdminMunicipiosRouteImport } from './routes/admin/municipios'
+import { Route as AdminPedidosRouteImport } from './routes/admin/pedidos'
+import { Route as AdminPermissoesRouteImport } from './routes/admin/permissoes'
+import { Route as AdminProdutosRouteImport } from './routes/admin/produtos'
+import { Route as AdminRepassesRouteImport } from './routes/admin/repasses'
+import { Route as AdminTransferenciasRouteImport } from './routes/admin/transferencias'
+import { Route as AdminUsuariosRouteImport } from './routes/admin/usuarios'
+import { Route as AdminValidadesRouteImport } from './routes/admin/validades'
+import { Route as AdminVendasRouteImport } from './routes/admin/vendas'
+import { Route as ClienteIndexRouteImport } from './routes/cliente/index'
+import { Route as ClienteCarrinhoRouteImport } from './routes/cliente/carrinho'
+import { Route as ClienteContaRouteImport } from './routes/cliente/conta'
+import { Route as ClienteCooperativasRouteImport } from './routes/cliente/cooperativas'
+import { Route as ClienteEnderecosRouteImport } from './routes/cliente/enderecos'
+import { Route as ClienteLojasRouteImport } from './routes/cliente/lojas'
+import { Route as ClientePedidosRouteImport } from './routes/cliente/pedidos'
+import { Route as ClientePreferenciasRouteImport } from './routes/cliente/preferencias'
+import { Route as ClienteProdutosRouteImport } from './routes/cliente/produtos'
+import { Route as CooperativaIndexRouteImport } from './routes/cooperativa/index'
+import { Route as CooperativaAtuacaoRouteImport } from './routes/cooperativa/atuacao'
+import { Route as CooperativaCategoriasRouteImport } from './routes/cooperativa/categorias'
+import { Route as CooperativaComercializadosRouteImport } from './routes/cooperativa/comercializados'
+import { Route as CooperativaDadosRouteImport } from './routes/cooperativa/dados'
+import { Route as CooperativaDesempenhoRouteImport } from './routes/cooperativa/desempenho'
+import { Route as CooperativaEstoqueRouteImport } from './routes/cooperativa/estoque'
+import { Route as CooperativaHistoricoFinanceiroRouteImport } from './routes/cooperativa/historico-financeiro'
+import { Route as CooperativaMovimentacoesRouteImport } from './routes/cooperativa/movimentacoes'
+import { Route as CooperativaPdvsRouteImport } from './routes/cooperativa/pdvs'
+import { Route as CooperativaPedidosRouteImport } from './routes/cooperativa/pedidos'
+import { Route as CooperativaPrecosRouteImport } from './routes/cooperativa/precos'
+import { Route as CooperativaProdutoNovoRouteImport } from './routes/cooperativa/produto-novo'
+import { Route as CooperativaProdutosRouteImport } from './routes/cooperativa/produtos'
+import { Route as CooperativaRepassesRouteImport } from './routes/cooperativa/repasses'
+import { Route as CooperativaResponsaveisRouteImport } from './routes/cooperativa/responsaveis'
+import { Route as CooperativaUsuariosRouteImport } from './routes/cooperativa/usuarios'
+import { Route as CooperativaValidadesRouteImport } from './routes/cooperativa/validades'
+import { Route as CooperativaValoresReceberRouteImport } from './routes/cooperativa/valores-receber'
+import { Route as CooperativaVendasRouteImport } from './routes/cooperativa/vendas'
+import { Route as PdvIndexRouteImport } from './routes/pdv/index'
+import { Route as PdvCatalogoRouteImport } from './routes/pdv/catalogo'
+import { Route as PdvEstoqueRouteImport } from './routes/pdv/estoque'
+import { Route as PdvFinanceiroRouteImport } from './routes/pdv/financeiro'
+import { Route as PdvHistoricoRouteImport } from './routes/pdv/historico'
+import { Route as PdvHistoricoFinanceiroRouteImport } from './routes/pdv/historico-financeiro'
+import { Route as PdvHorariosRouteImport } from './routes/pdv/horarios'
+import { Route as PdvLojaRouteImport } from './routes/pdv/loja'
+import { Route as PdvMovimentacoesRouteImport } from './routes/pdv/movimentacoes'
+import { Route as PdvPedidosRouteImport } from './routes/pdv/pedidos'
+import { Route as PdvPrecosRouteImport } from './routes/pdv/precos'
+import { Route as PdvProdutosRouteImport } from './routes/pdv/produtos'
+import { Route as PdvRepassesRouteImport } from './routes/pdv/repasses'
+import { Route as PdvUsuariosRouteImport } from './routes/pdv/usuarios'
+import { Route as PdvValidadesRouteImport } from './routes/pdv/validades'
+import { Route as PdvVendasRouteImport } from './routes/pdv/vendas'
+import { Route as PdvVendasNovoRouteImport } from './routes/pdv/vendas-novo'
+import { Route as AdminCooperativasIndexRouteImport } from './routes/admin/cooperativas.index'
+import { Route as AdminCooperativasIdRouteImport } from './routes/admin/cooperativas.$id'
+import { Route as AdminLojasIndexRouteImport } from './routes/admin/lojas.index'
+import { Route as AdminLojasIdRouteImport } from './routes/admin/lojas.$id'
+import { Route as ClienteCategoriasSlugRouteImport } from './routes/cliente/categorias.$slug'
+import { Route as ClientePedidoIdRouteImport } from './routes/cliente/pedido.$id'
+import { Route as ClienteProdutoIdRouteImport } from './routes/cliente/produto.$id'
+import { Route as PdvPedidoIdRouteImport } from './routes/pdv/pedido.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
-  id: '/_authenticated',
+const AdminRouteRoute = AdminRouteRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -47,265 +106,901 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedConfiguracoesRoute =
-  AuthenticatedConfiguracoesRouteImport.update({
-    id: '/configuracoes',
-    path: '/configuracoes',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
-const AuthenticatedDesempenhoRoute = AuthenticatedDesempenhoRouteImport.update({
-  id: '/desempenho',
-  path: '/desempenho',
-  getParentRoute: () => AuthenticatedRouteRoute,
+const ClienteRouteRoute = ClienteRouteRouteImport.update({
+  id: '/cliente',
+  path: '/cliente',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedEntradasRoute = AuthenticatedEntradasRouteImport.update({
-  id: '/entradas',
-  path: '/entradas',
-  getParentRoute: () => AuthenticatedRouteRoute,
+const CooperativaRouteRoute = CooperativaRouteRouteImport.update({
+  id: '/cooperativa',
+  path: '/cooperativa',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedEstoqueRoute = AuthenticatedEstoqueRouteImport.update({
-  id: '/estoque',
-  path: '/estoque',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedExtratoRoute = AuthenticatedExtratoRouteImport.update({
-  id: '/extrato',
-  path: '/extrato',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedFechamentoRoute = AuthenticatedFechamentoRouteImport.update({
-  id: '/fechamento',
-  path: '/fechamento',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedImpactoRoute = AuthenticatedImpactoRouteImport.update({
-  id: '/impacto',
-  path: '/impacto',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedInteligenciaRoute =
-  AuthenticatedInteligenciaRouteImport.update({
-    id: '/inteligencia',
-    path: '/inteligencia',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
-const AuthenticatedMapaRoute = AuthenticatedMapaRouteImport.update({
-  id: '/mapa',
-  path: '/mapa',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedPdvRoute = AuthenticatedPdvRouteImport.update({
+const PdvRouteRoute = PdvRouteRouteImport.update({
   id: '/pdv',
   path: '/pdv',
-  getParentRoute: () => AuthenticatedRouteRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedProdutosRoute = AuthenticatedProdutosRouteImport.update({
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminClientesRoute = AdminClientesRouteImport.update({
+  id: '/clientes',
+  path: '/clientes',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminConfiguracoesRoute = AdminConfiguracoesRouteImport.update({
+  id: '/configuracoes',
+  path: '/configuracoes',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminDesempenhoRoute = AdminDesempenhoRouteImport.update({
+  id: '/desempenho',
+  path: '/desempenho',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminEntradasRoute = AdminEntradasRouteImport.update({
+  id: '/entradas',
+  path: '/entradas',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminEstoqueRoute = AdminEstoqueRouteImport.update({
+  id: '/estoque',
+  path: '/estoque',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminExtratoRoute = AdminExtratoRouteImport.update({
+  id: '/extrato',
+  path: '/extrato',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminFechamentoRoute = AdminFechamentoRouteImport.update({
+  id: '/fechamento',
+  path: '/fechamento',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminImpactoRoute = AdminImpactoRouteImport.update({
+  id: '/impacto',
+  path: '/impacto',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminInteligenciaRoute = AdminInteligenciaRouteImport.update({
+  id: '/inteligencia',
+  path: '/inteligencia',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminLogsRoute = AdminLogsRouteImport.update({
+  id: '/logs',
+  path: '/logs',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminMapaRoute = AdminMapaRouteImport.update({
+  id: '/mapa',
+  path: '/mapa',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminMunicipiosRoute = AdminMunicipiosRouteImport.update({
+  id: '/municipios',
+  path: '/municipios',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminPedidosRoute = AdminPedidosRouteImport.update({
+  id: '/pedidos',
+  path: '/pedidos',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminPermissoesRoute = AdminPermissoesRouteImport.update({
+  id: '/permissoes',
+  path: '/permissoes',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminProdutosRoute = AdminProdutosRouteImport.update({
   id: '/produtos',
   path: '/produtos',
-  getParentRoute: () => AuthenticatedRouteRoute,
+  getParentRoute: () => AdminRouteRoute,
 } as any)
-const AuthenticatedRedeRoute = AuthenticatedRedeRouteImport.update({
-  id: '/rede',
-  path: '/rede',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedRepassesRoute = AuthenticatedRepassesRouteImport.update({
+const AdminRepassesRoute = AdminRepassesRouteImport.update({
   id: '/repasses',
   path: '/repasses',
-  getParentRoute: () => AuthenticatedRouteRoute,
+  getParentRoute: () => AdminRouteRoute,
 } as any)
-const AuthenticatedTransferenciasRoute =
-  AuthenticatedTransferenciasRouteImport.update({
-    id: '/transferencias',
-    path: '/transferencias',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
-const AuthenticatedValidadesRoute = AuthenticatedValidadesRouteImport.update({
+const AdminTransferenciasRoute = AdminTransferenciasRouteImport.update({
+  id: '/transferencias',
+  path: '/transferencias',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminUsuariosRoute = AdminUsuariosRouteImport.update({
+  id: '/usuarios',
+  path: '/usuarios',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminValidadesRoute = AdminValidadesRouteImport.update({
   id: '/validades',
   path: '/validades',
-  getParentRoute: () => AuthenticatedRouteRoute,
+  getParentRoute: () => AdminRouteRoute,
 } as any)
-const AuthenticatedVendasRoute = AuthenticatedVendasRouteImport.update({
+const AdminVendasRoute = AdminVendasRouteImport.update({
   id: '/vendas',
   path: '/vendas',
-  getParentRoute: () => AuthenticatedRouteRoute,
+  getParentRoute: () => AdminRouteRoute,
 } as any)
-const AuthenticatedCooperativasIndexRoute =
-  AuthenticatedCooperativasIndexRouteImport.update({
-    id: '/cooperativas/',
-    path: '/cooperativas/',
-    getParentRoute: () => AuthenticatedRouteRoute,
+const ClienteIndexRoute = ClienteIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ClienteRouteRoute,
+} as any)
+const ClienteCarrinhoRoute = ClienteCarrinhoRouteImport.update({
+  id: '/carrinho',
+  path: '/carrinho',
+  getParentRoute: () => ClienteRouteRoute,
+} as any)
+const ClienteContaRoute = ClienteContaRouteImport.update({
+  id: '/conta',
+  path: '/conta',
+  getParentRoute: () => ClienteRouteRoute,
+} as any)
+const ClienteCooperativasRoute = ClienteCooperativasRouteImport.update({
+  id: '/cooperativas',
+  path: '/cooperativas',
+  getParentRoute: () => ClienteRouteRoute,
+} as any)
+const ClienteEnderecosRoute = ClienteEnderecosRouteImport.update({
+  id: '/enderecos',
+  path: '/enderecos',
+  getParentRoute: () => ClienteRouteRoute,
+} as any)
+const ClienteLojasRoute = ClienteLojasRouteImport.update({
+  id: '/lojas',
+  path: '/lojas',
+  getParentRoute: () => ClienteRouteRoute,
+} as any)
+const ClientePedidosRoute = ClientePedidosRouteImport.update({
+  id: '/pedidos',
+  path: '/pedidos',
+  getParentRoute: () => ClienteRouteRoute,
+} as any)
+const ClientePreferenciasRoute = ClientePreferenciasRouteImport.update({
+  id: '/preferencias',
+  path: '/preferencias',
+  getParentRoute: () => ClienteRouteRoute,
+} as any)
+const ClienteProdutosRoute = ClienteProdutosRouteImport.update({
+  id: '/produtos',
+  path: '/produtos',
+  getParentRoute: () => ClienteRouteRoute,
+} as any)
+const CooperativaIndexRoute = CooperativaIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CooperativaRouteRoute,
+} as any)
+const CooperativaAtuacaoRoute = CooperativaAtuacaoRouteImport.update({
+  id: '/atuacao',
+  path: '/atuacao',
+  getParentRoute: () => CooperativaRouteRoute,
+} as any)
+const CooperativaCategoriasRoute = CooperativaCategoriasRouteImport.update({
+  id: '/categorias',
+  path: '/categorias',
+  getParentRoute: () => CooperativaRouteRoute,
+} as any)
+const CooperativaComercializadosRoute =
+  CooperativaComercializadosRouteImport.update({
+    id: '/comercializados',
+    path: '/comercializados',
+    getParentRoute: () => CooperativaRouteRoute,
   } as any)
-const AuthenticatedCooperativasIdRoute =
-  AuthenticatedCooperativasIdRouteImport.update({
-    id: '/cooperativas/$id',
-    path: '/cooperativas/$id',
-    getParentRoute: () => AuthenticatedRouteRoute,
+const CooperativaDadosRoute = CooperativaDadosRouteImport.update({
+  id: '/dados',
+  path: '/dados',
+  getParentRoute: () => CooperativaRouteRoute,
+} as any)
+const CooperativaDesempenhoRoute = CooperativaDesempenhoRouteImport.update({
+  id: '/desempenho',
+  path: '/desempenho',
+  getParentRoute: () => CooperativaRouteRoute,
+} as any)
+const CooperativaEstoqueRoute = CooperativaEstoqueRouteImport.update({
+  id: '/estoque',
+  path: '/estoque',
+  getParentRoute: () => CooperativaRouteRoute,
+} as any)
+const CooperativaHistoricoFinanceiroRoute =
+  CooperativaHistoricoFinanceiroRouteImport.update({
+    id: '/historico-financeiro',
+    path: '/historico-financeiro',
+    getParentRoute: () => CooperativaRouteRoute,
   } as any)
-const AuthenticatedLojasIndexRoute = AuthenticatedLojasIndexRouteImport.update({
+const CooperativaMovimentacoesRoute =
+  CooperativaMovimentacoesRouteImport.update({
+    id: '/movimentacoes',
+    path: '/movimentacoes',
+    getParentRoute: () => CooperativaRouteRoute,
+  } as any)
+const CooperativaPdvsRoute = CooperativaPdvsRouteImport.update({
+  id: '/pdvs',
+  path: '/pdvs',
+  getParentRoute: () => CooperativaRouteRoute,
+} as any)
+const CooperativaPedidosRoute = CooperativaPedidosRouteImport.update({
+  id: '/pedidos',
+  path: '/pedidos',
+  getParentRoute: () => CooperativaRouteRoute,
+} as any)
+const CooperativaPrecosRoute = CooperativaPrecosRouteImport.update({
+  id: '/precos',
+  path: '/precos',
+  getParentRoute: () => CooperativaRouteRoute,
+} as any)
+const CooperativaProdutoNovoRoute = CooperativaProdutoNovoRouteImport.update({
+  id: '/produto-novo',
+  path: '/produto-novo',
+  getParentRoute: () => CooperativaRouteRoute,
+} as any)
+const CooperativaProdutosRoute = CooperativaProdutosRouteImport.update({
+  id: '/produtos',
+  path: '/produtos',
+  getParentRoute: () => CooperativaRouteRoute,
+} as any)
+const CooperativaRepassesRoute = CooperativaRepassesRouteImport.update({
+  id: '/repasses',
+  path: '/repasses',
+  getParentRoute: () => CooperativaRouteRoute,
+} as any)
+const CooperativaResponsaveisRoute = CooperativaResponsaveisRouteImport.update({
+  id: '/responsaveis',
+  path: '/responsaveis',
+  getParentRoute: () => CooperativaRouteRoute,
+} as any)
+const CooperativaUsuariosRoute = CooperativaUsuariosRouteImport.update({
+  id: '/usuarios',
+  path: '/usuarios',
+  getParentRoute: () => CooperativaRouteRoute,
+} as any)
+const CooperativaValidadesRoute = CooperativaValidadesRouteImport.update({
+  id: '/validades',
+  path: '/validades',
+  getParentRoute: () => CooperativaRouteRoute,
+} as any)
+const CooperativaValoresReceberRoute =
+  CooperativaValoresReceberRouteImport.update({
+    id: '/valores-receber',
+    path: '/valores-receber',
+    getParentRoute: () => CooperativaRouteRoute,
+  } as any)
+const CooperativaVendasRoute = CooperativaVendasRouteImport.update({
+  id: '/vendas',
+  path: '/vendas',
+  getParentRoute: () => CooperativaRouteRoute,
+} as any)
+const PdvIndexRoute = PdvIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PdvRouteRoute,
+} as any)
+const PdvCatalogoRoute = PdvCatalogoRouteImport.update({
+  id: '/catalogo',
+  path: '/catalogo',
+  getParentRoute: () => PdvRouteRoute,
+} as any)
+const PdvEstoqueRoute = PdvEstoqueRouteImport.update({
+  id: '/estoque',
+  path: '/estoque',
+  getParentRoute: () => PdvRouteRoute,
+} as any)
+const PdvFinanceiroRoute = PdvFinanceiroRouteImport.update({
+  id: '/financeiro',
+  path: '/financeiro',
+  getParentRoute: () => PdvRouteRoute,
+} as any)
+const PdvHistoricoRoute = PdvHistoricoRouteImport.update({
+  id: '/historico',
+  path: '/historico',
+  getParentRoute: () => PdvRouteRoute,
+} as any)
+const PdvHistoricoFinanceiroRoute = PdvHistoricoFinanceiroRouteImport.update({
+  id: '/historico-financeiro',
+  path: '/historico-financeiro',
+  getParentRoute: () => PdvRouteRoute,
+} as any)
+const PdvHorariosRoute = PdvHorariosRouteImport.update({
+  id: '/horarios',
+  path: '/horarios',
+  getParentRoute: () => PdvRouteRoute,
+} as any)
+const PdvLojaRoute = PdvLojaRouteImport.update({
+  id: '/loja',
+  path: '/loja',
+  getParentRoute: () => PdvRouteRoute,
+} as any)
+const PdvMovimentacoesRoute = PdvMovimentacoesRouteImport.update({
+  id: '/movimentacoes',
+  path: '/movimentacoes',
+  getParentRoute: () => PdvRouteRoute,
+} as any)
+const PdvPedidosRoute = PdvPedidosRouteImport.update({
+  id: '/pedidos',
+  path: '/pedidos',
+  getParentRoute: () => PdvRouteRoute,
+} as any)
+const PdvPrecosRoute = PdvPrecosRouteImport.update({
+  id: '/precos',
+  path: '/precos',
+  getParentRoute: () => PdvRouteRoute,
+} as any)
+const PdvProdutosRoute = PdvProdutosRouteImport.update({
+  id: '/produtos',
+  path: '/produtos',
+  getParentRoute: () => PdvRouteRoute,
+} as any)
+const PdvRepassesRoute = PdvRepassesRouteImport.update({
+  id: '/repasses',
+  path: '/repasses',
+  getParentRoute: () => PdvRouteRoute,
+} as any)
+const PdvUsuariosRoute = PdvUsuariosRouteImport.update({
+  id: '/usuarios',
+  path: '/usuarios',
+  getParentRoute: () => PdvRouteRoute,
+} as any)
+const PdvValidadesRoute = PdvValidadesRouteImport.update({
+  id: '/validades',
+  path: '/validades',
+  getParentRoute: () => PdvRouteRoute,
+} as any)
+const PdvVendasRoute = PdvVendasRouteImport.update({
+  id: '/vendas',
+  path: '/vendas',
+  getParentRoute: () => PdvRouteRoute,
+} as any)
+const PdvVendasNovoRoute = PdvVendasNovoRouteImport.update({
+  id: '/vendas-novo',
+  path: '/vendas-novo',
+  getParentRoute: () => PdvRouteRoute,
+} as any)
+const AdminCooperativasIndexRoute = AdminCooperativasIndexRouteImport.update({
+  id: '/cooperativas/',
+  path: '/cooperativas/',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminCooperativasIdRoute = AdminCooperativasIdRouteImport.update({
+  id: '/cooperativas/$id',
+  path: '/cooperativas/$id',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminLojasIndexRoute = AdminLojasIndexRouteImport.update({
   id: '/lojas/',
   path: '/lojas/',
-  getParentRoute: () => AuthenticatedRouteRoute,
+  getParentRoute: () => AdminRouteRoute,
 } as any)
-const AuthenticatedLojasIdRoute = AuthenticatedLojasIdRouteImport.update({
+const AdminLojasIdRoute = AdminLojasIdRouteImport.update({
   id: '/lojas/$id',
   path: '/lojas/$id',
-  getParentRoute: () => AuthenticatedRouteRoute,
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const ClienteCategoriasSlugRoute = ClienteCategoriasSlugRouteImport.update({
+  id: '/categorias/$slug',
+  path: '/categorias/$slug',
+  getParentRoute: () => ClienteRouteRoute,
+} as any)
+const ClientePedidoIdRoute = ClientePedidoIdRouteImport.update({
+  id: '/pedido/$id',
+  path: '/pedido/$id',
+  getParentRoute: () => ClienteRouteRoute,
+} as any)
+const ClienteProdutoIdRoute = ClienteProdutoIdRouteImport.update({
+  id: '/produto/$id',
+  path: '/produto/$id',
+  getParentRoute: () => ClienteRouteRoute,
+} as any)
+const PdvPedidoIdRoute = PdvPedidoIdRouteImport.update({
+  id: '/pedido/$id',
+  path: '/pedido/$id',
+  getParentRoute: () => PdvRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteRouteWithChildren
+  '/cliente': typeof ClienteRouteRouteWithChildren
+  '/cooperativa': typeof CooperativaRouteRouteWithChildren
+  '/pdv': typeof PdvRouteRouteWithChildren
   '/auth': typeof AuthRoute
-  '/configuracoes': typeof AuthenticatedConfiguracoesRoute
-  '/desempenho': typeof AuthenticatedDesempenhoRoute
-  '/entradas': typeof AuthenticatedEntradasRoute
-  '/estoque': typeof AuthenticatedEstoqueRoute
-  '/extrato': typeof AuthenticatedExtratoRoute
-  '/fechamento': typeof AuthenticatedFechamentoRoute
-  '/impacto': typeof AuthenticatedImpactoRoute
-  '/inteligencia': typeof AuthenticatedInteligenciaRoute
-  '/mapa': typeof AuthenticatedMapaRoute
-  '/pdv': typeof AuthenticatedPdvRoute
-  '/produtos': typeof AuthenticatedProdutosRoute
-  '/rede': typeof AuthenticatedRedeRoute
-  '/repasses': typeof AuthenticatedRepassesRoute
-  '/transferencias': typeof AuthenticatedTransferenciasRoute
-  '/validades': typeof AuthenticatedValidadesRoute
-  '/vendas': typeof AuthenticatedVendasRoute
-  '/cooperativas/$id': typeof AuthenticatedCooperativasIdRoute
-  '/lojas/$id': typeof AuthenticatedLojasIdRoute
-  '/cooperativas/': typeof AuthenticatedCooperativasIndexRoute
-  '/lojas/': typeof AuthenticatedLojasIndexRoute
+  '/admin/clientes': typeof AdminClientesRoute
+  '/admin/configuracoes': typeof AdminConfiguracoesRoute
+  '/admin/desempenho': typeof AdminDesempenhoRoute
+  '/admin/entradas': typeof AdminEntradasRoute
+  '/admin/estoque': typeof AdminEstoqueRoute
+  '/admin/extrato': typeof AdminExtratoRoute
+  '/admin/fechamento': typeof AdminFechamentoRoute
+  '/admin/impacto': typeof AdminImpactoRoute
+  '/admin/inteligencia': typeof AdminInteligenciaRoute
+  '/admin/logs': typeof AdminLogsRoute
+  '/admin/mapa': typeof AdminMapaRoute
+  '/admin/municipios': typeof AdminMunicipiosRoute
+  '/admin/pedidos': typeof AdminPedidosRoute
+  '/admin/permissoes': typeof AdminPermissoesRoute
+  '/admin/produtos': typeof AdminProdutosRoute
+  '/admin/repasses': typeof AdminRepassesRoute
+  '/admin/transferencias': typeof AdminTransferenciasRoute
+  '/admin/usuarios': typeof AdminUsuariosRoute
+  '/admin/validades': typeof AdminValidadesRoute
+  '/admin/vendas': typeof AdminVendasRoute
+  '/cliente/carrinho': typeof ClienteCarrinhoRoute
+  '/cliente/conta': typeof ClienteContaRoute
+  '/cliente/cooperativas': typeof ClienteCooperativasRoute
+  '/cliente/enderecos': typeof ClienteEnderecosRoute
+  '/cliente/lojas': typeof ClienteLojasRoute
+  '/cliente/pedidos': typeof ClientePedidosRoute
+  '/cliente/preferencias': typeof ClientePreferenciasRoute
+  '/cliente/produtos': typeof ClienteProdutosRoute
+  '/cooperativa/atuacao': typeof CooperativaAtuacaoRoute
+  '/cooperativa/categorias': typeof CooperativaCategoriasRoute
+  '/cooperativa/comercializados': typeof CooperativaComercializadosRoute
+  '/cooperativa/dados': typeof CooperativaDadosRoute
+  '/cooperativa/desempenho': typeof CooperativaDesempenhoRoute
+  '/cooperativa/estoque': typeof CooperativaEstoqueRoute
+  '/cooperativa/historico-financeiro': typeof CooperativaHistoricoFinanceiroRoute
+  '/cooperativa/movimentacoes': typeof CooperativaMovimentacoesRoute
+  '/cooperativa/pdvs': typeof CooperativaPdvsRoute
+  '/cooperativa/pedidos': typeof CooperativaPedidosRoute
+  '/cooperativa/precos': typeof CooperativaPrecosRoute
+  '/cooperativa/produto-novo': typeof CooperativaProdutoNovoRoute
+  '/cooperativa/produtos': typeof CooperativaProdutosRoute
+  '/cooperativa/repasses': typeof CooperativaRepassesRoute
+  '/cooperativa/responsaveis': typeof CooperativaResponsaveisRoute
+  '/cooperativa/usuarios': typeof CooperativaUsuariosRoute
+  '/cooperativa/validades': typeof CooperativaValidadesRoute
+  '/cooperativa/valores-receber': typeof CooperativaValoresReceberRoute
+  '/cooperativa/vendas': typeof CooperativaVendasRoute
+  '/pdv/catalogo': typeof PdvCatalogoRoute
+  '/pdv/estoque': typeof PdvEstoqueRoute
+  '/pdv/financeiro': typeof PdvFinanceiroRoute
+  '/pdv/historico': typeof PdvHistoricoRoute
+  '/pdv/historico-financeiro': typeof PdvHistoricoFinanceiroRoute
+  '/pdv/horarios': typeof PdvHorariosRoute
+  '/pdv/loja': typeof PdvLojaRoute
+  '/pdv/movimentacoes': typeof PdvMovimentacoesRoute
+  '/pdv/pedidos': typeof PdvPedidosRoute
+  '/pdv/precos': typeof PdvPrecosRoute
+  '/pdv/produtos': typeof PdvProdutosRoute
+  '/pdv/repasses': typeof PdvRepassesRoute
+  '/pdv/usuarios': typeof PdvUsuariosRoute
+  '/pdv/validades': typeof PdvValidadesRoute
+  '/pdv/vendas': typeof PdvVendasRoute
+  '/pdv/vendas-novo': typeof PdvVendasNovoRoute
+  '/admin/': typeof AdminIndexRoute
+  '/cliente/': typeof ClienteIndexRoute
+  '/cooperativa/': typeof CooperativaIndexRoute
+  '/pdv/': typeof PdvIndexRoute
+  '/admin/cooperativas/$id': typeof AdminCooperativasIdRoute
+  '/admin/lojas/$id': typeof AdminLojasIdRoute
+  '/cliente/categorias/$slug': typeof ClienteCategoriasSlugRoute
+  '/cliente/pedido/$id': typeof ClientePedidoIdRoute
+  '/cliente/produto/$id': typeof ClienteProdutoIdRoute
+  '/pdv/pedido/$id': typeof PdvPedidoIdRoute
+  '/admin/cooperativas/': typeof AdminCooperativasIndexRoute
+  '/admin/lojas/': typeof AdminLojasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
-  '/configuracoes': typeof AuthenticatedConfiguracoesRoute
-  '/desempenho': typeof AuthenticatedDesempenhoRoute
-  '/entradas': typeof AuthenticatedEntradasRoute
-  '/estoque': typeof AuthenticatedEstoqueRoute
-  '/extrato': typeof AuthenticatedExtratoRoute
-  '/fechamento': typeof AuthenticatedFechamentoRoute
-  '/impacto': typeof AuthenticatedImpactoRoute
-  '/inteligencia': typeof AuthenticatedInteligenciaRoute
-  '/mapa': typeof AuthenticatedMapaRoute
-  '/pdv': typeof AuthenticatedPdvRoute
-  '/produtos': typeof AuthenticatedProdutosRoute
-  '/rede': typeof AuthenticatedRedeRoute
-  '/repasses': typeof AuthenticatedRepassesRoute
-  '/transferencias': typeof AuthenticatedTransferenciasRoute
-  '/validades': typeof AuthenticatedValidadesRoute
-  '/vendas': typeof AuthenticatedVendasRoute
-  '/cooperativas/$id': typeof AuthenticatedCooperativasIdRoute
-  '/lojas/$id': typeof AuthenticatedLojasIdRoute
-  '/cooperativas': typeof AuthenticatedCooperativasIndexRoute
-  '/lojas': typeof AuthenticatedLojasIndexRoute
+  '/admin/clientes': typeof AdminClientesRoute
+  '/admin/configuracoes': typeof AdminConfiguracoesRoute
+  '/admin/desempenho': typeof AdminDesempenhoRoute
+  '/admin/entradas': typeof AdminEntradasRoute
+  '/admin/estoque': typeof AdminEstoqueRoute
+  '/admin/extrato': typeof AdminExtratoRoute
+  '/admin/fechamento': typeof AdminFechamentoRoute
+  '/admin/impacto': typeof AdminImpactoRoute
+  '/admin/inteligencia': typeof AdminInteligenciaRoute
+  '/admin/logs': typeof AdminLogsRoute
+  '/admin/mapa': typeof AdminMapaRoute
+  '/admin/municipios': typeof AdminMunicipiosRoute
+  '/admin/pedidos': typeof AdminPedidosRoute
+  '/admin/permissoes': typeof AdminPermissoesRoute
+  '/admin/produtos': typeof AdminProdutosRoute
+  '/admin/repasses': typeof AdminRepassesRoute
+  '/admin/transferencias': typeof AdminTransferenciasRoute
+  '/admin/usuarios': typeof AdminUsuariosRoute
+  '/admin/validades': typeof AdminValidadesRoute
+  '/admin/vendas': typeof AdminVendasRoute
+  '/cliente/carrinho': typeof ClienteCarrinhoRoute
+  '/cliente/conta': typeof ClienteContaRoute
+  '/cliente/cooperativas': typeof ClienteCooperativasRoute
+  '/cliente/enderecos': typeof ClienteEnderecosRoute
+  '/cliente/lojas': typeof ClienteLojasRoute
+  '/cliente/pedidos': typeof ClientePedidosRoute
+  '/cliente/preferencias': typeof ClientePreferenciasRoute
+  '/cliente/produtos': typeof ClienteProdutosRoute
+  '/cooperativa/atuacao': typeof CooperativaAtuacaoRoute
+  '/cooperativa/categorias': typeof CooperativaCategoriasRoute
+  '/cooperativa/comercializados': typeof CooperativaComercializadosRoute
+  '/cooperativa/dados': typeof CooperativaDadosRoute
+  '/cooperativa/desempenho': typeof CooperativaDesempenhoRoute
+  '/cooperativa/estoque': typeof CooperativaEstoqueRoute
+  '/cooperativa/historico-financeiro': typeof CooperativaHistoricoFinanceiroRoute
+  '/cooperativa/movimentacoes': typeof CooperativaMovimentacoesRoute
+  '/cooperativa/pdvs': typeof CooperativaPdvsRoute
+  '/cooperativa/pedidos': typeof CooperativaPedidosRoute
+  '/cooperativa/precos': typeof CooperativaPrecosRoute
+  '/cooperativa/produto-novo': typeof CooperativaProdutoNovoRoute
+  '/cooperativa/produtos': typeof CooperativaProdutosRoute
+  '/cooperativa/repasses': typeof CooperativaRepassesRoute
+  '/cooperativa/responsaveis': typeof CooperativaResponsaveisRoute
+  '/cooperativa/usuarios': typeof CooperativaUsuariosRoute
+  '/cooperativa/validades': typeof CooperativaValidadesRoute
+  '/cooperativa/valores-receber': typeof CooperativaValoresReceberRoute
+  '/cooperativa/vendas': typeof CooperativaVendasRoute
+  '/pdv/catalogo': typeof PdvCatalogoRoute
+  '/pdv/estoque': typeof PdvEstoqueRoute
+  '/pdv/financeiro': typeof PdvFinanceiroRoute
+  '/pdv/historico': typeof PdvHistoricoRoute
+  '/pdv/historico-financeiro': typeof PdvHistoricoFinanceiroRoute
+  '/pdv/horarios': typeof PdvHorariosRoute
+  '/pdv/loja': typeof PdvLojaRoute
+  '/pdv/movimentacoes': typeof PdvMovimentacoesRoute
+  '/pdv/pedidos': typeof PdvPedidosRoute
+  '/pdv/precos': typeof PdvPrecosRoute
+  '/pdv/produtos': typeof PdvProdutosRoute
+  '/pdv/repasses': typeof PdvRepassesRoute
+  '/pdv/usuarios': typeof PdvUsuariosRoute
+  '/pdv/validades': typeof PdvValidadesRoute
+  '/pdv/vendas': typeof PdvVendasRoute
+  '/pdv/vendas-novo': typeof PdvVendasNovoRoute
+  '/admin': typeof AdminIndexRoute
+  '/cliente': typeof ClienteIndexRoute
+  '/cooperativa': typeof CooperativaIndexRoute
+  '/pdv': typeof PdvIndexRoute
+  '/admin/cooperativas/$id': typeof AdminCooperativasIdRoute
+  '/admin/lojas/$id': typeof AdminLojasIdRoute
+  '/cliente/categorias/$slug': typeof ClienteCategoriasSlugRoute
+  '/cliente/pedido/$id': typeof ClientePedidoIdRoute
+  '/cliente/produto/$id': typeof ClienteProdutoIdRoute
+  '/pdv/pedido/$id': typeof PdvPedidoIdRoute
+  '/admin/cooperativas': typeof AdminCooperativasIndexRoute
+  '/admin/lojas': typeof AdminLojasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/admin': typeof AdminRouteRouteWithChildren
+  '/cliente': typeof ClienteRouteRouteWithChildren
+  '/cooperativa': typeof CooperativaRouteRouteWithChildren
+  '/pdv': typeof PdvRouteRouteWithChildren
   '/auth': typeof AuthRoute
-  '/_authenticated/configuracoes': typeof AuthenticatedConfiguracoesRoute
-  '/_authenticated/desempenho': typeof AuthenticatedDesempenhoRoute
-  '/_authenticated/entradas': typeof AuthenticatedEntradasRoute
-  '/_authenticated/estoque': typeof AuthenticatedEstoqueRoute
-  '/_authenticated/extrato': typeof AuthenticatedExtratoRoute
-  '/_authenticated/fechamento': typeof AuthenticatedFechamentoRoute
-  '/_authenticated/impacto': typeof AuthenticatedImpactoRoute
-  '/_authenticated/inteligencia': typeof AuthenticatedInteligenciaRoute
-  '/_authenticated/mapa': typeof AuthenticatedMapaRoute
-  '/_authenticated/pdv': typeof AuthenticatedPdvRoute
-  '/_authenticated/produtos': typeof AuthenticatedProdutosRoute
-  '/_authenticated/rede': typeof AuthenticatedRedeRoute
-  '/_authenticated/repasses': typeof AuthenticatedRepassesRoute
-  '/_authenticated/transferencias': typeof AuthenticatedTransferenciasRoute
-  '/_authenticated/validades': typeof AuthenticatedValidadesRoute
-  '/_authenticated/vendas': typeof AuthenticatedVendasRoute
-  '/_authenticated/cooperativas/$id': typeof AuthenticatedCooperativasIdRoute
-  '/_authenticated/lojas/$id': typeof AuthenticatedLojasIdRoute
-  '/_authenticated/cooperativas/': typeof AuthenticatedCooperativasIndexRoute
-  '/_authenticated/lojas/': typeof AuthenticatedLojasIndexRoute
+  '/admin/clientes': typeof AdminClientesRoute
+  '/admin/configuracoes': typeof AdminConfiguracoesRoute
+  '/admin/desempenho': typeof AdminDesempenhoRoute
+  '/admin/entradas': typeof AdminEntradasRoute
+  '/admin/estoque': typeof AdminEstoqueRoute
+  '/admin/extrato': typeof AdminExtratoRoute
+  '/admin/fechamento': typeof AdminFechamentoRoute
+  '/admin/impacto': typeof AdminImpactoRoute
+  '/admin/inteligencia': typeof AdminInteligenciaRoute
+  '/admin/logs': typeof AdminLogsRoute
+  '/admin/mapa': typeof AdminMapaRoute
+  '/admin/municipios': typeof AdminMunicipiosRoute
+  '/admin/pedidos': typeof AdminPedidosRoute
+  '/admin/permissoes': typeof AdminPermissoesRoute
+  '/admin/produtos': typeof AdminProdutosRoute
+  '/admin/repasses': typeof AdminRepassesRoute
+  '/admin/transferencias': typeof AdminTransferenciasRoute
+  '/admin/usuarios': typeof AdminUsuariosRoute
+  '/admin/validades': typeof AdminValidadesRoute
+  '/admin/vendas': typeof AdminVendasRoute
+  '/cliente/carrinho': typeof ClienteCarrinhoRoute
+  '/cliente/conta': typeof ClienteContaRoute
+  '/cliente/cooperativas': typeof ClienteCooperativasRoute
+  '/cliente/enderecos': typeof ClienteEnderecosRoute
+  '/cliente/lojas': typeof ClienteLojasRoute
+  '/cliente/pedidos': typeof ClientePedidosRoute
+  '/cliente/preferencias': typeof ClientePreferenciasRoute
+  '/cliente/produtos': typeof ClienteProdutosRoute
+  '/cooperativa/atuacao': typeof CooperativaAtuacaoRoute
+  '/cooperativa/categorias': typeof CooperativaCategoriasRoute
+  '/cooperativa/comercializados': typeof CooperativaComercializadosRoute
+  '/cooperativa/dados': typeof CooperativaDadosRoute
+  '/cooperativa/desempenho': typeof CooperativaDesempenhoRoute
+  '/cooperativa/estoque': typeof CooperativaEstoqueRoute
+  '/cooperativa/historico-financeiro': typeof CooperativaHistoricoFinanceiroRoute
+  '/cooperativa/movimentacoes': typeof CooperativaMovimentacoesRoute
+  '/cooperativa/pdvs': typeof CooperativaPdvsRoute
+  '/cooperativa/pedidos': typeof CooperativaPedidosRoute
+  '/cooperativa/precos': typeof CooperativaPrecosRoute
+  '/cooperativa/produto-novo': typeof CooperativaProdutoNovoRoute
+  '/cooperativa/produtos': typeof CooperativaProdutosRoute
+  '/cooperativa/repasses': typeof CooperativaRepassesRoute
+  '/cooperativa/responsaveis': typeof CooperativaResponsaveisRoute
+  '/cooperativa/usuarios': typeof CooperativaUsuariosRoute
+  '/cooperativa/validades': typeof CooperativaValidadesRoute
+  '/cooperativa/valores-receber': typeof CooperativaValoresReceberRoute
+  '/cooperativa/vendas': typeof CooperativaVendasRoute
+  '/pdv/catalogo': typeof PdvCatalogoRoute
+  '/pdv/estoque': typeof PdvEstoqueRoute
+  '/pdv/financeiro': typeof PdvFinanceiroRoute
+  '/pdv/historico': typeof PdvHistoricoRoute
+  '/pdv/historico-financeiro': typeof PdvHistoricoFinanceiroRoute
+  '/pdv/horarios': typeof PdvHorariosRoute
+  '/pdv/loja': typeof PdvLojaRoute
+  '/pdv/movimentacoes': typeof PdvMovimentacoesRoute
+  '/pdv/pedidos': typeof PdvPedidosRoute
+  '/pdv/precos': typeof PdvPrecosRoute
+  '/pdv/produtos': typeof PdvProdutosRoute
+  '/pdv/repasses': typeof PdvRepassesRoute
+  '/pdv/usuarios': typeof PdvUsuariosRoute
+  '/pdv/validades': typeof PdvValidadesRoute
+  '/pdv/vendas': typeof PdvVendasRoute
+  '/pdv/vendas-novo': typeof PdvVendasNovoRoute
+  '/admin/': typeof AdminIndexRoute
+  '/cliente/': typeof ClienteIndexRoute
+  '/cooperativa/': typeof CooperativaIndexRoute
+  '/pdv/': typeof PdvIndexRoute
+  '/admin/cooperativas/$id': typeof AdminCooperativasIdRoute
+  '/admin/lojas/$id': typeof AdminLojasIdRoute
+  '/cliente/categorias/$slug': typeof ClienteCategoriasSlugRoute
+  '/cliente/pedido/$id': typeof ClientePedidoIdRoute
+  '/cliente/produto/$id': typeof ClienteProdutoIdRoute
+  '/pdv/pedido/$id': typeof PdvPedidoIdRoute
+  '/admin/cooperativas/': typeof AdminCooperativasIndexRoute
+  '/admin/lojas/': typeof AdminLojasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/auth'
-    | '/configuracoes'
-    | '/desempenho'
-    | '/entradas'
-    | '/estoque'
-    | '/extrato'
-    | '/fechamento'
-    | '/impacto'
-    | '/inteligencia'
-    | '/mapa'
+    | '/admin'
+    | '/cliente'
+    | '/cooperativa'
     | '/pdv'
-    | '/produtos'
-    | '/rede'
-    | '/repasses'
-    | '/transferencias'
-    | '/validades'
-    | '/vendas'
-    | '/cooperativas/$id'
-    | '/lojas/$id'
-    | '/cooperativas/'
-    | '/lojas/'
+    | '/auth'
+    | '/admin/clientes'
+    | '/admin/configuracoes'
+    | '/admin/desempenho'
+    | '/admin/entradas'
+    | '/admin/estoque'
+    | '/admin/extrato'
+    | '/admin/fechamento'
+    | '/admin/impacto'
+    | '/admin/inteligencia'
+    | '/admin/logs'
+    | '/admin/mapa'
+    | '/admin/municipios'
+    | '/admin/pedidos'
+    | '/admin/permissoes'
+    | '/admin/produtos'
+    | '/admin/repasses'
+    | '/admin/transferencias'
+    | '/admin/usuarios'
+    | '/admin/validades'
+    | '/admin/vendas'
+    | '/cliente/carrinho'
+    | '/cliente/conta'
+    | '/cliente/cooperativas'
+    | '/cliente/enderecos'
+    | '/cliente/lojas'
+    | '/cliente/pedidos'
+    | '/cliente/preferencias'
+    | '/cliente/produtos'
+    | '/cooperativa/atuacao'
+    | '/cooperativa/categorias'
+    | '/cooperativa/comercializados'
+    | '/cooperativa/dados'
+    | '/cooperativa/desempenho'
+    | '/cooperativa/estoque'
+    | '/cooperativa/historico-financeiro'
+    | '/cooperativa/movimentacoes'
+    | '/cooperativa/pdvs'
+    | '/cooperativa/pedidos'
+    | '/cooperativa/precos'
+    | '/cooperativa/produto-novo'
+    | '/cooperativa/produtos'
+    | '/cooperativa/repasses'
+    | '/cooperativa/responsaveis'
+    | '/cooperativa/usuarios'
+    | '/cooperativa/validades'
+    | '/cooperativa/valores-receber'
+    | '/cooperativa/vendas'
+    | '/pdv/catalogo'
+    | '/pdv/estoque'
+    | '/pdv/financeiro'
+    | '/pdv/historico'
+    | '/pdv/historico-financeiro'
+    | '/pdv/horarios'
+    | '/pdv/loja'
+    | '/pdv/movimentacoes'
+    | '/pdv/pedidos'
+    | '/pdv/precos'
+    | '/pdv/produtos'
+    | '/pdv/repasses'
+    | '/pdv/usuarios'
+    | '/pdv/validades'
+    | '/pdv/vendas'
+    | '/pdv/vendas-novo'
+    | '/admin/'
+    | '/cliente/'
+    | '/cooperativa/'
+    | '/pdv/'
+    | '/admin/cooperativas/$id'
+    | '/admin/lojas/$id'
+    | '/cliente/categorias/$slug'
+    | '/cliente/pedido/$id'
+    | '/cliente/produto/$id'
+    | '/pdv/pedido/$id'
+    | '/admin/cooperativas/'
+    | '/admin/lojas/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/auth'
-    | '/configuracoes'
-    | '/desempenho'
-    | '/entradas'
-    | '/estoque'
-    | '/extrato'
-    | '/fechamento'
-    | '/impacto'
-    | '/inteligencia'
-    | '/mapa'
+    | '/admin/clientes'
+    | '/admin/configuracoes'
+    | '/admin/desempenho'
+    | '/admin/entradas'
+    | '/admin/estoque'
+    | '/admin/extrato'
+    | '/admin/fechamento'
+    | '/admin/impacto'
+    | '/admin/inteligencia'
+    | '/admin/logs'
+    | '/admin/mapa'
+    | '/admin/municipios'
+    | '/admin/pedidos'
+    | '/admin/permissoes'
+    | '/admin/produtos'
+    | '/admin/repasses'
+    | '/admin/transferencias'
+    | '/admin/usuarios'
+    | '/admin/validades'
+    | '/admin/vendas'
+    | '/cliente/carrinho'
+    | '/cliente/conta'
+    | '/cliente/cooperativas'
+    | '/cliente/enderecos'
+    | '/cliente/lojas'
+    | '/cliente/pedidos'
+    | '/cliente/preferencias'
+    | '/cliente/produtos'
+    | '/cooperativa/atuacao'
+    | '/cooperativa/categorias'
+    | '/cooperativa/comercializados'
+    | '/cooperativa/dados'
+    | '/cooperativa/desempenho'
+    | '/cooperativa/estoque'
+    | '/cooperativa/historico-financeiro'
+    | '/cooperativa/movimentacoes'
+    | '/cooperativa/pdvs'
+    | '/cooperativa/pedidos'
+    | '/cooperativa/precos'
+    | '/cooperativa/produto-novo'
+    | '/cooperativa/produtos'
+    | '/cooperativa/repasses'
+    | '/cooperativa/responsaveis'
+    | '/cooperativa/usuarios'
+    | '/cooperativa/validades'
+    | '/cooperativa/valores-receber'
+    | '/cooperativa/vendas'
+    | '/pdv/catalogo'
+    | '/pdv/estoque'
+    | '/pdv/financeiro'
+    | '/pdv/historico'
+    | '/pdv/historico-financeiro'
+    | '/pdv/horarios'
+    | '/pdv/loja'
+    | '/pdv/movimentacoes'
+    | '/pdv/pedidos'
+    | '/pdv/precos'
+    | '/pdv/produtos'
+    | '/pdv/repasses'
+    | '/pdv/usuarios'
+    | '/pdv/validades'
+    | '/pdv/vendas'
+    | '/pdv/vendas-novo'
+    | '/admin'
+    | '/cliente'
+    | '/cooperativa'
     | '/pdv'
-    | '/produtos'
-    | '/rede'
-    | '/repasses'
-    | '/transferencias'
-    | '/validades'
-    | '/vendas'
-    | '/cooperativas/$id'
-    | '/lojas/$id'
-    | '/cooperativas'
-    | '/lojas'
+    | '/admin/cooperativas/$id'
+    | '/admin/lojas/$id'
+    | '/cliente/categorias/$slug'
+    | '/cliente/pedido/$id'
+    | '/cliente/produto/$id'
+    | '/pdv/pedido/$id'
+    | '/admin/cooperativas'
+    | '/admin/lojas'
   id:
     | '__root__'
     | '/'
-    | '/_authenticated'
+    | '/admin'
+    | '/cliente'
+    | '/cooperativa'
+    | '/pdv'
     | '/auth'
-    | '/_authenticated/configuracoes'
-    | '/_authenticated/desempenho'
-    | '/_authenticated/entradas'
-    | '/_authenticated/estoque'
-    | '/_authenticated/extrato'
-    | '/_authenticated/fechamento'
-    | '/_authenticated/impacto'
-    | '/_authenticated/inteligencia'
-    | '/_authenticated/mapa'
-    | '/_authenticated/pdv'
-    | '/_authenticated/produtos'
-    | '/_authenticated/rede'
-    | '/_authenticated/repasses'
-    | '/_authenticated/transferencias'
-    | '/_authenticated/validades'
-    | '/_authenticated/vendas'
-    | '/_authenticated/cooperativas/$id'
-    | '/_authenticated/lojas/$id'
-    | '/_authenticated/cooperativas/'
-    | '/_authenticated/lojas/'
+    | '/admin/clientes'
+    | '/admin/configuracoes'
+    | '/admin/desempenho'
+    | '/admin/entradas'
+    | '/admin/estoque'
+    | '/admin/extrato'
+    | '/admin/fechamento'
+    | '/admin/impacto'
+    | '/admin/inteligencia'
+    | '/admin/logs'
+    | '/admin/mapa'
+    | '/admin/municipios'
+    | '/admin/pedidos'
+    | '/admin/permissoes'
+    | '/admin/produtos'
+    | '/admin/repasses'
+    | '/admin/transferencias'
+    | '/admin/usuarios'
+    | '/admin/validades'
+    | '/admin/vendas'
+    | '/cliente/carrinho'
+    | '/cliente/conta'
+    | '/cliente/cooperativas'
+    | '/cliente/enderecos'
+    | '/cliente/lojas'
+    | '/cliente/pedidos'
+    | '/cliente/preferencias'
+    | '/cliente/produtos'
+    | '/cooperativa/atuacao'
+    | '/cooperativa/categorias'
+    | '/cooperativa/comercializados'
+    | '/cooperativa/dados'
+    | '/cooperativa/desempenho'
+    | '/cooperativa/estoque'
+    | '/cooperativa/historico-financeiro'
+    | '/cooperativa/movimentacoes'
+    | '/cooperativa/pdvs'
+    | '/cooperativa/pedidos'
+    | '/cooperativa/precos'
+    | '/cooperativa/produto-novo'
+    | '/cooperativa/produtos'
+    | '/cooperativa/repasses'
+    | '/cooperativa/responsaveis'
+    | '/cooperativa/usuarios'
+    | '/cooperativa/validades'
+    | '/cooperativa/valores-receber'
+    | '/cooperativa/vendas'
+    | '/pdv/catalogo'
+    | '/pdv/estoque'
+    | '/pdv/financeiro'
+    | '/pdv/historico'
+    | '/pdv/historico-financeiro'
+    | '/pdv/horarios'
+    | '/pdv/loja'
+    | '/pdv/movimentacoes'
+    | '/pdv/pedidos'
+    | '/pdv/precos'
+    | '/pdv/produtos'
+    | '/pdv/repasses'
+    | '/pdv/usuarios'
+    | '/pdv/validades'
+    | '/pdv/vendas'
+    | '/pdv/vendas-novo'
+    | '/admin/'
+    | '/cliente/'
+    | '/cooperativa/'
+    | '/pdv/'
+    | '/admin/cooperativas/$id'
+    | '/admin/lojas/$id'
+    | '/cliente/categorias/$slug'
+    | '/cliente/pedido/$id'
+    | '/cliente/produto/$id'
+    | '/pdv/pedido/$id'
+    | '/admin/cooperativas/'
+    | '/admin/lojas/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AdminRouteRoute: typeof AdminRouteRouteWithChildren
+  ClienteRouteRoute: typeof ClienteRouteRouteWithChildren
+  CooperativaRouteRoute: typeof CooperativaRouteRouteWithChildren
+  PdvRouteRoute: typeof PdvRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
 }
 
@@ -318,11 +1013,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated': {
-      id: '/_authenticated'
-      path: ''
-      fullPath: '/'
-      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -332,201 +1027,750 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/configuracoes': {
-      id: '/_authenticated/configuracoes'
-      path: '/configuracoes'
-      fullPath: '/configuracoes'
-      preLoaderRoute: typeof AuthenticatedConfiguracoesRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+    '/cliente': {
+      id: '/cliente'
+      path: '/cliente'
+      fullPath: '/cliente'
+      preLoaderRoute: typeof ClienteRouteRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/desempenho': {
-      id: '/_authenticated/desempenho'
-      path: '/desempenho'
-      fullPath: '/desempenho'
-      preLoaderRoute: typeof AuthenticatedDesempenhoRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+    '/cooperativa': {
+      id: '/cooperativa'
+      path: '/cooperativa'
+      fullPath: '/cooperativa'
+      preLoaderRoute: typeof CooperativaRouteRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/entradas': {
-      id: '/_authenticated/entradas'
-      path: '/entradas'
-      fullPath: '/entradas'
-      preLoaderRoute: typeof AuthenticatedEntradasRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/estoque': {
-      id: '/_authenticated/estoque'
-      path: '/estoque'
-      fullPath: '/estoque'
-      preLoaderRoute: typeof AuthenticatedEstoqueRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/extrato': {
-      id: '/_authenticated/extrato'
-      path: '/extrato'
-      fullPath: '/extrato'
-      preLoaderRoute: typeof AuthenticatedExtratoRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/fechamento': {
-      id: '/_authenticated/fechamento'
-      path: '/fechamento'
-      fullPath: '/fechamento'
-      preLoaderRoute: typeof AuthenticatedFechamentoRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/impacto': {
-      id: '/_authenticated/impacto'
-      path: '/impacto'
-      fullPath: '/impacto'
-      preLoaderRoute: typeof AuthenticatedImpactoRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/inteligencia': {
-      id: '/_authenticated/inteligencia'
-      path: '/inteligencia'
-      fullPath: '/inteligencia'
-      preLoaderRoute: typeof AuthenticatedInteligenciaRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/mapa': {
-      id: '/_authenticated/mapa'
-      path: '/mapa'
-      fullPath: '/mapa'
-      preLoaderRoute: typeof AuthenticatedMapaRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/pdv': {
-      id: '/_authenticated/pdv'
+    '/pdv': {
+      id: '/pdv'
       path: '/pdv'
       fullPath: '/pdv'
-      preLoaderRoute: typeof AuthenticatedPdvRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+      preLoaderRoute: typeof PdvRouteRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/produtos': {
-      id: '/_authenticated/produtos'
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/clientes': {
+      id: '/admin/clientes'
+      path: '/clientes'
+      fullPath: '/admin/clientes'
+      preLoaderRoute: typeof AdminClientesRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/configuracoes': {
+      id: '/admin/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/admin/configuracoes'
+      preLoaderRoute: typeof AdminConfiguracoesRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/desempenho': {
+      id: '/admin/desempenho'
+      path: '/desempenho'
+      fullPath: '/admin/desempenho'
+      preLoaderRoute: typeof AdminDesempenhoRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/entradas': {
+      id: '/admin/entradas'
+      path: '/entradas'
+      fullPath: '/admin/entradas'
+      preLoaderRoute: typeof AdminEntradasRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/estoque': {
+      id: '/admin/estoque'
+      path: '/estoque'
+      fullPath: '/admin/estoque'
+      preLoaderRoute: typeof AdminEstoqueRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/extrato': {
+      id: '/admin/extrato'
+      path: '/extrato'
+      fullPath: '/admin/extrato'
+      preLoaderRoute: typeof AdminExtratoRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/fechamento': {
+      id: '/admin/fechamento'
+      path: '/fechamento'
+      fullPath: '/admin/fechamento'
+      preLoaderRoute: typeof AdminFechamentoRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/impacto': {
+      id: '/admin/impacto'
+      path: '/impacto'
+      fullPath: '/admin/impacto'
+      preLoaderRoute: typeof AdminImpactoRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/inteligencia': {
+      id: '/admin/inteligencia'
+      path: '/inteligencia'
+      fullPath: '/admin/inteligencia'
+      preLoaderRoute: typeof AdminInteligenciaRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/logs': {
+      id: '/admin/logs'
+      path: '/logs'
+      fullPath: '/admin/logs'
+      preLoaderRoute: typeof AdminLogsRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/mapa': {
+      id: '/admin/mapa'
+      path: '/mapa'
+      fullPath: '/admin/mapa'
+      preLoaderRoute: typeof AdminMapaRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/municipios': {
+      id: '/admin/municipios'
+      path: '/municipios'
+      fullPath: '/admin/municipios'
+      preLoaderRoute: typeof AdminMunicipiosRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/pedidos': {
+      id: '/admin/pedidos'
+      path: '/pedidos'
+      fullPath: '/admin/pedidos'
+      preLoaderRoute: typeof AdminPedidosRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/permissoes': {
+      id: '/admin/permissoes'
+      path: '/permissoes'
+      fullPath: '/admin/permissoes'
+      preLoaderRoute: typeof AdminPermissoesRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/produtos': {
+      id: '/admin/produtos'
       path: '/produtos'
-      fullPath: '/produtos'
-      preLoaderRoute: typeof AuthenticatedProdutosRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+      fullPath: '/admin/produtos'
+      preLoaderRoute: typeof AdminProdutosRouteImport
+      parentRoute: typeof AdminRouteRoute
     }
-    '/_authenticated/rede': {
-      id: '/_authenticated/rede'
-      path: '/rede'
-      fullPath: '/rede'
-      preLoaderRoute: typeof AuthenticatedRedeRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/repasses': {
-      id: '/_authenticated/repasses'
+    '/admin/repasses': {
+      id: '/admin/repasses'
       path: '/repasses'
-      fullPath: '/repasses'
-      preLoaderRoute: typeof AuthenticatedRepassesRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+      fullPath: '/admin/repasses'
+      preLoaderRoute: typeof AdminRepassesRouteImport
+      parentRoute: typeof AdminRouteRoute
     }
-    '/_authenticated/transferencias': {
-      id: '/_authenticated/transferencias'
+    '/admin/transferencias': {
+      id: '/admin/transferencias'
       path: '/transferencias'
-      fullPath: '/transferencias'
-      preLoaderRoute: typeof AuthenticatedTransferenciasRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+      fullPath: '/admin/transferencias'
+      preLoaderRoute: typeof AdminTransferenciasRouteImport
+      parentRoute: typeof AdminRouteRoute
     }
-    '/_authenticated/validades': {
-      id: '/_authenticated/validades'
+    '/admin/usuarios': {
+      id: '/admin/usuarios'
+      path: '/usuarios'
+      fullPath: '/admin/usuarios'
+      preLoaderRoute: typeof AdminUsuariosRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/validades': {
+      id: '/admin/validades'
       path: '/validades'
-      fullPath: '/validades'
-      preLoaderRoute: typeof AuthenticatedValidadesRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+      fullPath: '/admin/validades'
+      preLoaderRoute: typeof AdminValidadesRouteImport
+      parentRoute: typeof AdminRouteRoute
     }
-    '/_authenticated/vendas': {
-      id: '/_authenticated/vendas'
+    '/admin/vendas': {
+      id: '/admin/vendas'
       path: '/vendas'
-      fullPath: '/vendas'
-      preLoaderRoute: typeof AuthenticatedVendasRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+      fullPath: '/admin/vendas'
+      preLoaderRoute: typeof AdminVendasRouteImport
+      parentRoute: typeof AdminRouteRoute
     }
-    '/_authenticated/cooperativas/': {
-      id: '/_authenticated/cooperativas/'
+    '/cliente/': {
+      id: '/cliente/'
+      path: '/'
+      fullPath: '/cliente/'
+      preLoaderRoute: typeof ClienteIndexRouteImport
+      parentRoute: typeof ClienteRouteRoute
+    }
+    '/cliente/carrinho': {
+      id: '/cliente/carrinho'
+      path: '/carrinho'
+      fullPath: '/cliente/carrinho'
+      preLoaderRoute: typeof ClienteCarrinhoRouteImport
+      parentRoute: typeof ClienteRouteRoute
+    }
+    '/cliente/conta': {
+      id: '/cliente/conta'
+      path: '/conta'
+      fullPath: '/cliente/conta'
+      preLoaderRoute: typeof ClienteContaRouteImport
+      parentRoute: typeof ClienteRouteRoute
+    }
+    '/cliente/cooperativas': {
+      id: '/cliente/cooperativas'
       path: '/cooperativas'
-      fullPath: '/cooperativas/'
-      preLoaderRoute: typeof AuthenticatedCooperativasIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+      fullPath: '/cliente/cooperativas'
+      preLoaderRoute: typeof ClienteCooperativasRouteImport
+      parentRoute: typeof ClienteRouteRoute
     }
-    '/_authenticated/cooperativas/$id': {
-      id: '/_authenticated/cooperativas/$id'
-      path: '/cooperativas/$id'
-      fullPath: '/cooperativas/$id'
-      preLoaderRoute: typeof AuthenticatedCooperativasIdRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+    '/cliente/enderecos': {
+      id: '/cliente/enderecos'
+      path: '/enderecos'
+      fullPath: '/cliente/enderecos'
+      preLoaderRoute: typeof ClienteEnderecosRouteImport
+      parentRoute: typeof ClienteRouteRoute
     }
-    '/_authenticated/lojas/': {
-      id: '/_authenticated/lojas/'
+    '/cliente/lojas': {
+      id: '/cliente/lojas'
       path: '/lojas'
-      fullPath: '/lojas/'
-      preLoaderRoute: typeof AuthenticatedLojasIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+      fullPath: '/cliente/lojas'
+      preLoaderRoute: typeof ClienteLojasRouteImport
+      parentRoute: typeof ClienteRouteRoute
     }
-    '/_authenticated/lojas/$id': {
-      id: '/_authenticated/lojas/$id'
+    '/cliente/pedidos': {
+      id: '/cliente/pedidos'
+      path: '/pedidos'
+      fullPath: '/cliente/pedidos'
+      preLoaderRoute: typeof ClientePedidosRouteImport
+      parentRoute: typeof ClienteRouteRoute
+    }
+    '/cliente/preferencias': {
+      id: '/cliente/preferencias'
+      path: '/preferencias'
+      fullPath: '/cliente/preferencias'
+      preLoaderRoute: typeof ClientePreferenciasRouteImport
+      parentRoute: typeof ClienteRouteRoute
+    }
+    '/cliente/produtos': {
+      id: '/cliente/produtos'
+      path: '/produtos'
+      fullPath: '/cliente/produtos'
+      preLoaderRoute: typeof ClienteProdutosRouteImport
+      parentRoute: typeof ClienteRouteRoute
+    }
+    '/cooperativa/': {
+      id: '/cooperativa/'
+      path: '/'
+      fullPath: '/cooperativa/'
+      preLoaderRoute: typeof CooperativaIndexRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/cooperativa/atuacao': {
+      id: '/cooperativa/atuacao'
+      path: '/atuacao'
+      fullPath: '/cooperativa/atuacao'
+      preLoaderRoute: typeof CooperativaAtuacaoRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/cooperativa/categorias': {
+      id: '/cooperativa/categorias'
+      path: '/categorias'
+      fullPath: '/cooperativa/categorias'
+      preLoaderRoute: typeof CooperativaCategoriasRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/cooperativa/comercializados': {
+      id: '/cooperativa/comercializados'
+      path: '/comercializados'
+      fullPath: '/cooperativa/comercializados'
+      preLoaderRoute: typeof CooperativaComercializadosRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/cooperativa/dados': {
+      id: '/cooperativa/dados'
+      path: '/dados'
+      fullPath: '/cooperativa/dados'
+      preLoaderRoute: typeof CooperativaDadosRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/cooperativa/desempenho': {
+      id: '/cooperativa/desempenho'
+      path: '/desempenho'
+      fullPath: '/cooperativa/desempenho'
+      preLoaderRoute: typeof CooperativaDesempenhoRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/cooperativa/estoque': {
+      id: '/cooperativa/estoque'
+      path: '/estoque'
+      fullPath: '/cooperativa/estoque'
+      preLoaderRoute: typeof CooperativaEstoqueRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/cooperativa/historico-financeiro': {
+      id: '/cooperativa/historico-financeiro'
+      path: '/historico-financeiro'
+      fullPath: '/cooperativa/historico-financeiro'
+      preLoaderRoute: typeof CooperativaHistoricoFinanceiroRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/cooperativa/movimentacoes': {
+      id: '/cooperativa/movimentacoes'
+      path: '/movimentacoes'
+      fullPath: '/cooperativa/movimentacoes'
+      preLoaderRoute: typeof CooperativaMovimentacoesRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/cooperativa/pdvs': {
+      id: '/cooperativa/pdvs'
+      path: '/pdvs'
+      fullPath: '/cooperativa/pdvs'
+      preLoaderRoute: typeof CooperativaPdvsRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/cooperativa/pedidos': {
+      id: '/cooperativa/pedidos'
+      path: '/pedidos'
+      fullPath: '/cooperativa/pedidos'
+      preLoaderRoute: typeof CooperativaPedidosRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/cooperativa/precos': {
+      id: '/cooperativa/precos'
+      path: '/precos'
+      fullPath: '/cooperativa/precos'
+      preLoaderRoute: typeof CooperativaPrecosRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/cooperativa/produto-novo': {
+      id: '/cooperativa/produto-novo'
+      path: '/produto-novo'
+      fullPath: '/cooperativa/produto-novo'
+      preLoaderRoute: typeof CooperativaProdutoNovoRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/cooperativa/produtos': {
+      id: '/cooperativa/produtos'
+      path: '/produtos'
+      fullPath: '/cooperativa/produtos'
+      preLoaderRoute: typeof CooperativaProdutosRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/cooperativa/repasses': {
+      id: '/cooperativa/repasses'
+      path: '/repasses'
+      fullPath: '/cooperativa/repasses'
+      preLoaderRoute: typeof CooperativaRepassesRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/cooperativa/responsaveis': {
+      id: '/cooperativa/responsaveis'
+      path: '/responsaveis'
+      fullPath: '/cooperativa/responsaveis'
+      preLoaderRoute: typeof CooperativaResponsaveisRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/cooperativa/usuarios': {
+      id: '/cooperativa/usuarios'
+      path: '/usuarios'
+      fullPath: '/cooperativa/usuarios'
+      preLoaderRoute: typeof CooperativaUsuariosRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/cooperativa/validades': {
+      id: '/cooperativa/validades'
+      path: '/validades'
+      fullPath: '/cooperativa/validades'
+      preLoaderRoute: typeof CooperativaValidadesRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/cooperativa/valores-receber': {
+      id: '/cooperativa/valores-receber'
+      path: '/valores-receber'
+      fullPath: '/cooperativa/valores-receber'
+      preLoaderRoute: typeof CooperativaValoresReceberRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/cooperativa/vendas': {
+      id: '/cooperativa/vendas'
+      path: '/vendas'
+      fullPath: '/cooperativa/vendas'
+      preLoaderRoute: typeof CooperativaVendasRouteImport
+      parentRoute: typeof CooperativaRouteRoute
+    }
+    '/pdv/': {
+      id: '/pdv/'
+      path: '/'
+      fullPath: '/pdv/'
+      preLoaderRoute: typeof PdvIndexRouteImport
+      parentRoute: typeof PdvRouteRoute
+    }
+    '/pdv/catalogo': {
+      id: '/pdv/catalogo'
+      path: '/catalogo'
+      fullPath: '/pdv/catalogo'
+      preLoaderRoute: typeof PdvCatalogoRouteImport
+      parentRoute: typeof PdvRouteRoute
+    }
+    '/pdv/estoque': {
+      id: '/pdv/estoque'
+      path: '/estoque'
+      fullPath: '/pdv/estoque'
+      preLoaderRoute: typeof PdvEstoqueRouteImport
+      parentRoute: typeof PdvRouteRoute
+    }
+    '/pdv/financeiro': {
+      id: '/pdv/financeiro'
+      path: '/financeiro'
+      fullPath: '/pdv/financeiro'
+      preLoaderRoute: typeof PdvFinanceiroRouteImport
+      parentRoute: typeof PdvRouteRoute
+    }
+    '/pdv/historico': {
+      id: '/pdv/historico'
+      path: '/historico'
+      fullPath: '/pdv/historico'
+      preLoaderRoute: typeof PdvHistoricoRouteImport
+      parentRoute: typeof PdvRouteRoute
+    }
+    '/pdv/historico-financeiro': {
+      id: '/pdv/historico-financeiro'
+      path: '/historico-financeiro'
+      fullPath: '/pdv/historico-financeiro'
+      preLoaderRoute: typeof PdvHistoricoFinanceiroRouteImport
+      parentRoute: typeof PdvRouteRoute
+    }
+    '/pdv/horarios': {
+      id: '/pdv/horarios'
+      path: '/horarios'
+      fullPath: '/pdv/horarios'
+      preLoaderRoute: typeof PdvHorariosRouteImport
+      parentRoute: typeof PdvRouteRoute
+    }
+    '/pdv/loja': {
+      id: '/pdv/loja'
+      path: '/loja'
+      fullPath: '/pdv/loja'
+      preLoaderRoute: typeof PdvLojaRouteImport
+      parentRoute: typeof PdvRouteRoute
+    }
+    '/pdv/movimentacoes': {
+      id: '/pdv/movimentacoes'
+      path: '/movimentacoes'
+      fullPath: '/pdv/movimentacoes'
+      preLoaderRoute: typeof PdvMovimentacoesRouteImport
+      parentRoute: typeof PdvRouteRoute
+    }
+    '/pdv/pedidos': {
+      id: '/pdv/pedidos'
+      path: '/pedidos'
+      fullPath: '/pdv/pedidos'
+      preLoaderRoute: typeof PdvPedidosRouteImport
+      parentRoute: typeof PdvRouteRoute
+    }
+    '/pdv/precos': {
+      id: '/pdv/precos'
+      path: '/precos'
+      fullPath: '/pdv/precos'
+      preLoaderRoute: typeof PdvPrecosRouteImport
+      parentRoute: typeof PdvRouteRoute
+    }
+    '/pdv/produtos': {
+      id: '/pdv/produtos'
+      path: '/produtos'
+      fullPath: '/pdv/produtos'
+      preLoaderRoute: typeof PdvProdutosRouteImport
+      parentRoute: typeof PdvRouteRoute
+    }
+    '/pdv/repasses': {
+      id: '/pdv/repasses'
+      path: '/repasses'
+      fullPath: '/pdv/repasses'
+      preLoaderRoute: typeof PdvRepassesRouteImport
+      parentRoute: typeof PdvRouteRoute
+    }
+    '/pdv/usuarios': {
+      id: '/pdv/usuarios'
+      path: '/usuarios'
+      fullPath: '/pdv/usuarios'
+      preLoaderRoute: typeof PdvUsuariosRouteImport
+      parentRoute: typeof PdvRouteRoute
+    }
+    '/pdv/validades': {
+      id: '/pdv/validades'
+      path: '/validades'
+      fullPath: '/pdv/validades'
+      preLoaderRoute: typeof PdvValidadesRouteImport
+      parentRoute: typeof PdvRouteRoute
+    }
+    '/pdv/vendas': {
+      id: '/pdv/vendas'
+      path: '/vendas'
+      fullPath: '/pdv/vendas'
+      preLoaderRoute: typeof PdvVendasRouteImport
+      parentRoute: typeof PdvRouteRoute
+    }
+    '/pdv/vendas-novo': {
+      id: '/pdv/vendas-novo'
+      path: '/vendas-novo'
+      fullPath: '/pdv/vendas-novo'
+      preLoaderRoute: typeof PdvVendasNovoRouteImport
+      parentRoute: typeof PdvRouteRoute
+    }
+    '/admin/cooperativas/': {
+      id: '/admin/cooperativas/'
+      path: '/cooperativas'
+      fullPath: '/admin/cooperativas/'
+      preLoaderRoute: typeof AdminCooperativasIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/cooperativas/$id': {
+      id: '/admin/cooperativas/$id'
+      path: '/cooperativas/$id'
+      fullPath: '/admin/cooperativas/$id'
+      preLoaderRoute: typeof AdminCooperativasIdRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/lojas/': {
+      id: '/admin/lojas/'
+      path: '/lojas'
+      fullPath: '/admin/lojas/'
+      preLoaderRoute: typeof AdminLojasIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/lojas/$id': {
+      id: '/admin/lojas/$id'
       path: '/lojas/$id'
-      fullPath: '/lojas/$id'
-      preLoaderRoute: typeof AuthenticatedLojasIdRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+      fullPath: '/admin/lojas/$id'
+      preLoaderRoute: typeof AdminLojasIdRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/cliente/categorias/$slug': {
+      id: '/cliente/categorias/$slug'
+      path: '/categorias/$slug'
+      fullPath: '/cliente/categorias/$slug'
+      preLoaderRoute: typeof ClienteCategoriasSlugRouteImport
+      parentRoute: typeof ClienteRouteRoute
+    }
+    '/cliente/pedido/$id': {
+      id: '/cliente/pedido/$id'
+      path: '/pedido/$id'
+      fullPath: '/cliente/pedido/$id'
+      preLoaderRoute: typeof ClientePedidoIdRouteImport
+      parentRoute: typeof ClienteRouteRoute
+    }
+    '/cliente/produto/$id': {
+      id: '/cliente/produto/$id'
+      path: '/produto/$id'
+      fullPath: '/cliente/produto/$id'
+      preLoaderRoute: typeof ClienteProdutoIdRouteImport
+      parentRoute: typeof ClienteRouteRoute
+    }
+    '/pdv/pedido/$id': {
+      id: '/pdv/pedido/$id'
+      path: '/pedido/$id'
+      fullPath: '/pdv/pedido/$id'
+      preLoaderRoute: typeof PdvPedidoIdRouteImport
+      parentRoute: typeof PdvRouteRoute
     }
   }
 }
 
-interface AuthenticatedRouteRouteChildren {
-  AuthenticatedConfiguracoesRoute: typeof AuthenticatedConfiguracoesRoute
-  AuthenticatedDesempenhoRoute: typeof AuthenticatedDesempenhoRoute
-  AuthenticatedEntradasRoute: typeof AuthenticatedEntradasRoute
-  AuthenticatedEstoqueRoute: typeof AuthenticatedEstoqueRoute
-  AuthenticatedExtratoRoute: typeof AuthenticatedExtratoRoute
-  AuthenticatedFechamentoRoute: typeof AuthenticatedFechamentoRoute
-  AuthenticatedImpactoRoute: typeof AuthenticatedImpactoRoute
-  AuthenticatedInteligenciaRoute: typeof AuthenticatedInteligenciaRoute
-  AuthenticatedMapaRoute: typeof AuthenticatedMapaRoute
-  AuthenticatedPdvRoute: typeof AuthenticatedPdvRoute
-  AuthenticatedProdutosRoute: typeof AuthenticatedProdutosRoute
-  AuthenticatedRedeRoute: typeof AuthenticatedRedeRoute
-  AuthenticatedRepassesRoute: typeof AuthenticatedRepassesRoute
-  AuthenticatedTransferenciasRoute: typeof AuthenticatedTransferenciasRoute
-  AuthenticatedValidadesRoute: typeof AuthenticatedValidadesRoute
-  AuthenticatedVendasRoute: typeof AuthenticatedVendasRoute
-  AuthenticatedCooperativasIdRoute: typeof AuthenticatedCooperativasIdRoute
-  AuthenticatedLojasIdRoute: typeof AuthenticatedLojasIdRoute
-  AuthenticatedCooperativasIndexRoute: typeof AuthenticatedCooperativasIndexRoute
-  AuthenticatedLojasIndexRoute: typeof AuthenticatedLojasIndexRoute
+interface AdminRouteRouteChildren {
+  AdminClientesRoute: typeof AdminClientesRoute
+  AdminConfiguracoesRoute: typeof AdminConfiguracoesRoute
+  AdminDesempenhoRoute: typeof AdminDesempenhoRoute
+  AdminEntradasRoute: typeof AdminEntradasRoute
+  AdminEstoqueRoute: typeof AdminEstoqueRoute
+  AdminExtratoRoute: typeof AdminExtratoRoute
+  AdminFechamentoRoute: typeof AdminFechamentoRoute
+  AdminImpactoRoute: typeof AdminImpactoRoute
+  AdminInteligenciaRoute: typeof AdminInteligenciaRoute
+  AdminLogsRoute: typeof AdminLogsRoute
+  AdminMapaRoute: typeof AdminMapaRoute
+  AdminMunicipiosRoute: typeof AdminMunicipiosRoute
+  AdminPedidosRoute: typeof AdminPedidosRoute
+  AdminPermissoesRoute: typeof AdminPermissoesRoute
+  AdminProdutosRoute: typeof AdminProdutosRoute
+  AdminRepassesRoute: typeof AdminRepassesRoute
+  AdminTransferenciasRoute: typeof AdminTransferenciasRoute
+  AdminUsuariosRoute: typeof AdminUsuariosRoute
+  AdminValidadesRoute: typeof AdminValidadesRoute
+  AdminVendasRoute: typeof AdminVendasRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+  AdminCooperativasIdRoute: typeof AdminCooperativasIdRoute
+  AdminLojasIdRoute: typeof AdminLojasIdRoute
+  AdminCooperativasIndexRoute: typeof AdminCooperativasIndexRoute
+  AdminLojasIndexRoute: typeof AdminLojasIndexRoute
 }
 
-const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
-  AuthenticatedConfiguracoesRoute: AuthenticatedConfiguracoesRoute,
-  AuthenticatedDesempenhoRoute: AuthenticatedDesempenhoRoute,
-  AuthenticatedEntradasRoute: AuthenticatedEntradasRoute,
-  AuthenticatedEstoqueRoute: AuthenticatedEstoqueRoute,
-  AuthenticatedExtratoRoute: AuthenticatedExtratoRoute,
-  AuthenticatedFechamentoRoute: AuthenticatedFechamentoRoute,
-  AuthenticatedImpactoRoute: AuthenticatedImpactoRoute,
-  AuthenticatedInteligenciaRoute: AuthenticatedInteligenciaRoute,
-  AuthenticatedMapaRoute: AuthenticatedMapaRoute,
-  AuthenticatedPdvRoute: AuthenticatedPdvRoute,
-  AuthenticatedProdutosRoute: AuthenticatedProdutosRoute,
-  AuthenticatedRedeRoute: AuthenticatedRedeRoute,
-  AuthenticatedRepassesRoute: AuthenticatedRepassesRoute,
-  AuthenticatedTransferenciasRoute: AuthenticatedTransferenciasRoute,
-  AuthenticatedValidadesRoute: AuthenticatedValidadesRoute,
-  AuthenticatedVendasRoute: AuthenticatedVendasRoute,
-  AuthenticatedCooperativasIdRoute: AuthenticatedCooperativasIdRoute,
-  AuthenticatedLojasIdRoute: AuthenticatedLojasIdRoute,
-  AuthenticatedCooperativasIndexRoute: AuthenticatedCooperativasIndexRoute,
-  AuthenticatedLojasIndexRoute: AuthenticatedLojasIndexRoute,
+const AdminRouteRouteChildren: AdminRouteRouteChildren = {
+  AdminClientesRoute: AdminClientesRoute,
+  AdminConfiguracoesRoute: AdminConfiguracoesRoute,
+  AdminDesempenhoRoute: AdminDesempenhoRoute,
+  AdminEntradasRoute: AdminEntradasRoute,
+  AdminEstoqueRoute: AdminEstoqueRoute,
+  AdminExtratoRoute: AdminExtratoRoute,
+  AdminFechamentoRoute: AdminFechamentoRoute,
+  AdminImpactoRoute: AdminImpactoRoute,
+  AdminInteligenciaRoute: AdminInteligenciaRoute,
+  AdminLogsRoute: AdminLogsRoute,
+  AdminMapaRoute: AdminMapaRoute,
+  AdminMunicipiosRoute: AdminMunicipiosRoute,
+  AdminPedidosRoute: AdminPedidosRoute,
+  AdminPermissoesRoute: AdminPermissoesRoute,
+  AdminProdutosRoute: AdminProdutosRoute,
+  AdminRepassesRoute: AdminRepassesRoute,
+  AdminTransferenciasRoute: AdminTransferenciasRoute,
+  AdminUsuariosRoute: AdminUsuariosRoute,
+  AdminValidadesRoute: AdminValidadesRoute,
+  AdminVendasRoute: AdminVendasRoute,
+  AdminIndexRoute: AdminIndexRoute,
+  AdminCooperativasIdRoute: AdminCooperativasIdRoute,
+  AdminLojasIdRoute: AdminLojasIdRoute,
+  AdminCooperativasIndexRoute: AdminCooperativasIndexRoute,
+  AdminLojasIndexRoute: AdminLojasIndexRoute,
 }
 
-const AuthenticatedRouteRouteWithChildren =
-  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+const AdminRouteRouteWithChildren = AdminRouteRoute._addFileChildren(
+  AdminRouteRouteChildren,
+)
+
+interface ClienteRouteRouteChildren {
+  ClienteCarrinhoRoute: typeof ClienteCarrinhoRoute
+  ClienteContaRoute: typeof ClienteContaRoute
+  ClienteCooperativasRoute: typeof ClienteCooperativasRoute
+  ClienteEnderecosRoute: typeof ClienteEnderecosRoute
+  ClienteLojasRoute: typeof ClienteLojasRoute
+  ClientePedidosRoute: typeof ClientePedidosRoute
+  ClientePreferenciasRoute: typeof ClientePreferenciasRoute
+  ClienteProdutosRoute: typeof ClienteProdutosRoute
+  ClienteIndexRoute: typeof ClienteIndexRoute
+  ClienteCategoriasSlugRoute: typeof ClienteCategoriasSlugRoute
+  ClientePedidoIdRoute: typeof ClientePedidoIdRoute
+  ClienteProdutoIdRoute: typeof ClienteProdutoIdRoute
+}
+
+const ClienteRouteRouteChildren: ClienteRouteRouteChildren = {
+  ClienteCarrinhoRoute: ClienteCarrinhoRoute,
+  ClienteContaRoute: ClienteContaRoute,
+  ClienteCooperativasRoute: ClienteCooperativasRoute,
+  ClienteEnderecosRoute: ClienteEnderecosRoute,
+  ClienteLojasRoute: ClienteLojasRoute,
+  ClientePedidosRoute: ClientePedidosRoute,
+  ClientePreferenciasRoute: ClientePreferenciasRoute,
+  ClienteProdutosRoute: ClienteProdutosRoute,
+  ClienteIndexRoute: ClienteIndexRoute,
+  ClienteCategoriasSlugRoute: ClienteCategoriasSlugRoute,
+  ClientePedidoIdRoute: ClientePedidoIdRoute,
+  ClienteProdutoIdRoute: ClienteProdutoIdRoute,
+}
+
+const ClienteRouteRouteWithChildren = ClienteRouteRoute._addFileChildren(
+  ClienteRouteRouteChildren,
+)
+
+interface CooperativaRouteRouteChildren {
+  CooperativaAtuacaoRoute: typeof CooperativaAtuacaoRoute
+  CooperativaCategoriasRoute: typeof CooperativaCategoriasRoute
+  CooperativaComercializadosRoute: typeof CooperativaComercializadosRoute
+  CooperativaDadosRoute: typeof CooperativaDadosRoute
+  CooperativaDesempenhoRoute: typeof CooperativaDesempenhoRoute
+  CooperativaEstoqueRoute: typeof CooperativaEstoqueRoute
+  CooperativaHistoricoFinanceiroRoute: typeof CooperativaHistoricoFinanceiroRoute
+  CooperativaMovimentacoesRoute: typeof CooperativaMovimentacoesRoute
+  CooperativaPdvsRoute: typeof CooperativaPdvsRoute
+  CooperativaPedidosRoute: typeof CooperativaPedidosRoute
+  CooperativaPrecosRoute: typeof CooperativaPrecosRoute
+  CooperativaProdutoNovoRoute: typeof CooperativaProdutoNovoRoute
+  CooperativaProdutosRoute: typeof CooperativaProdutosRoute
+  CooperativaRepassesRoute: typeof CooperativaRepassesRoute
+  CooperativaResponsaveisRoute: typeof CooperativaResponsaveisRoute
+  CooperativaUsuariosRoute: typeof CooperativaUsuariosRoute
+  CooperativaValidadesRoute: typeof CooperativaValidadesRoute
+  CooperativaValoresReceberRoute: typeof CooperativaValoresReceberRoute
+  CooperativaVendasRoute: typeof CooperativaVendasRoute
+  CooperativaIndexRoute: typeof CooperativaIndexRoute
+}
+
+const CooperativaRouteRouteChildren: CooperativaRouteRouteChildren = {
+  CooperativaAtuacaoRoute: CooperativaAtuacaoRoute,
+  CooperativaCategoriasRoute: CooperativaCategoriasRoute,
+  CooperativaComercializadosRoute: CooperativaComercializadosRoute,
+  CooperativaDadosRoute: CooperativaDadosRoute,
+  CooperativaDesempenhoRoute: CooperativaDesempenhoRoute,
+  CooperativaEstoqueRoute: CooperativaEstoqueRoute,
+  CooperativaHistoricoFinanceiroRoute: CooperativaHistoricoFinanceiroRoute,
+  CooperativaMovimentacoesRoute: CooperativaMovimentacoesRoute,
+  CooperativaPdvsRoute: CooperativaPdvsRoute,
+  CooperativaPedidosRoute: CooperativaPedidosRoute,
+  CooperativaPrecosRoute: CooperativaPrecosRoute,
+  CooperativaProdutoNovoRoute: CooperativaProdutoNovoRoute,
+  CooperativaProdutosRoute: CooperativaProdutosRoute,
+  CooperativaRepassesRoute: CooperativaRepassesRoute,
+  CooperativaResponsaveisRoute: CooperativaResponsaveisRoute,
+  CooperativaUsuariosRoute: CooperativaUsuariosRoute,
+  CooperativaValidadesRoute: CooperativaValidadesRoute,
+  CooperativaValoresReceberRoute: CooperativaValoresReceberRoute,
+  CooperativaVendasRoute: CooperativaVendasRoute,
+  CooperativaIndexRoute: CooperativaIndexRoute,
+}
+
+const CooperativaRouteRouteWithChildren =
+  CooperativaRouteRoute._addFileChildren(CooperativaRouteRouteChildren)
+
+interface PdvRouteRouteChildren {
+  PdvCatalogoRoute: typeof PdvCatalogoRoute
+  PdvEstoqueRoute: typeof PdvEstoqueRoute
+  PdvFinanceiroRoute: typeof PdvFinanceiroRoute
+  PdvHistoricoRoute: typeof PdvHistoricoRoute
+  PdvHistoricoFinanceiroRoute: typeof PdvHistoricoFinanceiroRoute
+  PdvHorariosRoute: typeof PdvHorariosRoute
+  PdvLojaRoute: typeof PdvLojaRoute
+  PdvMovimentacoesRoute: typeof PdvMovimentacoesRoute
+  PdvPedidosRoute: typeof PdvPedidosRoute
+  PdvPrecosRoute: typeof PdvPrecosRoute
+  PdvProdutosRoute: typeof PdvProdutosRoute
+  PdvRepassesRoute: typeof PdvRepassesRoute
+  PdvUsuariosRoute: typeof PdvUsuariosRoute
+  PdvValidadesRoute: typeof PdvValidadesRoute
+  PdvVendasRoute: typeof PdvVendasRoute
+  PdvVendasNovoRoute: typeof PdvVendasNovoRoute
+  PdvIndexRoute: typeof PdvIndexRoute
+  PdvPedidoIdRoute: typeof PdvPedidoIdRoute
+}
+
+const PdvRouteRouteChildren: PdvRouteRouteChildren = {
+  PdvCatalogoRoute: PdvCatalogoRoute,
+  PdvEstoqueRoute: PdvEstoqueRoute,
+  PdvFinanceiroRoute: PdvFinanceiroRoute,
+  PdvHistoricoRoute: PdvHistoricoRoute,
+  PdvHistoricoFinanceiroRoute: PdvHistoricoFinanceiroRoute,
+  PdvHorariosRoute: PdvHorariosRoute,
+  PdvLojaRoute: PdvLojaRoute,
+  PdvMovimentacoesRoute: PdvMovimentacoesRoute,
+  PdvPedidosRoute: PdvPedidosRoute,
+  PdvPrecosRoute: PdvPrecosRoute,
+  PdvProdutosRoute: PdvProdutosRoute,
+  PdvRepassesRoute: PdvRepassesRoute,
+  PdvUsuariosRoute: PdvUsuariosRoute,
+  PdvValidadesRoute: PdvValidadesRoute,
+  PdvVendasRoute: PdvVendasRoute,
+  PdvVendasNovoRoute: PdvVendasNovoRoute,
+  PdvIndexRoute: PdvIndexRoute,
+  PdvPedidoIdRoute: PdvPedidoIdRoute,
+}
+
+const PdvRouteRouteWithChildren = PdvRouteRoute._addFileChildren(
+  PdvRouteRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AdminRouteRoute: AdminRouteRouteWithChildren,
+  ClienteRouteRoute: ClienteRouteRouteWithChildren,
+  CooperativaRouteRoute: CooperativaRouteRouteWithChildren,
+  PdvRouteRoute: PdvRouteRouteWithChildren,
   AuthRoute: AuthRoute,
 }
 export const routeTree = rootRouteImport
