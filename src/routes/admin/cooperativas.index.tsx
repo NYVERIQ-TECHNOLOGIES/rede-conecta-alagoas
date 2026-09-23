@@ -7,6 +7,7 @@ import {
   useCreateCooperative,
   useDeleteCooperative,
   useProducts,
+  useSetCooperativeStatus,
   useSettlements,
 } from "@/lib/queries";
 import { useCurrentUser } from "@/lib/session";
@@ -47,12 +48,26 @@ function Cooperativas() {
   const { data: settlements } = useSettlements();
   const createCoop = useCreateCooperative();
   const deleteCoop = useDeleteCooperative();
+  const setStatus = useSetCooperativeStatus();
 
   const isAdmin = (user?.roles ?? []).includes("admin");
+
+  const pending = (coops ?? []).filter((c) => c.status === "pendente");
 
   const list = (coops ?? []).filter((c) =>
     `${c.name} ${c.city} ${c.region}`.toLowerCase().includes(q.toLowerCase()),
   );
+
+  async function handleStatus(id: string, status: "ativa" | "inativa") {
+    try {
+      await setStatus.mutateAsync({ cooperative_id: id, status });
+      toast.success(
+        status === "ativa" ? "Cadastro aprovado — cooperativa ativa" : "Cadastro recusado",
+      );
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Não foi possível validar o cadastro");
+    }
+  }
 
   async function handleCreate(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -183,6 +198,48 @@ function Cooperativas() {
               </button>
             </div>
           </form>
+        </Panel>
+      )}
+
+      {isAdmin && pending.length > 0 && (
+        <Panel
+          title={`Cadastros aguardando aprovação (${pending.length})`}
+          subtitle="Cooperativas que entraram pela plataforma — aceite ou recuse o cadastro"
+          padded={false}
+        >
+          <div className="divide-y divide-line">
+            {pending.map((c) => (
+              <div
+                key={c.id}
+                className="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5"
+              >
+                <div className="min-w-0">
+                  <div className="text-[13px] font-medium">{c.name}</div>
+                  <div className="font-mono text-[11px] text-muted-foreground">
+                    📍 {c.city} {c.region ? `· ${c.region}` : ""}
+                    {c.responsible_name ? ` · 👤 ${c.responsible_name}` : ""}
+                    {c.phone ? ` · ${c.phone}` : ""} · {c.email}
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handleStatus(c.id, "ativa")}
+                    disabled={setStatus.isPending}
+                    className="rounded-md border border-leaf bg-leaf/10 px-3 py-1.5 text-[12px] text-leaf hover:bg-leaf/20 disabled:opacity-60"
+                  >
+                    ✓ Aceitar
+                  </button>
+                  <button
+                    onClick={() => handleStatus(c.id, "inativa")}
+                    disabled={setStatus.isPending}
+                    className="rounded-md border border-crit/40 px-3 py-1.5 text-[12px] text-crit hover:bg-crit/10 disabled:opacity-60"
+                  >
+                    ✕ Recusar
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         </Panel>
       )}
 

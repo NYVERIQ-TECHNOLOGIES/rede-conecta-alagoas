@@ -119,6 +119,19 @@ function Dashboard() {
 
   return (
     <>
+      {coop.status === "pendente" && (
+        <div className="rounded-md border border-warn/40 bg-warn/10 px-4 py-3 text-[13px] text-warn">
+          ⏳ Seu cadastro está <strong>aguardando aprovação</strong> da administração da rede. Você
+          já pode começar a se organizar por aqui — o acesso completo será liberado após a
+          validação.
+        </div>
+      )}
+      {coop.status === "inativa" && (
+        <div className="rounded-md border border-crit/40 bg-crit/10 px-4 py-3 text-[13px] text-crit">
+          🛑 Este cadastro foi <strong>recusado</strong> pela administração. Fale com a equipe da
+          rede para entender o motivo e regularizar sua participação.
+        </div>
+      )}
       <PageHeader
         eyebrow={`${greeting()} ${user?.profile?.full_name?.split(" ")[0] ?? ""}`}
         title="Sua Cooperativa"

@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { toast } from "sonner";
-import { useAddRole, useRemoveRole, useUsers } from "@/lib/queries";
+import { useCreateUser, useSetUserRoles, useStores, useUsers } from "@/lib/queries";
 import { useCurrentUser, ROLE_LABELS, type AppRole } from "@/lib/session";
 import { dateTimeBR } from "@/lib/format";
 import { EmptyState, LoadingRows, PageHeader, Panel, SearchInput, Tag } from "@/components/kit";
@@ -17,14 +17,42 @@ export const Route = createFileRoute("/admin/usuarios")({
   component: Usuarios,
 });
 
-const ALL_ROLES: AppRole[] = ["admin", "gerente", "operador", "cooperativa", "consulta", "cliente"];
+const CREATE_ROLES: { value: AppRole; label: string }[] = [
+  { value: "admin", label: "Administrador da rede" },
+  { value: "gerente", label: "PDV · Gerente" },
+  { value: "operador", label: "PDV · Operador" },
+  { value: "consulta", label: "Consulta" },
+];
+
+const PROFILE_OPTIONS: { value: AppRole; label: string }[] = [
+  { value: "cliente", label: "Cliente da rede" },
+  { value: "gerente", label: "PDV · Gerente" },
+  { value: "operador", label: "PDV · Operador" },
+  { value: "cooperativa", label: "Cooperativa" },
+  { value: "consulta", label: "Consulta" },
+  { value: "admin", label: "Administração (master)" },
+];
+
+const PRIORITY: Record<AppRole, number> = {
+  admin: 0,
+  gerente: 1,
+  operador: 2,
+  cooperativa: 3,
+  consulta: 4,
+  cliente: 5,
+};
+
+function mainRole(roles: AppRole[]): AppRole {
+  return [...roles].sort((a, b) => PRIORITY[a] - PRIORITY[b])[0] ?? "cliente";
+}
 
 function Usuarios() {
   const [q, setQ] = useState("");
+  const [adding, setAdding] = useState(false);
   const { data: rows, isLoading } = useUsers();
   const { data: me } = useCurrentUser();
-  const addRole = useAddRole();
-  const removeRole = useRemoveRole();
+  const { data: stores } = useStores();
+  const createUser = useCreateUser();
 
   const list = useMemo(
     () =>
@@ -36,26 +64,24 @@ function Usuarios() {
     [rows, q],
   );
 
-  async function grant(userId: string, role: AppRole) {
+  async function handleCreate(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    const role = String(fd.get("role")) as AppRole;
+    const needsStore = role === "gerente" || role === "operador";
     try {
-      await addRole.mutateAsync({ user_id: userId, role });
-      toast.success(`Papel ${ROLE_LABELS[role]} concedido`);
+      await createUser.mutateAsync({
+        email: String(fd.get("email")),
+        password: String(fd.get("password")),
+        full_name: String(fd.get("full_name")),
+        role,
+        store_id: needsStore ? (fd.get("store_id") as string) || undefined : undefined,
+      });
+      toast.success("Acesso criado — o usuário já pode entrar com o e-mail e a senha definidos");
+      setAdding(false);
+      e.currentTarget.reset();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Não foi possível conceder o papel");
-    }
-  }
-
-  async function revoke(userId: string, role: AppRole, isSelf: boolean) {
-    if (isSelf && role === "admin") {
-      toast.error("Você não pode remover seu próprio papel de administrador.");
-      return;
-    }
-    if (!window.confirm(`Remover o papel ${ROLE_LABELS[role]}?`)) return;
-    try {
-      await removeRole.mutateAsync({ user_id: userId, role });
-      toast.success("Papel removido");
-    } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Não foi possível remover o papel");
+      toast.error(err instanceof Error ? err.message : "Não foi possível criar o acesso");
     }
   }
 
@@ -63,16 +89,102 @@ function Usuarios() {
     <>
       <PageHeader
         eyebrow="👤 Administração · Usuários"
-        title="Usuários e Papéis"
-        description="Cada pessoa na rede é associada à experiência pela qual seu papel garante acesso. Papéis são concedidos aqui."
+        title="Usuários e Perfis"
+        description="Aqui o master define o perfil de cada pessoa na rede — troque o perfil de qualquer usuário para passá-lo para outro papel. Administradores e PDVs são cadastrados aqui; cooperativas e clientes entram pelo cadastro público."
         action={
-          <SearchInput value={q} onChange={setQ} placeholder="Buscar usuário…" className="w-56" />
+          <div className="flex items-center gap-2">
+            <SearchInput value={q} onChange={setQ} placeholder="Buscar usuário…" className="w-56" />
+            <button
+              onClick={() => setAdding((v) => !v)}
+              className="rounded-md bg-leaf px-3 py-2 text-[13px] text-primary-foreground"
+            >
+              {adding ? "Fechar" : "+ Novo acesso"}
+            </button>
+          </div>
         }
       />
 
+      {adding && (
+        <Panel
+          title="Cadastrar acesso — PDV e administração"
+          subtitle="O usuário entra com o e-mail/senha definidos aqui (sem confirmação de e-mail)"
+        >
+          <form onSubmit={handleCreate} className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <label className="space-y-1.5">
+              <span className="label-mono">Nome completo</span>
+              <input
+                name="full_name"
+                required
+                className="w-full rounded-md border border-line bg-panel-2 px-3 py-2 text-[13px] outline-none focus:border-leaf"
+              />
+            </label>
+            <label className="space-y-1.5">
+              <span className="label-mono">E-mail</span>
+              <input
+                name="email"
+                type="email"
+                required
+                className="w-full rounded-md border border-line bg-panel-2 px-3 py-2 text-[13px] outline-none focus:border-leaf"
+              />
+            </label>
+            <label className="space-y-1.5">
+              <span className="label-mono">Perfil</span>
+              <select
+                name="role"
+                defaultValue="operador"
+                className="w-full rounded-md border border-line bg-panel-2 px-3 py-2 text-[13px] outline-none focus:border-leaf"
+              >
+                {CREATE_ROLES.map((r) => (
+                  <option key={r.value} value={r.value}>
+                    {r.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="space-y-1.5">
+              <span className="label-mono">Loja (PDV)</span>
+              <select
+                name="store_id"
+                className="w-full rounded-md border border-line bg-panel-2 px-3 py-2 text-[13px] outline-none focus:border-leaf"
+              >
+                <option value="">— Sem vínculo —</option>
+                {(stores ?? []).map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.name} · {s.city}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="space-y-1.5">
+              <span className="label-mono">Senha (mín. 6)</span>
+              <input
+                name="password"
+                type="password"
+                required
+                minLength={6}
+                className="w-full rounded-md border border-line bg-panel-2 px-3 py-2 text-[13px] outline-none focus:border-leaf"
+              />
+            </label>
+            <div className="flex items-end">
+              <button
+                type="submit"
+                disabled={createUser.isPending}
+                className="rounded-md bg-leaf px-4 py-2 text-[13px] text-primary-foreground disabled:opacity-60"
+              >
+                {createUser.isPending ? "Criando…" : "Cadastrar acesso"}
+              </button>
+            </div>
+            <p className="text-[11px] text-muted-foreground sm:col-span-2 lg:col-span-2">
+              Perfis de PDV (gerente/operador) devem estar vinculados a uma loja. Perfis de
+              administrador não exigem loja.
+            </p>
+          </form>
+        </Panel>
+      )}
+
       <Panel
         title={`Usuários (${num(list.length)})`}
-        subtitle="Clique em + para conceder um papel"
+        subtitle="Defina o perfil de cada usuário para controlar a experiência e o acesso"
         padded={false}
       >
         {isLoading ? (
@@ -98,40 +210,22 @@ function Usuarios() {
                         ) : null}
                       </div>
                       <div className="font-mono text-[11px] text-muted-foreground">
-                        {profile.email ?? "—"}
+                        {profile.email ?? "—"} · desde {dateTimeBR(profile.created_at)}
+                      </div>
+                      <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
+                        {roles.map((r) => (
+                          <Tag key={r} tone={r === "admin" ? "clay" : "leaf"}>
+                            {ROLE_LABELS[r]}
+                          </Tag>
+                        ))}
                       </div>
                     </div>
-                    <div className="flex flex-wrap items-center gap-1.5">
-                      {roles.map((r) => (
-                        <span key={r} className="inline-flex items-center gap-1">
-                          <Tag tone={r === "admin" ? "clay" : "leaf"}>{ROLE_LABELS[r]}</Tag>
-                          <button
-                            onClick={() => revoke(profile.id, r, isSelf)}
-                            title={`Remover ${ROLE_LABELS[r]}`}
-                            className="rounded-md border border-line px-1 text-[10px] text-muted-foreground hover:border-crit/40 hover:text-crit"
-                          >
-                            −
-                          </button>
-                        </span>
-                      ))}
-                      <span className="mx-1 w-px bg-line" />
-                      {ALL_ROLES.filter((r) => !roles.includes(r)).map((r) => {
-                        if (isSelf && r === "admin") return null;
-                        return (
-                          <button
-                            key={r}
-                            onClick={() => grant(profile.id, r)}
-                            title={`Conceder ${ROLE_LABELS[r]}`}
-                            className="rounded-md border border-dashed border-line px-1.5 py-0.5 text-[10px] text-muted-foreground hover:border-leaf hover:text-leaf"
-                          >
-                            + {ROLE_LABELS[r]}
-                          </button>
-                        );
-                      })}
-                      <span className="font-mono text-[10px] text-muted-foreground">
-                        desde {dateTimeBR(profile.created_at)}
-                      </span>
-                    </div>
+                    <ProfileSetter
+                      userId={profile.id}
+                      roles={roles}
+                      stores={stores ?? []}
+                      isSelf={isSelf}
+                    />
                   </div>
                 </div>
               );
@@ -140,6 +234,80 @@ function Usuarios() {
         )}
       </Panel>
     </>
+  );
+}
+
+function ProfileSetter({
+  userId,
+  roles,
+  stores,
+  isSelf,
+}: {
+  userId: string;
+  roles: AppRole[];
+  stores: { id: string; name: string; city: string }[];
+  isSelf: boolean;
+}) {
+  const setUserRoles = useSetUserRoles();
+  const [role, setRole] = useState<AppRole>(mainRole(roles));
+  const [storeId, setStoreId] = useState("");
+
+  const needsStore = role === "gerente" || role === "operador";
+  const current = mainRole(roles);
+  const changed = role !== current || (needsStore && storeId.trim() !== "");
+
+  async function apply() {
+    try {
+      await setUserRoles.mutateAsync({
+        user_id: userId,
+        role,
+        store_id: needsStore ? storeId || undefined : undefined,
+      });
+      toast.success(`Perfil do usuário definido como ${ROLE_LABELS[role]}`);
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Não foi possível definir o perfil");
+    }
+  }
+
+  return (
+    <div className="flex flex-wrap items-center gap-1.5">
+      <select
+        value={role}
+        onChange={(e) => setRole(e.target.value as AppRole)}
+        disabled={isSelf}
+        title={
+          isSelf ? "Você não pode alterar o próprio perfil de administração" : "Definir perfil"
+        }
+        className="rounded-md border border-line bg-panel-2 px-2.5 py-1.5 text-[12px] outline-none focus:border-leaf disabled:opacity-60"
+      >
+        {PROFILE_OPTIONS.map((p) => (
+          <option key={p.value} value={p.value}>
+            {p.label}
+          </option>
+        ))}
+      </select>
+      {needsStore && (
+        <select
+          value={storeId}
+          onChange={(e) => setStoreId(e.target.value)}
+          className="rounded-md border border-line bg-panel-2 px-2.5 py-1.5 text-[12px] outline-none focus:border-leaf"
+        >
+          <option value="">Loja…</option>
+          {stores.map((s) => (
+            <option key={s.id} value={s.id}>
+              {s.name} · {s.city}
+            </option>
+          ))}
+        </select>
+      )}
+      <button
+        onClick={apply}
+        disabled={!changed || setUserRoles.isPending}
+        className="rounded-md border border-leaf bg-leaf/10 px-3 py-1.5 text-[12px] text-leaf hover:bg-leaf/20 disabled:opacity-40"
+      >
+        {setUserRoles.isPending ? "Salvando…" : "Definir perfil"}
+      </button>
+    </div>
   );
 }
 

@@ -16,8 +16,10 @@ const rpc = (fn: string, args: Record<string, unknown>) =>
   ).rpc(fn, args);
 
 const db = supabase as unknown as {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- builder flexível para tabelas ainda sem tipos
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- builder flexível para tabelas/funções ainda sem tipos gerados
   from: (table: string) => any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- RPCs novas ainda sem tipos gerados
+  rpc: (fn: string, args?: any) => Promise<{ data: any; error: { message?: string } | null }>;
 };
 
 /** Executa consultas nas tabelas novas de forma tolerante (retorna vazio se a tabela ainda não existir). */
@@ -586,6 +588,117 @@ export function useAuditLogs() {
       fresh<Database["public"]["Tables"]["audit_logs"]["Row"][]>(() =>
         db.from("audit_logs").select("*").order("created_at", { ascending: false }).limit(150),
       ),
+  });
+}
+
+/* ------------------------------------------------------------------ *
+ * CADASTRO PÚBLICO E GOVERNANÇA (RPCs) — migration 0004
+ * ------------------------------------------------------------------ */
+
+export type CooperativeStatus = Database["public"]["Enums"]["entity_status"];
+
+/** Cadastro público como cooperativa (entra pendente de aprovação do ADM). */
+export async function registerNetworkCooperative(args: {
+  name: string;
+  email: string;
+  city: string;
+  cnpj?: string;
+  region?: string;
+  phone?: string;
+  responsible_name?: string;
+  description?: string;
+}): Promise<string> {
+  const { data, error } = await db.rpc("register_cooperative", {
+    _name: args.name,
+    _email: args.email,
+    _city: args.city,
+    _cnpj: args.cnpj ?? null,
+    _region: args.region ?? null,
+    _phone: args.phone ?? null,
+    _responsible_name: args.responsible_name ?? null,
+    _description: args.description ?? null,
+  });
+  if (error) throw error;
+  return data as string;
+}
+
+/** ADM aceita (ativa) ou recusa (inativa) o cadastro de uma cooperativa. */
+export function useSetCooperativeStatus() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async ({
+      cooperative_id,
+      status,
+    }: {
+      cooperative_id: string;
+      status: CooperativeStatus;
+    }) => {
+      const { error } = await db.rpc("set_cooperative_status", {
+        _cooperative_id: cooperative_id,
+        _status: status,
+      });
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["cooperatives"] });
+      qc.invalidateQueries({ queryKey: ["audit-logs"] });
+    },
+  });
+}
+
+/** ADM cadastra PDVs (gerente/operador) e outros administradores. */
+export function useCreateUser() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (args: {
+      email: string;
+      password: string;
+      full_name: string;
+      role: Exclude<AppRole, "cliente" | "cooperativa">;
+      store_id?: string;
+    }) => {
+      const { data, error } = await db.rpc("create_network_user", {
+        _email: args.email,
+        _password: args.password,
+        _full_name: args.full_name,
+        _role: args.role,
+        _store_id: args.store_id ?? null,
+      });
+      if (error) throw error;
+      return data as string;
+    },
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["users"] });
+      qc.invalidateQueries({ queryKey: ["audit-logs"] });
+    },
+  });
+}
+
+/** Master define o perfil único de um usuário (substitui papéis e vínculo de loja). */
+export function useSetUserRoles() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async ({
+      user_id,
+      role,
+      store_id,
+    }: {
+      user_id: string;
+      role: AppRole;
+      store_id?: string;
+    }) => {
+      const { error } = await db.rpc("set_user_roles", {
+        _user_id: user_id,
+        _role: role,
+        _store_id: store_id ?? null,
+      });
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["users"] });
+      qc.invalidateQueries({ queryKey: ["current-user"] });
+      qc.invalidateQueries({ queryKey: ["audit-logs"] });
+    },
   });
 }
 
