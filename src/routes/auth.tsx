@@ -129,7 +129,7 @@ function AuthPage() {
           <img
             src={logoWhite.url}
             alt="Alagoas+Cooperativa"
-            className="h-14 w-auto drop-shadow-sm"
+            className="h-24 w-auto drop-shadow-sm"
           />
         </div>
 
@@ -283,16 +283,45 @@ function AuthPage() {
             Continuar com Google
           </Button>
 
-          <button
-            type="button"
-            className="mt-5 w-full text-center text-[12px] text-muted-foreground hover:text-foreground"
-            onClick={() => {
-              setMode(mode === "entrar" ? "criar" : "entrar");
-              if (mode === "entrar") setKind("cliente");
-            }}
-          >
-            {mode === "entrar" ? "Não tem acesso? Criar conta" : "Já tenho acesso — entrar"}
-          </button>
+          {mode === "entrar" ? (
+            <div className="mt-5">
+              <div className="mb-3 flex items-center gap-3">
+                <span className="h-px flex-1 bg-line" />
+                <span className="text-[11px] text-muted-foreground">Novo na rede?</span>
+                <span className="h-px flex-1 bg-line" />
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setKind("cliente");
+                    setMode("criar");
+                  }}
+                  className="rounded-md border border-line bg-panel-2 px-3 py-2.5 text-[12px] font-medium text-foreground transition-colors hover:border-leaf hover:text-leaf"
+                >
+                  🛍️ Cadastrar como cliente
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setKind("cooperativa");
+                    setMode("criar");
+                  }}
+                  className="rounded-md border border-line bg-panel-2 px-3 py-2.5 text-[12px] font-medium text-foreground transition-colors hover:border-leaf hover:text-leaf"
+                >
+                  🌱 Cadastrar como cooperativa
+                </button>
+              </div>
+            </div>
+          ) : (
+            <button
+              type="button"
+              className="mt-5 w-full text-center text-[12px] text-muted-foreground hover:text-foreground"
+              onClick={() => setMode("entrar")}
+            >
+              Já tenho acesso — entrar
+            </button>
+          )}
         </div>
       </div>
     </div>
