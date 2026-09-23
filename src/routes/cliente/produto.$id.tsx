@@ -52,7 +52,7 @@ function ProdutoDetalhe() {
     );
   }
 
-  function handleAdd() {
+  const handleAdd = () => {
     cart.add({
       product_id: product.id,
       name: product.name,

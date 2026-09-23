@@ -2,12 +2,19 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import type { Database } from "@/integrations/supabase/types";
 import type { Customer, CustomerAddress, Order, OrderItem, StoreProduct } from "@/lib/domain";
-import type { AppRole } from "@/lib/session";
+import type { AppRole, Profile } from "@/lib/session";
 
 /**
  * Cliente flexível para tabelas criadas após a última geração de tipos do Supabase.
  * Assim que os tipos forem regenerados, esta variável pode ser trocada por `supabase`.
  */
+const rpc = (fn: string, args: Record<string, unknown>) =>
+  (
+    supabase as unknown as {
+      rpc: (f: string, a: Record<string, unknown>) => Promise<{ data: unknown; error: Error | null }>;
+    }
+  ).rpc(fn, args);
+
 const db = supabase as unknown as {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any -- builder flexível para tabelas ainda sem tipos
   from: (table: string) => any;
@@ -30,6 +37,7 @@ async function fresh<T>(
   }
 }
 
+type DbRole = Database["public"]["Enums"]["app_role"];
 type CooperativeInsert = Database["public"]["Tables"]["cooperatives"]["Insert"];
 type ProductInsert = Database["public"]["Tables"]["products"]["Insert"];
 type StoreInsert = Database["public"]["Tables"]["stores"]["Insert"];
@@ -277,8 +285,8 @@ export function useCreateCustomerProfile() {
     }: {
       full_name: string;
       email: string;
-      phone?: string;
-      cpf?: string;
+      phone?: string | undefined;
+      cpf?: string | undefined;
     }) => {
       const { data: auth } = await supabase.auth.getUser();
       const userId = auth.user?.id;
@@ -311,7 +319,7 @@ export function useCustomerAddresses() {
 export function useSaveAddress() {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: async (values: Omit<CustomerAddress, "id" | "created_at"> & { id?: string }) => {
+    mutationFn: async (values: Omit<CustomerAddress, "id" | "created_at"> & { id?: string | undefined }) => {
       const { data, error } = values.id
         ? await db
             .from("customer_addresses")
@@ -410,7 +418,7 @@ export function usePlaceOrder() {
       discount: number;
       items: { product_id: string; quantity: number }[];
     }) => {
-      const { data, error } = await supabase.rpc("place_order", {
+      const { data, error } = await rpc("place_order", {
         _store_id: args.store_id,
         _delivery_type: args.delivery_type,
         _address_id: args.address_id,
@@ -432,7 +440,7 @@ export function useConfirmOrder() {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: async (orderId: string) => {
-      const { data, error } = await supabase.rpc("confirm_order_to_sale", { _order_id: orderId });
+      const { data, error } = await rpc("confirm_order_to_sale", { _order_id: orderId });
       if (error) throw error;
       return data as string;
     },
@@ -448,7 +456,7 @@ export function useCancelOrder() {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: async (orderId: string) => {
-      const { error } = await supabase.rpc("cancel_order", { _order_id: orderId });
+      const { error } = await rpc("cancel_order", { _order_id: orderId });
       if (error) throw error;
     },
     onSuccess: () => {
@@ -528,7 +536,7 @@ export function useStoresWithProduct(productId: string, enabled = true) {
 export function useUsers() {
   return useQuery({
     queryKey: ["users"],
-    queryFn: async () => {
+    queryFn: async (): Promise<{ profile: Profile; roles: AppRole[] }[]> => {
       const [{ data: profiles }, { data: roles }] = await Promise.all([
         db.from("profiles").select("*").order("full_name"),
         db.from("user_roles").select("user_id, role"),
@@ -537,7 +545,7 @@ export function useUsers() {
       (roles ?? []).forEach((r: { user_id: string; role: AppRole }) => {
         roleMap.set(r.user_id, [...(roleMap.get(r.user_id) ?? []), r.role]);
       });
-      return (profiles ?? []).map((p: { id: string }) => ({
+      return ((profiles ?? []) as Profile[]).map((p) => ({
         profile: p,
         roles: roleMap.get(p.id) ?? [],
       }));
@@ -549,7 +557,7 @@ export function useAddRole() {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: async ({ user_id, role }: { user_id: string; role: AppRole }) => {
-      const { error } = await supabase.from("user_roles").insert({ user_id, role });
+      const { error } = await supabase.from("user_roles").insert({ user_id, role: role as DbRole });
       if (error) throw error;
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: ["users"] }),
@@ -564,7 +572,7 @@ export function useRemoveRole() {
         .from("user_roles")
         .delete()
         .eq("user_id", user_id)
-        .eq("role", role);
+        .eq("role", role as DbRole);
       if (error) throw error;
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: ["users"] }),

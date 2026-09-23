@@ -225,7 +225,7 @@ function Dashboard() {
           />
         ) : (
           <Bars
-            items={topSellers}
+            items={topSellers.map((t) => ({ label: t.label, value: t.qty }))}
             format={(v) => (v === 1 ? "1 unidade vendida" : `${num(v)} unidades vendidas`)}
           />
         )}
